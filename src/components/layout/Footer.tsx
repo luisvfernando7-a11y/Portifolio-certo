@@ -64,7 +64,7 @@ export function Footer() {
 
                 <div className="flex gap-4 mt-4">
                     <a
-                        href="https://github.com/luisvfernando7"
+                        href="https://github.com/luisvfernando7-a11y"
                         target="_blank"
                         rel="noreferrer"
                         className="p-3 rounded-lg border border-white/10 text-gray-400 hover:text-white hover:bg-white/5 hover:border-white/20 transition-all"
