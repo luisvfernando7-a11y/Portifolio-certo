@@ -5,6 +5,7 @@ export const dictionary = {
         header: {
             items: [
                 { name: "Sobre", href: "#sobre" },
+                { name: "Formação", href: "#formacao" },
                 { name: "Projetos", href: "#projetos" },
                 { name: "Contato", href: "#contato" },
             ],
@@ -44,6 +45,24 @@ export const dictionary = {
             stackFrontend: "Web & Frontend",
             stackData: "Dados & Tools",
         },
+        education: {
+            title: "Formação",
+            subtitle: "Acadêmica",
+            items: [
+                {
+                    year: "2024 - Atualmente",
+                    title: "Técnico em Informática",
+                    institution: "ETEC - Escola Técnica Estadual",
+                    description: "Ensino Médio integrado ao Técnico. Foco em desenvolvimento de software, lógica de programação, banco de dados e aplicações web."
+                },
+                {
+                    year: "Futuro",
+                    title: "Ciência da Computação",
+                    institution: "Universidade",
+                    description: "Objetivo acadêmico para especialização em Inteligência Artificial, Ciência de Dados e algoritmos complexos."
+                }
+            ]
+        },
         projects: {
             title: "Meus",
             subtitle: "Projetos",
@@ -51,37 +70,11 @@ export const dictionary = {
                 "Soluções reais desenvolvidas com foco em arquitetura, performance e experiência do usuário.",
             items: [
                 {
-                    title: "Projeto Exemplo 1",
+                    title: "Crypto Trend Analysis (LSTM)",
                     description:
-                        "Descrição do projeto. Tecnologias utilizadas e qual problema ele resolve.",
-                    tags: ["JavaScript", "CSS", "HTML"],
-                    image: "/projects/project-placeholder-1.png",
-                    github: "https://github.com/luisvfernando7",
-                    demo: "#",
-                },
-                {
-                    title: "Projeto Exemplo 2",
-                    description:
-                        "Descrição do projeto. Tecnologias utilizadas e qual problema ele resolve.",
-                    tags: [
-                        "Java",
-                        "Spring Boot",
-                        "React",
-                    ],
-                    image: "/projects/project-placeholder-2.png",
-                    github: "https://github.com/luisvfernando7",
-                    demo: "#",
-                },
-                {
-                    title: "Projeto Exemplo 3",
-                    description:
-                        "Descrição do projeto. Tecnologias utilizadas e qual problema ele resolve.",
-                    tags: [
-                        "Java",
-                        "Spring Boot",
-                        "React",
-                    ],
-                    image: "/projects/project-placeholder-3.png",
+                        "Projeto de rede neural MCP LSTM para análise de tendências de moedas digitais. Considera preços históricos, notícias e fatores de mercado. Desenvolvido com Python, Pandas e Flask.",
+                    tags: ["Python", "Machine Learning", "LSTM", "Flask", "Pandas"],
+                    image: "/projects/crypto-lstm.png",
                     github: "https://github.com/luisvfernando7",
                     demo: "#",
                 },
@@ -98,6 +91,7 @@ export const dictionary = {
         header: {
             items: [
                 { name: "About", href: "#sobre" },
+                { name: "Education", href: "#formacao" },
                 { name: "Projects", href: "#projetos" },
                 { name: "Contact", href: "#contato" },
             ],
@@ -137,6 +131,24 @@ export const dictionary = {
             stackFrontend: "Web & Frontend",
             stackData: "Data & Tools",
         },
+        education: {
+            title: "Education",
+            subtitle: "Timeline",
+            items: [
+                {
+                    year: "2024 - Present",
+                    title: "Computer Technician",
+                    institution: "ETEC - State Technical School",
+                    description: "High School integrated with Technical Course. Focus on software development, programming logic, databases, and web applications."
+                },
+                {
+                    year: "Future",
+                    title: "Computer Science",
+                    institution: "University",
+                    description: "Academic goal for specialization in Artificial Intelligence, Data Science, and complex algorithms."
+                }
+            ]
+        },
         projects: {
             title: "My",
             subtitle: "Projects",
@@ -144,37 +156,11 @@ export const dictionary = {
                 "Real solutions developed with a focus on architecture, performance, and user experience.",
             items: [
                 {
-                    title: "Example Project 1",
+                    title: "Crypto Trend Analysis (LSTM)",
                     description:
-                        "Project description. Technologies used and what problem it solves.",
-                    tags: ["JavaScript", "CSS", "HTML"],
-                    image: "/projects/project-placeholder-1.png",
-                    github: "https://github.com/luisvfernando7",
-                    demo: "#",
-                },
-                {
-                    title: "Example Project 2",
-                    description:
-                        "Project description. Technologies used and what problem it solves.",
-                    tags: [
-                        "Java",
-                        "Spring Boot",
-                        "React",
-                    ],
-                    image: "/projects/project-placeholder-2.png",
-                    github: "https://github.com/luisvfernando7",
-                    demo: "#",
-                },
-                {
-                    title: "Example Project 3",
-                    description:
-                        "Project description. Technologies used and what problem it solves.",
-                    tags: [
-                        "Java",
-                        "Spring Boot",
-                        "React",
-                    ],
-                    image: "/projects/project-placeholder-3.png",
+                        "MCP LSTM neural network project for digital currency trend analysis. Considers historical prices, news, and market factors. Developed with Python, Pandas, and Flask.",
+                    tags: ["Python", "Machine Learning", "LSTM", "Flask", "Pandas"],
+                    image: "/projects/crypto-lstm.png",
                     github: "https://github.com/luisvfernando7",
                     demo: "#",
                 },

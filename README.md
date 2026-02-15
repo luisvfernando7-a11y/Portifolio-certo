@@ -99,4 +99,3 @@ Developed by **Paulo Gomes**.
 ---
 
 © 2025 Paulo Gomes. All rights reserved.
-# Portifolio-certo

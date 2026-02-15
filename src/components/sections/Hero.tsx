@@ -101,9 +101,7 @@ export function Hero() {
                             <p className="pl-4">
                                 <span className="text-gray-500"># Future Goal</span>
                             </p>
-                            <p className="pl-4">
-                                self.degree = <span className="text-green-400">"Computer Science"</span>
-                            </p>
+
                         </div>
                     </div>
                 </motion.div>
