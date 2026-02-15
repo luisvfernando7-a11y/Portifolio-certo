@@ -98,9 +98,7 @@ export function Hero() {
                             <p className="pl-8">
                                 self.focus = <span className="text-green-400">"Data Science & Dev"</span>
                             </p>
-                            <p className="pl-4">
-                                <span className="text-gray-500"># Future Goal</span>
-                            </p>
+
 
                         </div>
                     </div>
