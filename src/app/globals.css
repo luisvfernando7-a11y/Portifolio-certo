@@ -1,8 +1,18 @@
 @import "tailwindcss";
 
+@theme {
+    --color-background-app: #0a0a0f;
+    --color-primary-purple: #7c3aed;
+    --color-primary-cyan: #06b6d4;
+    --color-card-dark: #12121e;
+}
+
 :root {
-    --background: #ffffff;
-    --foreground: #0a0a0a;
+    --background: #0a0a0f;
+    --foreground: #ffffff;
+    --primary-purple: #7c3aed;
+    --primary-cyan: #06b6d4;
+    --card-bg: rgba(18, 18, 30, 0.6);
 }
 
 @theme inline {
@@ -12,14 +22,42 @@
     --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #0a0a0a;
-        --foreground: #ededed;
-    }
-}
-
 body {
     background: var(--background);
     color: var(--foreground);
+    selection-background: var(--primary-purple);
+    selection-color: white;
 }
+
+/* Glassmorphism Utilities */
+.glass {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-hover {
+    transition: all 0.3s ease;
+}
+
+.glass-hover:hover {
+    background: rgba(18, 18, 30, 0.8);
+    border-color: rgba(124, 58, 237, 0.4);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
+.text-gradient {
+    background: linear-gradient(to right, #7c3aed, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.bg-glow-purple {
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+}
+
+.bg-glow-cyan {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+}
+

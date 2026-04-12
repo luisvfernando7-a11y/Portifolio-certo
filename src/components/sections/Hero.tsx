@@ -1,9 +1,49 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight, Github, Linkedin } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
+
+const Typewriter = ({ strings }: { strings: string[] }) => {
+    const [index, setIndex] = useState(0);
+    const [text, setText] = useState("");
+    const [isDeleting, setIsDeleting] = useState(false);
+    const [speed, setSpeed] = useState(150);
+
+    useEffect(() => {
+        const handleType = () => {
+            const current = index % strings.length;
+            const fullText = strings[current];
+
+            setText(
+                isDeleting
+                    ? fullText.substring(0, text.length - 1)
+                    : fullText.substring(0, text.length + 1)
+            );
+
+            if (!isDeleting && text === fullText) {
+                setTimeout(() => setIsDeleting(true), 1500);
+            } else if (isDeleting && text === "") {
+                setIsDeleting(false);
+                setIndex(index + 1);
+            }
+
+            setSpeed(isDeleting ? 75 : 150);
+        };
+
+        const timer = setTimeout(handleType, speed);
+        return () => clearTimeout(timer);
+    }, [text, isDeleting, index, strings, speed]);
+
+    return (
+        <span className="text-primary-cyan min-h-[1.5em] inline-block">
+            {text}
+            <span className="animate-pulse ml-0.5">|</span>
+        </span>
+    );
+};
 
 export function Hero() {
     const { dict } = useLanguage();
@@ -11,99 +51,129 @@ export function Hero() {
     return (
         <section
             id="inicio"
-            className="flex min-h-screen items-center justify-center py-20 px-4 md:px-6 scroll-mt-28 relative overflow-hidden"
+            className="flex min-h-screen items-center justify-center py-24 px-4 md:px-6 relative overflow-hidden bg-[#0a0a0f]"
         >
-            <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-blue-500/20 rounded-full blur-[100px] -z-10" />
-            <div className="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-purple-500/20 rounded-full blur-[100px] -z-10" />
+            {/* Animated Background Gradients */}
+            <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden">
+                <motion.div 
+                    animate={{ 
+                        scale: [1, 1.2, 1],
+                        opacity: [0.3, 0.5, 0.3],
+                        x: [0, 50, 0],
+                        y: [0, 30, 0]
+                    }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-primary-purple/20 rounded-full blur-[120px]" 
+                />
+                <motion.div 
+                    animate={{ 
+                        scale: [1, 1.3, 1],
+                        opacity: [0.2, 0.4, 0.2],
+                        x: [0, -40, 0],
+                        y: [0, -50, 0]
+                    }}
+                    transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                    className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-primary-cyan/20 rounded-full blur-[120px]" 
+                />
+            </div>
 
-            <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="flex flex-col gap-6"
-                >
-                    <div className="inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-500 text-sm font-medium w-fit border border-blue-500/20">
+            <div className="container mx-auto max-w-6xl z-10">
+                <div className="flex flex-col items-center text-center gap-8">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5 }}
+                        className="glass px-4 py-1.5 rounded-full text-sm font-medium border-primary-cyan/20 text-primary-cyan shadow-lg shadow-primary-cyan/5"
+                    >
                         {dict.hero.badge}
-                    </div>
+                    </motion.div>
 
-                    <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-                        {dict.hero.greeting} <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">
-                            Luis Galvani
-                        </span>
-                    </h1>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        className="space-y-4"
+                    >
+                        <h1 className="text-5xl md:text-8xl font-black tracking-tight leading-[1.1]">
+                            {dict.hero.greeting} <br />
+                            <span className="text-gradient">
+                                {dict.hero.name}
+                            </span>
+                        </h1>
+                        
+                        <div className="text-xl md:text-3xl font-medium text-gray-400">
+                            <Typewriter strings={dict.hero.roles} />
+                        </div>
+                    </motion.div>
 
-                    <p className="text-lg text-muted-foreground max-w-lg leading-relaxed text-gray-400">
-                        {dict.hero.role}
-                    </p>
-
-                    <div className="flex flex-wrap gap-4">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                        className="flex flex-wrap justify-center gap-6 mt-8"
+                    >
                         <Link
                             href="#projetos"
-                            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+                            className="group relative px-8 py-4 bg-primary-purple rounded-2xl font-bold text-white transition-all hover:scale-105 active:scale-95 shadow-xl shadow-primary-purple/20 flex items-center gap-2 overflow-hidden"
                         >
-                            {dict.hero.btnProject} <ArrowRight size={20} />
+                            <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                            <span className="relative z-10">{dict.hero.btnProject}</span>
+                            <ArrowRight className="relative z-10 group-hover:translate-x-1 transition-transform" />
                         </Link>
 
+                        <Link
+                            href="#contato"
+                            className="glass glass-hover px-8 py-4 rounded-2xl font-bold text-white flex items-center gap-2 backdrop-blur-md"
+                        >
+                            <Mail size={20} />
+                            {dict.hero.btnContact}
+                        </Link>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.8 }}
+                        className="flex gap-4 mt-8"
+                    >
                         <a
                             href="https://github.com/luisvfernando7-a11y"
                             target="_blank"
                             rel="noreferrer"
-                            className="p-3 rounded-lg border border-white/10 hover:bg-white/5 transition-colors"
+                            className="p-3 glass rounded-xl text-gray-400 hover:text-white hover:border-primary-purple/50 transition-all hover:-translate-y-1"
                             aria-label="GitHub"
                         >
                             <Github size={24} />
                         </a>
-
                         <a
                             href="https://www.linkedin.com/in/luis-fernando-vieira-543325313"
                             target="_blank"
                             rel="noreferrer"
-                            className="p-3 rounded-lg border border-white/10 hover:bg-white/5 transition-colors"
+                            className="p-3 glass rounded-xl text-gray-400 hover:text-blue-400 hover:border-blue-500/50 transition-all hover:-translate-y-1"
                             aria-label="LinkedIn"
                         >
                             <Linkedin size={24} />
                         </a>
-                    </div>
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    className="relative flex justify-center"
-                >
-                    <div className="relative w-full max-w-md aspect-square bg-gradient-to-br from-white/5 to-white/0 border border-white/10 rounded-2xl backdrop-blur-xl p-6 shadow-2xl">
-                        <div className="flex gap-2 mb-4">
-                            <div className="w-3 h-3 rounded-full bg-red-500" />
-                            <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                            <div className="w-3 h-3 rounded-full bg-green-500" />
-                        </div>
-                        <div className="space-y-3 font-mono text-sm text-gray-400">
-                            <p>
-                                <span className="text-purple-400">class</span>{" "}
-                                <span className="text-blue-400">Developer</span>:
-                            </p>
-                            <p className="pl-4">
-                                <span className="text-purple-400">def</span>{" "}
-                                <span className="text-blue-400">__init__</span>(self):
-                            </p>
-                            <p className="pl-8">
-                                self.name = <span className="text-green-400">"Luis Galvani"</span>
-                            </p>
-                            <p className="pl-8">
-                                self.techs = [<span className="text-green-400">"PHP"</span>, <span className="text-green-400">"Python"</span>, <span className="text-green-400">"AI"</span>]
-                            </p>
-                            <p className="pl-8">
-                                self.focus = <span className="text-green-400">"Data Science & Dev"</span>
-                            </p>
-
-
-                        </div>
-                    </div>
-                </motion.div>
+                    </motion.div>
+                </div>
+            </div>
+            
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-30">
+                <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center p-1">
+                    <div className="w-1.5 h-1.5 bg-white rounded-full animate-scroll" />
+                </div>
             </div>
         </section>
     );
 }
+
+const styles = `
+@keyframes scroll {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(15px); opacity: 0; }
+}
+.animate-scroll {
+  animation: scroll 1.5s infinite;
+}
+`;
+

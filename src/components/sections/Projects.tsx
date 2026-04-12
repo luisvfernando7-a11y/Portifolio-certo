@@ -1,9 +1,41 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
-import Image from "next/image";
+import { ExternalLink, Github, Rocket, Code2 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+
+const SkeletonCard = ({ delay }: { delay: number }) => (
+    <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay }}
+        className="glass rounded-[2rem] p-8 border border-white/5 flex flex-col gap-6 relative overflow-hidden group"
+    >
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-shimmer" />
+        
+        <div className="flex justify-between items-start">
+            <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
+                <Code2 className="text-gray-600" />
+            </div>
+            <div className="flex gap-2">
+                <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10" />
+                <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10" />
+            </div>
+        </div>
+
+        <div className="space-y-3">
+            <div className="h-6 w-2/3 bg-white/10 rounded-lg" />
+            <div className="h-4 w-full bg-white/5 rounded-lg" />
+            <div className="h-4 w-4/5 bg-white/5 rounded-lg" />
+        </div>
+
+        <div className="flex gap-2 mt-4">
+            <div className="h-6 w-16 bg-white/5 border border-white/10 rounded-full" />
+            <div className="h-6 w-20 bg-white/5 border border-white/10 rounded-full" />
+        </div>
+    </motion.div>
+);
 
 export function Projects() {
     const { dict } = useLanguage();
@@ -11,98 +43,46 @@ export function Projects() {
     return (
         <section
             id="projetos"
-            className="py-20 px-4 md:px-6 bg-[#0a0a0a] scroll-mt-28"
+            className="py-24 px-4 md:px-6 bg-[#0a0a0f] scroll-mt-28 relative"
         >
             <div className="container mx-auto max-w-6xl">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="mb-16 text-center"
+                    className="mb-20 text-center"
                 >
-                    <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">
+                    <h2 className="text-4xl md:text-6xl font-black mb-4 tracking-tight">
                         {dict.projects.title}{" "}
-                        <span className="text-blue-500">
+                        <span className="text-gradient">
                             {dict.projects.subtitle}
                         </span>
                     </h2>
-                    <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-                        {dict.projects.description}
-                    </p>
+                    
+                    <div className="flex items-center justify-center gap-3 text-gray-400 text-xl font-medium">
+                        <Rocket className="text-primary-cyan animate-pulse" />
+                        <span>{dict.projects.description}</span>
+                    </div>
+                    
+                    <div className="w-20 h-1.5 bg-gradient-to-r from-primary-purple to-primary-cyan mx-auto rounded-full mt-6" />
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {dict.projects.items.map((project, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="group flex flex-col bg-[#111] border border-white/10 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10"
-                        >
-                            <div className="relative w-full h-48 overflow-hidden">
-                                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all z-10" />
-
-                                <Image
-                                    src={project.image}
-                                    alt={project.title}
-                                    fill
-                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                />
-                            </div>
-
-                            <div className="p-6 flex flex-col flex-grow">
-                                <div className="flex justify-between items-start mb-4">
-                                    <h3 className="text-xl font-bold text-gray-100 group-hover:text-blue-400 transition-colors">
-                                        {project.title}
-                                    </h3>
-
-                                    <div className="flex gap-3">
-                                        <a
-                                            href={project.github}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            className="text-gray-400 hover:text-white transition-colors p-1"
-                                            aria-label="Ver código no GitHub"
-                                        >
-                                            <Github size={20} />
-                                        </a>
-                                        {project.demo && (
-                                            <a
-                                                href={project.demo}
-                                                target="_blank"
-                                                rel="noreferrer"
-                                                className="text-gray-400 hover:text-blue-400 transition-colors p-1"
-                                                aria-label="Ver projeto online"
-                                            >
-                                                <ExternalLink size={20} />
-                                            </a>
-                                        )}
-                                    </div>
-                                </div>
-
-                                <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
-                                    {project.description}
-                                </p>
-
-                                <div className="flex flex-wrap gap-2 mt-auto">
-                                    {project.tags.map((tag) => (
-                                        <span
-                                            key={tag}
-                                            className="text-xs font-medium px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20"
-                                        >
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-                        </motion.div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 opacity-60">
+                    {[1, 2, 3].map((i) => (
+                        <SkeletonCard key={i} delay={i * 0.1} />
                     ))}
                 </div>
             </div>
+
+            <style jsx global>{`
+                @keyframes shimmer {
+                    100% { transform: translateX(100%); }
+                }
+                .animate-shimmer {
+                    animation: shimmer 2s infinite;
+                }
+            `}</style>
         </section>
     );
 }
+
