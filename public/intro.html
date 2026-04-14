@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intro — Luís Fernando</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500&family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #000000;
+      --text: #FFFFFF;
+      --accent: #378ADD;
+      --accent-light: #85B7EB;
+      --chip-bg: rgba(55,138,221,0.12);
+      --chip-border: rgba(55,138,221,0.35);
+      --muted: rgba(255,255,255,0.45);
+      --grid: rgba(55,138,221,0.05);
+    }
+
+    html, body {
+      width: 100%; height: 100%;
+      background: var(--bg);
+      overflow: hidden;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* ── CANVAS + PARTICLES ── */
+    #particle-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ── DOT GRID ── */
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image:
+        radial-gradient(circle, rgba(55,138,221,0.07) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+
+    /* ── RADIAL GLOW ── */
+    .glow {
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(ellipse at center, rgba(55,138,221,0.10) 0%, transparent 70%);
+      z-index: 0;
+      pointer-events: none;
+      transition: opacity 0.5s;
+    }
+
+    /* ── STAGE ── */
+    #stage {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    /* ── SCENES ── */
+    .scene {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .scene.active { pointer-events: auto; }
+
+    /* ──── SCENE 1 ──── */
+    #s1-hi {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(72px, 14vw, 140px);
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.04em;
+      transform: scale(0.85);
+      opacity: 0;
+    }
+
+    /* ──── SCENE 2 ──── */
+    #s2 { gap: 0; }
+
+    #s2-name {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(36px, 6vw, 68px);
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.03em;
+      opacity: 0;
+      transform: translateY(18px);
+      text-align: center;
+    }
+
+    #s2-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(14px, 2vw, 18px);
+      font-weight: 300;
+      color: var(--muted);
+      margin-top: 6px;
+      opacity: 0;
+      transform: translateY(12px);
+      text-align: center;
+    }
+
+    #s2-divider {
+      height: 1.5px;
+      background: var(--accent);
+      width: 0;
+      margin: 22px auto 18px;
+      border-radius: 2px;
+      box-shadow: 0 0 12px rgba(55,138,221,0.6);
+    }
+
+    #s2-url-wrap {
+      opacity: 0;
+      transform: translateY(8px);
+      text-align: center;
+    }
+    #s2-url {
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(12px, 1.6vw, 15px);
+      color: var(--accent-light);
+      letter-spacing: 0.01em;
+    }
+    #s2-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: var(--accent);
+      vertical-align: middle;
+      margin-left: 2px;
+      box-shadow: 0 0 8px var(--accent);
+      animation: blink-cursor 0.7s step-end infinite;
+    }
+    @keyframes blink-cursor {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* ──── SCENE 3 ──── */
+    #s3 { gap: 0; }
+    #s3-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 18px;
+      opacity: 0;
+    }
+    #s3-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      max-width: 600px;
+    }
+    .chip {
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(12px, 1.5vw, 14px);
+      color: var(--accent-light);
+      background: var(--chip-bg);
+      border: 1px solid var(--chip-border);
+      padding: 7px 18px;
+      border-radius: 999px;
+      opacity: 0;
+      transform: translateY(16px);
+      white-space: nowrap;
+      box-shadow: 0 0 18px rgba(55,138,221,0.08);
+    }
+
+    /* ──── SCENE 4 ──── */
+    #s4 { background: var(--bg); }
+    #browser {
+      width: min(820px, 92vw);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #0a0a0f;
+      border: 1px solid rgba(55,138,221,0.18);
+      box-shadow: 0 30px 100px rgba(55,138,221,0.15), 0 0 0 0.5px rgba(255,255,255,0.06);
+      opacity: 0;
+      transform: translateY(60px);
+    }
+
+    /* browser chrome */
+    .br-chrome {
+      background: #111118;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 0.5px solid rgba(255,255,255,0.07);
+    }
+    .br-dots { display: flex; gap: 6px; }
+    .br-dot { width: 11px; height: 11px; border-radius: 50%; }
+    .br-dot.r { background: #FF5F57; }
+    .br-dot.y { background: #FEBC2E; }
+    .br-dot.g { background: #28C840; }
+    .br-url-bar {
+      flex: 1;
+      background: #1a1a24;
+      border: 0.5px solid rgba(255,255,255,0.08);
+      border-radius: 6px;
+      padding: 5px 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+    .br-url-bar::before {
+      content: '';
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #28C840;
+      flex-shrink: 0;
+    }
+
+    /* browser content */
+    .br-content {
+      padding: 0;
+      max-height: 480px;
+      overflow: hidden;
+    }
+
+    /* mock navbar */
+    .m-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 28px;
+      border-bottom: 0.5px solid rgba(255,255,255,0.06);
+      background: #0a0a0f;
+    }
+    .m-logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 19px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+    .m-logo span { color: var(--accent); }
+    .m-links { display: flex; align-items: center; gap: 2px; }
+    .m-link {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      padding: 5px 12px;
+      border-radius: 999px;
+    }
+    .m-cta {
+      font-size: 12px;
+      color: var(--accent-light);
+      padding: 5px 14px;
+      border-radius: 999px;
+      border: 0.5px solid rgba(55,138,221,0.4);
+      margin-left: 6px;
+    }
+
+    /* mock hero */
+    .m-hero { padding: 28px 28px 22px; }
+    .m-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: #2dd4a0;
+      background: rgba(45,212,160,0.1);
+      border: 0.5px solid rgba(45,212,160,0.25);
+      padding: 3px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+    .m-badge::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: #2dd4a0;
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    .m-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(22px, 3.5vw, 32px);
+      font-weight: 800;
+      color: #f0f0f5;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .m-title-accent { color: var(--accent-light); }
+    .m-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+    .m-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+    .m-chip {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--accent-light);
+      background: var(--chip-bg);
+      border: 0.5px solid var(--chip-border);
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+    .m-ctas { display: flex; gap: 8px; }
+    .m-btn-p {
+      font-size: 12px;
+      color: #fff;
+      background: var(--accent);
+      padding: 8px 18px;
+      border-radius: 999px;
+      border: none;
+      cursor: default;
+    }
+    .m-btn-o {
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+      background: transparent;
+      border: 0.5px solid rgba(255,255,255,0.15);
+      padding: 8px 18px;
+      border-radius: 999px;
+      cursor: default;
+    }
+
+    /* ── REPLAY BUTTON ── */
+    #replay-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 100;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--accent-light);
+      background: rgba(55,138,221,0.1);
+      border: 1px solid rgba(55,138,221,0.3);
+      padding: 8px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.4s, transform 0.4s, background 0.2s;
+    }
+    #replay-btn:hover { background: rgba(55,138,221,0.2); }
+    #replay-btn.show { opacity: 1; transform: translateY(0); }
+
+    /* ── TOTAL FADE ── */
+    #fade-overlay {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 50;
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="particle-canvas"></canvas>
+  <div class="grid-bg"></div>
+  <div class="glow" id="glow"></div>
+
+  <div id="fade-overlay"></div>
+
+  <div id="stage">
+
+    <!-- SCENE 1: hi. -->
+    <div class="scene" id="s1">
+      <div id="s1-hi">hi.</div>
+    </div>
+
+    <!-- SCENE 2: Name + URL -->
+    <div class="scene" id="s2">
+      <div id="s2-name">Luís Fernando</div>
+      <div id="s2-sub">Backend Developer &amp; Machine Learning</div>
+      <div id="s2-divider"></div>
+      <div id="s2-url-wrap">
+        <span id="s2-url"></span><span id="s2-cursor"></span>
+      </div>
+    </div>
+
+    <!-- SCENE 3: Tech chips -->
+    <div class="scene" id="s3">
+      <div id="s3-label">stack &amp; tecnologias</div>
+      <div id="s3-chips">
+        <div class="chip">Python</div>
+        <div class="chip">PHP</div>
+        <div class="chip">C#</div>
+        <div class="chip">ML / IA</div>
+        <div class="chip">IoT</div>
+        <div class="chip">MySQL</div>
+        <div class="chip">Supabase</div>
+      </div>
+    </div>
+
+    <!-- SCENE 4: Browser mockup -->
+    <div class="scene" id="s4">
+      <div id="browser">
+        <div class="br-chrome">
+          <div class="br-dots">
+            <div class="br-dot r"></div>
+            <div class="br-dot y"></div>
+            <div class="br-dot g"></div>
+          </div>
+          <div class="br-url-bar">site-sigma-flame.vercel.app</div>
+        </div>
+        <div class="br-content">
+          <div class="m-nav">
+            <div class="m-logo">LF<span>.</span></div>
+            <div class="m-links">
+              <span class="m-link">Chat</span>
+              <span class="m-link">Projetos</span>
+              <span class="m-link">Sobre</span>
+              <span class="m-cta">Contato</span>
+            </div>
+          </div>
+          <div class="m-hero">
+            <div class="m-badge">Disponível para projetos</div>
+            <div class="m-title">
+              Luís Fernando<br/>
+              <span class="m-title-accent">— dev backend</span>
+            </div>
+            <div class="m-sub">
+              17 anos · Ourinhos, SP · ETEC Jacinto Ferreira de Sá<br/>
+              Especialista em Python, PHP, C# e apaixonado por Machine Learning.
+            </div>
+            <div class="m-chips">
+              <span class="m-chip">Python</span>
+              <span class="m-chip">PHP</span>
+              <span class="m-chip">C#</span>
+              <span class="m-chip">ML / IA</span>
+              <span class="m-chip">MySQL</span>
+              <span class="m-chip">Supabase</span>
+              <span class="m-chip">IoT</span>
+            </div>
+            <div class="m-ctas">
+              <button class="m-btn-p">Conversar com minha IA</button>
+              <button class="m-btn-o">Ver projetos</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <button id="replay-btn">↺ replay</button>
+
+  <script>
+    /* ── PARTICLES ── */
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    function spawnParticle() {
+      return {
+        x: Math.random() * canvas.width,
+        y: canvas.height + 10,
+        size: Math.random() * 2.5 + 0.5,
+        speedY: Math.random() * 0.6 + 0.2,
+        speedX: (Math.random() - 0.5) * 0.3,
+        alpha: Math.random() * 0.5 + 0.1,
+        color: `rgba(${Math.random() > 0.5 ? '55,138,221' : '133,183,235'},`
+      };
+    }
+
+    for (let i = 0; i < 55; i++) {
+      const p = spawnParticle();
+      p.y = Math.random() * canvas.height;
+      particles.push(p);
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p, i) => {
+        p.y -= p.speedY;
+        p.x += p.speedX;
+        p.alpha -= 0.0004;
+        if (p.y < -10 || p.alpha <= 0) particles[i] = spawnParticle();
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = p.color + p.alpha + ')';
+        ctx.fill();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    /* ── ANIMATION ENGINE ── */
+    function animate(el, props, durationMs, easingFn = easeInOut, delayMs = 0) {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          const start = performance.now();
+          const from = {};
+          for (const key in props) {
+            from[key] = parseFloat(el.dataset['_' + key] ?? props[key][0]);
+          }
+          function step(now) {
+            const t = Math.min((now - start) / durationMs, 1);
+            const e = easingFn(t);
+            let transforms = [];
+            for (const key in props) {
+              const v = from[key] + (props[key][1] - from[key]) * e;
+              el.dataset['_' + key] = v;
+              if (key === 'opacity') el.style.opacity = v;
+              else if (key === 'scale') transforms.push(`scale(${v})`);
+              else if (key === 'translateY') transforms.push(`translateY(${v}px)`);
+              else if (key === 'width') el.style.width = v + 'px';
+            }
+            if (transforms.length) el.style.transform = transforms.join(' ');
+            if (t < 1) requestAnimationFrame(step);
+            else resolve();
+          }
+          requestAnimationFrame(step);
+        }, delayMs);
+      });
+    }
+
+    function easeInOut(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+    function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+    function easeIn(t) { return t * t * t; }
+
+    function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+    function showScene(id) {
+      document.querySelectorAll('.scene').forEach(s => {
+        s.style.opacity = '0';
+        s.classList.remove('active');
+      });
+      const s = document.getElementById(id);
+      s.style.opacity = '1';
+      s.classList.add('active');
+    }
+
+    function hideScene(id) {
+      const s = document.getElementById(id);
+      s.style.opacity = '0';
+      s.classList.remove('active');
+    }
+
+    /* typewriter */
+    function typeWriter(el, text, speed = 50) {
+      return new Promise(resolve => {
+        let i = 0;
+        el.textContent = '';
+        function next() {
+          if (i < text.length) {
+            el.textContent += text[i++];
+            setTimeout(next, speed);
+          } else resolve();
+        }
+        next();
+      });
+    }
+
+    /* fade overlay helper */
+    const overlay = document.getElementById('fade-overlay');
+    function fadeOverlay(toOpacity, ms) {
+      return animate(overlay, { opacity: [parseFloat(overlay.style.opacity)||0, toOpacity] }, ms);
+    }
+
+    /* ── MAIN SEQUENCE ── */
+    async function play() {
+      // reset all
+      document.querySelectorAll('.scene').forEach(s => s.style.opacity = '0');
+      const hi = document.getElementById('s1-hi');
+      hi.style.opacity = '0'; hi.style.transform = 'scale(0.85)';
+      const s2name = document.getElementById('s2-name');
+      const s2sub = document.getElementById('s2-sub');
+      const s2div = document.getElementById('s2-divider');
+      const s2urlw = document.getElementById('s2-url-wrap');
+      const s2url = document.getElementById('s2-url');
+      s2name.style.opacity = '0'; s2name.style.transform = 'translateY(18px)';
+      s2sub.style.opacity = '0'; s2sub.style.transform = 'translateY(12px)';
+      s2div.style.width = '0';
+      s2urlw.style.opacity = '0'; s2urlw.style.transform = 'translateY(8px)';
+      s2url.textContent = '';
+      document.getElementById('s3-label').style.opacity = '0';
+      document.querySelectorAll('.chip').forEach(c => { c.style.opacity='0'; c.style.transform='translateY(16px)'; });
+      document.getElementById('browser').style.opacity = '0';
+      document.getElementById('browser').style.transform = 'translateY(60px)';
+      overlay.style.opacity = '0';
+      document.getElementById('replay-btn').classList.remove('show');
+
+      await wait(80);
+
+      /* ── SCENE 1: hi. ── */
+      showScene('s1');
+      await animate(hi, { opacity: [0, 1], scale: [0.85, 1] }, 500, easeOut);
+      await wait(800);
+      await animate(hi, { opacity: [1, 0], scale: [1, 1.06] }, 400, easeIn);
+      hideScene('s1');
+
+      /* ── SCENE 2: Name + URL ── */
+      showScene('s2');
+      animate(s2name, { opacity: [0, 1], translateY: [18, 0] }, 550, easeOut);
+      await wait(180);
+      await animate(s2sub, { opacity: [0, 1], translateY: [12, 0] }, 450, easeOut);
+      await wait(100);
+      await animate(s2div, { width: [0, 200] }, 600, easeInOut);
+      await wait(80);
+      animate(s2urlw, { opacity: [0, 1], translateY: [8, 0] }, 350, easeOut);
+      await wait(200);
+      await typeWriter(s2url, 'https://site-sigma-flame.vercel.app/', 46);
+      await wait(900);
+      await animate(document.getElementById('s2'), { opacity: [1, 0] }, 350, easeIn);
+      hideScene('s2');
+
+      /* ── SCENE 3: Tech chips ── */
+      showScene('s3');
+      await wait(80);
+      await animate(document.getElementById('s3-label'), { opacity: [0, 1] }, 400, easeOut);
+      await wait(60);
+      const chips = document.querySelectorAll('.chip');
+      for (const chip of chips) {
+        animate(chip, { opacity: [0, 1], translateY: [16, 0] }, 380, easeOut);
+        await wait(120);
+      }
+      await wait(700);
+      await animate(document.getElementById('s3'), { opacity: [1, 0] }, 350, easeIn);
+      hideScene('s3');
+
+      /* ── FADE TO BLACK ── */
+      await wait(80);
+
+      /* ── SCENE 4: Browser mockup ── */
+      showScene('s4');
+      const browser = document.getElementById('browser');
+      await animate(browser, { opacity: [0, 1], translateY: [60, 0] }, 700, easeOut);
+      await wait(2200);
+
+      /* ── REPLAY BUTTON ── */
+      document.getElementById('replay-btn').classList.add('show');
+    }
+
+    document.getElementById('replay-btn').addEventListener('click', play);
+
+    /* start on load */
+    window.addEventListener('load', () => { setTimeout(play, 200); });
+  </script>
+</body>
+</html>
