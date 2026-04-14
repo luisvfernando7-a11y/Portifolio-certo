@@ -28,7 +28,7 @@ export default function About() {
 
         <div className="about-right">
           <div className="about-quote">
-            "É a curiosidade que me move. Quando algo me interessa, mergulho fundo até compreender — e Machine Learning despertou isso em mim."
+            "É a curiosidade que me move. Quando algo me interessa, mergulho fundo até compreender."
           </div>
 
           <h3 className="section-label">Trajetória</h3>
