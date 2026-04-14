@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
+import { Github, Linkedin } from "lucide-react";
 import ChatBot from "@/components/ChatBot";
 import Projects from "@/components/Projects";
 import About from "@/components/About";
@@ -64,6 +65,12 @@ export default function Home() {
             <button className="btn-outline" onClick={() => setActiveSection("projetos")}>
               Ver projetos
             </button>
+            <a href="https://github.com/luisvfernando7-a11y" target="_blank" rel="noopener noreferrer" className="btn-icon">
+              <Github size={20} />
+            </a>
+            <a href="https://www.linkedin.com/in/luisfernandovieira" target="_blank" rel="noopener noreferrer" className="btn-icon">
+              <Linkedin size={20} />
+            </a>
           </div>
         </section>
 
