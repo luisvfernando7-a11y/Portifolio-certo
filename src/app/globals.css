@@ -3,20 +3,20 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #09100b;
-  --bg2: #0e1a12;
-  --bg3: #152419;
+  --bg: #050b14;
+  --bg2: #0a1324;
+  --bg3: #111d36;
   --border: rgba(255,255,255,0.08);
   --border-hover: rgba(255,255,255,0.18);
-  --text: #f0f5f1;
-  --text-muted: #8a988f;
-  --text-faint: #48554b;
-  --accent: #16a34a;
-  --accent-light: #4ade80;
-  --accent-bg: rgba(22, 163, 74, 0.12);
-  --accent-bg-hover: rgba(22, 163, 74, 0.2);
-  --yellow: #facc15;
-  --yellow-bg: rgba(250, 204, 21, 0.12);
+  --text: #f0f4f8;
+  --text-muted: #94a3b8;
+  --text-faint: #475569;
+  --accent: #2563eb;
+  --accent-light: #60a5fa;
+  --accent-bg: rgba(37, 99, 235, 0.12);
+  --accent-bg-hover: rgba(37, 99, 235, 0.2);
+  --yellow: #fbbf24;
+  --yellow-bg: rgba(251, 191, 36, 0.12);
   --green: #2dd4a0;
   --green-bg: rgba(45,212,160,0.1);
   --amber: #f0a832;
@@ -194,7 +194,7 @@ button { font-family: var(--font-body); cursor: pointer; border: none; backgroun
   border-radius: var(--radius-pill);
   transition: all 0.15s;
 }
-.btn-primary:hover { background: #15803d; transform: translateY(-1px); }
+.btn-primary:hover { background: #1d4ed8; transform: translateY(-1px); }
 
 .btn-outline {
   font-size: 14px;
