@@ -1,109 +1,91 @@
 "use client";
 
-import { useState } from "react";
-import { Github, Linkedin, Mail, Copy, Check } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 
 export function Footer() {
-    const [copied, setCopied] = useState(false);
-    const { dict, language } = useLanguage();
-
+    const { dict } = useLanguage();
     const email = "luisvfernando7@gmail.com";
 
-    const handleCopyEmail = () => {
-        navigator.clipboard.writeText(email);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-    };
+    const contactLinks = [
+        { 
+            icon: <Github size={18} />, 
+            label: "GitHub", 
+            href: "https://github.com/luisvfernando7-a11y" 
+        },
+        { 
+            icon: <Linkedin size={18} />, 
+            label: "LinkedIn", 
+            href: "https://www.linkedin.com/in/luis-fernando-vieira-543325313" 
+        },
+        { 
+            icon: <Mail size={18} />, 
+            label: email, 
+            href: `mailto:${email}` 
+        }
+    ];
 
     return (
         <footer
             id="contato"
-            className="bg-[#0a0a0f] text-white py-24 scroll-mt-28 relative overflow-hidden"
+            className="bg-[#0a0a0b] py-32 px-4 md:px-6 border-t border-white/5"
         >
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-
-            <div className="container mx-auto px-4 md:px-6 flex flex-col items-center text-center gap-12 relative z-10">
-                <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="space-y-4"
-                >
-                    <h3 className="text-4xl md:text-5xl font-black tracking-tight">
-                        {dict.footer.title}{" "}
-                        <span className="text-gradient">
+            <div className="container mx-auto max-w-4xl">
+                <div className="flex flex-col gap-16">
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="flex items-center gap-4"
+                    >
+                        <h2 className="text-3xl md:text-5xl font-black tracking-tighter">
                             {dict.footer.subtitle}
-                        </span>
-                    </h3>
-                    <p className="text-gray-400 max-w-xl mx-auto text-lg leading-relaxed">
-                        {dict.footer.text}
-                    </p>
-                </motion.div>
+                        </h2>
+                        <div className="h-[1px] flex-grow bg-white/10" />
+                    </motion.div>
 
-                <div className="flex flex-col md:flex-row items-center gap-6 w-full justify-center">
-                    <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        onClick={handleCopyEmail}
-                        className="group cursor-pointer select-none flex items-center gap-4 px-6 py-4 rounded-2xl glass glass-hover border-white/10"
-                        title={
-                            language === "pt"
-                                ? "Clique para copiar o e-mail"
-                                : "Click to copy email"
-                        }
-                    >
-                        <div className="p-3 rounded-xl bg-primary-purple/10 text-primary-purple group-hover:text-primary-purple transition-colors shadow-glow-purple">
-                            <Mail size={24} />
+                    <div className="flex flex-col gap-12">
+                        <motion.p
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="text-lg md:text-xl text-gray-500 max-w-xl"
+                        >
+                            {dict.footer.text}
+                        </motion.p>
+
+                        <div className="flex flex-col md:flex-row gap-8 md:gap-12">
+                            {contactLinks.map((link, i) => (
+                                <motion.a
+                                    key={link.label}
+                                    href={link.href}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    initial={{ opacity: 0, y: 10 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5, delay: i * 0.1 }}
+                                    className="flex items-center gap-3 text-gray-400 font-bold link-hover w-fit"
+                                >
+                                    <span className="text-gray-600">{link.icon}</span>
+                                    {link.label}
+                                </motion.a>
+                            ))}
                         </div>
-                        <span className="text-gray-200 font-bold font-mono text-lg">
-                            {email}
-                        </span>
-                        <div className="ml-2 text-gray-500 group-hover:text-white transition-colors">
-                            {copied ? (
-                                <Check size={20} className="text-green-500" />
-                            ) : (
-                                <Copy size={20} />
-                            )}
-                        </div>
-                    </motion.button>
-                </div>
+                    </div>
 
-                <div className="flex gap-6">
-                    <motion.a
-                        whileHover={{ y: -5, boxShadow: "0 0 20px rgba(124, 58, 237, 0.4)" }}
-                        href="https://github.com/luisvfernando7-a11y"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="p-4 rounded-2xl glass border-white/10 text-gray-400 hover:text-white hover:border-primary-purple/50 transition-all"
-                        aria-label="GitHub"
-                    >
-                        <Github size={28} />
-                    </motion.a>
-                    <motion.a
-                        whileHover={{ y: -5, boxShadow: "0 0 20px rgba(6, 182, 212, 0.4)" }}
-                        href="https://www.linkedin.com/in/luis-fernando-vieira-543325313"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="p-4 rounded-2xl glass border-white/10 text-gray-400 hover:text-primary-cyan hover:border-primary-cyan/50 transition-all"
-                        aria-label="LinkedIn"
-                    >
-                        <Linkedin size={28} />
-                    </motion.a>
-                </div>
-
-                <div className="mt-16 pt-12 border-t border-white/5 w-full max-w-4xl text-center">
-                    <p className="text-gray-500 font-medium">
-                        © 2025 Luís Fernando — {dict.footer.copy}
-                    </p>
+                    <div className="pt-16 border-t border-white/5">
+                        <p className="text-sm font-bold tracking-widest text-gray-700 uppercase">
+                            {dict.footer.copy}
+                        </p>
+                    </div>
                 </div>
             </div>
-            
-            {/* Background Decorations */}
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-purple/5 blur-[100px] rounded-full -z-10" />
-            <div className="absolute top-0 right-0 w-64 h-64 bg-primary-cyan/5 blur-[100px] rounded-full -z-10" />
         </footer>
     );
 }
+
 

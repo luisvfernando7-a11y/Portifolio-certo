@@ -14,25 +14,18 @@ export const dictionary = {
         hero: {
             greeting: "Olá, eu sou o",
             name: "Luís Fernando",
-            roles: [
-                "Desenvolvedor Backend",
-                "Estudante de Machine Learning",
-                "Apaixonado por IA",
-                "Python & Neural Networks",
-            ],
-            btnProject: "Ver projetos",
+            role: "Desenvolvedor Backend. Estudante de Machine Learning.",
+            btnProject: "Projetos",
             btnContact: "Contato",
-            badge: "Disponível para projetos e colaborações",
         },
         about: {
             title: "Sobre",
             me: "Mim",
-            description: "Desenvolvedor backend de 17 anos com foco em Python, PHP e C#, transitando ativamente para Machine Learning e IA. Estudo redes neurais, LSTM e modelos preditivos com o objetivo de seguir Ciência da Computação. Inglês intermediário, sempre aprendendo.",
-            badge: "Disponível para projetos e colaborações",
+            description: "Desenvolvedor focado em backend, com experiência em Python, PHP e C#. Atuo na construção de arquiteturas sólidas e eficientes, transitando ativamente para o campo de Machine Learning e Inteligência Artificial. Estudo redes neurais, LSTM e modelos preditivos com o objetivo de seguir carreira em Ciência da Computação.",
         },
         skills: {
             title: "Minhas",
-            subtitle: "Habilidades",
+            subtitle: "Skills",
             backend: {
                 title: "Backend",
                 items: ["Python", "PHP", "C#", "Java"],
@@ -42,21 +35,21 @@ export const dictionary = {
                 items: ["JavaScript", "HTML", "CSS"],
             },
             ai: {
-                title: "IA & Machine Learning",
-                items: ["Machine Learning", "LSTM", "Redes Neurais", "IA Generativa"],
+                title: "IA e ML",
+                items: ["Machine Learning", "LSTM", "Redes Neurais"],
             },
         },
         projects: {
             title: "Meus",
             subtitle: "Projetos",
-            description: "Projetos chegando em breve 🚀",
+            description: "Projetos em desenvolvimento. Em breve por aqui.",
             items: [],
         },
         footer: {
             title: "Vamos",
             subtitle: "conversar?",
-            text: "Interessado em colaborar ou apenas quer trocar uma ideia sobre IA e Backend? Sinta-se à vontade para entrar em contato.",
-            copy: "Desenvolvido com Next.js & ❤️",
+            text: "Interessado em colaborações técnicas ou discussões sobre IA e Backend. Sinta-se à vontade para entrar em contato.",
+            copy: "Luís Fernando — 2025",
         },
     },
     en: {
@@ -72,21 +65,14 @@ export const dictionary = {
         hero: {
             greeting: "Hi, I am",
             name: "Luís Fernando",
-            roles: [
-                "Backend Developer",
-                "Machine Learning Student",
-                "AI Enthusiast",
-                "Python & Neural Networks",
-            ],
-            btnProject: "View projects",
+            role: "Backend Developer. Machine Learning Student.",
+            btnProject: "Projects",
             btnContact: "Contact",
-            badge: "Available for projects and collaborations",
         },
         about: {
             title: "About",
             me: "Me",
-            description: "17-year-old backend developer focused on Python, PHP, and C#, actively transitioning to Machine Learning and AI. I study neural networks, LSTM, and predictive models aiming for Computer Science. Intermediate English, always learning.",
-            badge: "Available for projects and collaborations",
+            description: "Backend-focused developer with experience in Python, PHP, and C#. Working on building solid and efficient architectures, actively transitioning to Machine Learning and AI. I study neural networks, LSTM, and predictive models aiming for a career in Computer Science.",
         },
         skills: {
             title: "My",
@@ -100,22 +86,23 @@ export const dictionary = {
                 items: ["JavaScript", "HTML", "CSS"],
             },
             ai: {
-                title: "AI & Machine Learning",
-                items: ["Machine Learning", "LSTM", "Neural Networks", "Generative AI"],
+                title: "AI and ML",
+                items: ["Machine Learning", "LSTM", "Neural Networks"],
             },
         },
         projects: {
             title: "My",
             subtitle: "Projects",
-            description: "Projects coming soon 🚀",
+            description: "Projects under development. Coming soon.",
             items: [],
         },
         footer: {
             title: "Let's",
             subtitle: "talk?",
-            text: "Interested in collaborating or just want to chat about AI and Backend? Feel free to reach out.",
-            copy: "Developed with Next.js & ❤️",
+            text: "Interested in technical collaborations or discussions about AI and Backend. Feel free to reach out.",
+            copy: "Luís Fernando — 2025",
         },
     },
 };
+
 
