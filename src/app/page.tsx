@@ -39,7 +39,7 @@ export default function Home() {
               className={activeSection === "sobre" ? "nav-btn active" : "nav-btn"}
               onClick={() => setActiveSection("sobre")}
             >Sobre</button>
-            <a href="mailto:luisvfernando7@gmail.com" className="nav-cta">Contato</a>
+            <a href="https://wa.me/5514991289363" target="_blank" rel="noopener noreferrer" className="nav-cta">Contato</a>
           </div>
         </nav>
 
