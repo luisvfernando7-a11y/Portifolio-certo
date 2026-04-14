@@ -18,7 +18,7 @@ export default function ChatBot() {
     {
       role: "assistant",
       content:
-        "Olá! Sou a IA do Luís Fernando. Sinta-se à vontade para perguntar sobre minha experiência, projetos ou tecnologias. Como posso ajudar?",
+        "Olá! Sou a IA do Luis Fernando. Sinta-se à vontade para perguntar sobre minha experiência, projetos ou tecnologias. Como posso ajudar?",
     },
   ]);
   const [input, setInput] = useState("");
@@ -59,7 +59,7 @@ export default function ChatBot() {
       <div className="chat-header">
         <div className="chat-status-dot" />
         <div>
-          <p className="chat-header-title">IA do Luís Fernando</p>
+          <p className="chat-header-title">IA do Luis Fernando</p>
           <p className="chat-header-sub">Responde sobre experiência, projetos e mais</p>
         </div>
       </div>

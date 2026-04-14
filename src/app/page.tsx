@@ -46,7 +46,7 @@ export default function Home() {
         <section className="hero">
           <div className="hero-tag">Disponível para projetos</div>
           <h1 className="hero-title">
-            Luís Fernando
+            Luis Fernando
             <span className="hero-title-accent"> — dev backend</span>
           </h1>
           <p className="hero-sub">
@@ -81,7 +81,7 @@ export default function Home() {
         </div>
 
         <footer className="footer">
-          <span>© 2026 Luís Fernando</span>
+          <span>© 2026 Luis Fernando</span>
           <span className="footer-sep">·</span>
           <a href="mailto:luisvfernando7@gmail.com">luisvfernando7@gmail.com</a>
           <span className="footer-sep">·</span>

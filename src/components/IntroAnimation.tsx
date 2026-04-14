@@ -146,7 +146,7 @@ export default function IntroAnimation({ onFinish }: { onFinish: () => void }) {
             opacity: s2Name ? 1 : 0,
             transform: s2Name ? "translateY(0)" : "translateY(18px)",
             transition: "opacity 0.55s cubic-bezier(.22,1,.36,1), transform 0.55s cubic-bezier(.22,1,.36,1)",
-          }}>Luís Fernando</div>
+          }}>Luis Fernando</div>
 
           <div style={{
             fontFamily: "'DM Sans', sans-serif", fontWeight: 300,

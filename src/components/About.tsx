@@ -14,7 +14,7 @@ export default function About() {
       <div className="about-grid">
         <div className="about-left">
           <div className="about-avatar">LF</div>
-          <h2 className="about-name">Luís Fernando</h2>
+          <h2 className="about-name">Luis Fernando</h2>
           <p className="about-role">Backend Developer · Machine Learning</p>
           <div className="about-info-list">
             <div className="about-info-row"><span className="about-info-label">Idade</span><span>17 anos</span></div>

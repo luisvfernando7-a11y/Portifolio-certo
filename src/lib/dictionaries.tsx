@@ -13,7 +13,7 @@ export const dictionary = {
         },
         hero: {
             greeting: "Olá, eu sou o",
-            name: "Luís Fernando",
+            name: "Luis Fernando",
             role: "Desenvolvedor Backend. Estudante de Machine Learning.",
             btnProject: "Projetos",
             btnContact: "Contato",
@@ -49,7 +49,7 @@ export const dictionary = {
             title: "Vamos",
             subtitle: "conversar?",
             text: "Interessado em colaborações técnicas ou discussões sobre IA e Backend. Sinta-se à vontade para entrar em contato.",
-            copy: "Luís Fernando — 2025",
+            copy: "Luis Fernando — 2025",
         },
     },
     en: {
@@ -64,7 +64,7 @@ export const dictionary = {
         },
         hero: {
             greeting: "Hi, I am",
-            name: "Luís Fernando",
+            name: "Luis Fernando",
             role: "Backend Developer. Machine Learning Student.",
             btnProject: "Projects",
             btnContact: "Contact",
@@ -100,7 +100,7 @@ export const dictionary = {
             title: "Let's",
             subtitle: "talk?",
             text: "Interested in technical collaborations or discussions about AI and Backend. Feel free to reach out.",
-            copy: "Luís Fernando — 2025",
+            copy: "Luis Fernando — 2025",
         },
     },
 };

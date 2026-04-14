@@ -37,6 +37,9 @@ html {
 
 body {
   background: var(--bg);
+  background-image: 
+    radial-gradient(circle at 10% 40%, rgba(37, 99, 235, 0.08), transparent 30%),
+    radial-gradient(circle at 90% 60%, rgba(96, 165, 250, 0.05), transparent 30%);
   color: var(--text);
   font-family: var(--font-body);
   font-size: 16px;
@@ -44,6 +47,25 @@ body {
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
   width: 100%;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23111d36' fill-opacity='0.4' d='M0,160L48,170.7C96,181,192,203,288,197.3C384,192,480,160,576,149.3C672,139,768,149,864,170.7C960,192,1056,224,1152,229.3C1248,235,1344,213,1392,202.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") repeat-x;
+  background-size: 100% auto;
+  background-position: bottom;
+  animation: wave 12s ease-in-out alternate infinite;
+}
+
+@keyframes wave {
+  0% { transform: scale(1.1) translateX(0); }
+  100% { transform: scale(1.2) translateX(-2%); }
 }
 
 a { color: var(--accent-light); text-decoration: none; }
