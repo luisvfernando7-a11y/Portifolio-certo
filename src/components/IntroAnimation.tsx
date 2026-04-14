@@ -124,18 +124,14 @@ export default function IntroAnimation({ onFinish }: { onFinish: () => void }) {
         <div style={{
           position: "relative", zIndex: 10,
           fontFamily: "'Syne', sans-serif", fontWeight: 800,
-          fontSize: "clamp(72px,14vw,140px)", letterSpacing: "-0.04em", color: "#fff",
+          fontSize: "clamp(42px,10vw,100px)", letterSpacing: "-0.04em", color: "#fff",
           opacity: s1Visible && !s1Exit ? 1 : 0,
           transform: s1Visible && !s1Exit ? "scale(1)" : s1Exit ? "scale(1.07)" : "scale(0.85)",
           transition: s1Exit
             ? "opacity 0.4s ease-in, transform 0.4s ease-in"
             : "opacity 0.5s cubic-bezier(.22,1,.36,1), transform 0.5s cubic-bezier(.22,1,.36,1)",
         }}>
-          hi. <span style={{ 
-            display: "inline-block", 
-            transformOrigin: "70% 70%", 
-            animation: "wave-hand 1.3s ease-in-out" 
-          }}>👋</span>
+          Bem-vindo(a)
         </div>
       )}
 
