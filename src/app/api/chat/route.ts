@@ -47,11 +47,16 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Mensagens inválidas." }, { status: 400 });
     }
 
+    let validMessages = messages;
+    if (validMessages.length > 0 && validMessages[0].role === "assistant") {
+      validMessages = validMessages.slice(1);
+    }
+
     const response = await client.messages.create({
-      model: "claude-sonnet-4-20250514",
+      model: "claude-3-5-sonnet-20241022",
       max_tokens: 512,
       system: SYSTEM,
-      messages,
+      messages: validMessages,
     });
 
     const text = response.content[0]?.type === "text" ? response.content[0].text : "";
