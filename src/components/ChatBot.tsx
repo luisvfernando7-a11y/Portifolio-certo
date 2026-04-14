@@ -5,12 +5,12 @@ import { useState, useRef, useEffect } from "react";
 type Message = { role: "user" | "assistant"; content: string };
 
 const SUGGESTIONS = [
-  "Quais tecnologias você usa?",
-  "Me conta sobre o TCC",
-  "Você está disponível para trabalhar?",
-  "Por que você escolheu programação?",
-  "O que é o AgroSense?",
-  "Quais são seus objetivos?",
+  "Quais tecnologias você domina?",
+  "Me fala sobre o AgroSense IoT",
+  "Você está disponível para projetos?",
+  "Como você entrou na programação?",
+  "O que você está desenvolvendo agora?",
+  "Quais são seus objetivos profissionais?",
 ];
 
 export default function ChatBot() {
@@ -18,7 +18,7 @@ export default function ChatBot() {
     {
       role: "assistant",
       content:
-        "Oi! Sou a IA do Luís Fernando. Pode me perguntar sobre minha experiência, projetos, tecnologias ou trajetória. Como posso te ajudar?",
+        "Olá! Sou a IA do Luís Fernando. Sinta-se à vontade para perguntar sobre minha experiência, projetos ou tecnologias. Como posso ajudar?",
     },
   ]);
   const [input, setInput] = useState("");
@@ -48,7 +48,7 @@ export default function ChatBot() {
       const data = await res.json();
       setMessages([...updated, { role: "assistant", content: data.reply || "Erro ao responder." }]);
     } catch {
-      setMessages([...updated, { role: "assistant", content: "Erro de conexão. Tente novamente!" }]);
+      setMessages([...updated, { role: "assistant", content: "Erro de conexão. Tente novamente." }]);
     } finally {
       setLoading(false);
     }

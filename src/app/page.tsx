@@ -14,17 +14,13 @@ export default function Home() {
 
   return (
     <>
-      {/* Intro overlay — plays over the portfolio, then fades out */}
-      {!introDone && (
-        <IntroAnimation onFinish={() => setIntroDone(true)} />
-      )}
+      {!introDone && <IntroAnimation onFinish={() => setIntroDone(true)} />}
 
-      {/* Main portfolio — always rendered, revealed after intro */}
       <main
         className="site-wrap"
         style={{
           opacity: introDone ? 1 : 0,
-          transition: introDone ? "opacity 0.5s ease" : "none",
+          transition: introDone ? "opacity 0.6s ease" : "none",
         }}
       >
         <nav className="navbar">
@@ -54,7 +50,7 @@ export default function Home() {
           </h1>
           <p className="hero-sub">
             17 anos · Ourinhos, SP · ETEC Jacinto Ferreira de Sá<br />
-            Especialista em Python, PHP, C# e apaixonado por Machine Learning.
+            Python, PHP, C# e Machine Learning.
           </p>
           <div className="hero-chips">
             {["Python","PHP","C#","ML / IA","MySQL","Supabase","IoT"].map(t => (
@@ -78,7 +74,7 @@ export default function Home() {
         </div>
 
         <footer className="footer">
-          <span>© 2025 Luís Fernando</span>
+          <span>© 2026 Luís Fernando</span>
           <span className="footer-sep">·</span>
           <a href="mailto:luisvfernando7@gmail.com">luisvfernando7@gmail.com</a>
           <span className="footer-sep">·</span>
