@@ -130,7 +130,13 @@ export default function IntroAnimation({ onFinish }: { onFinish: () => void }) {
           transition: s1Exit
             ? "opacity 0.4s ease-in, transform 0.4s ease-in"
             : "opacity 0.5s cubic-bezier(.22,1,.36,1), transform 0.5s cubic-bezier(.22,1,.36,1)",
-        }}>hi.</div>
+        }}>
+          hi. <span style={{ 
+            display: "inline-block", 
+            transformOrigin: "70% 70%", 
+            animation: "wave-hand 1.3s ease-in-out" 
+          }}>👋</span>
+        </div>
       )}
 
       {/* Scene 2 — Name + URL */}
@@ -185,7 +191,18 @@ export default function IntroAnimation({ onFinish }: { onFinish: () => void }) {
         </div>
       )}
 
-      <style>{`@keyframes blink-cur { 0%,100%{opacity:1} 50%{opacity:0} }`}</style>
+      <style>{`
+        @keyframes blink-cur { 0%,100%{opacity:1} 50%{opacity:0} }
+        @keyframes wave-hand {
+          0% { transform: rotate(0deg); }
+          15% { transform: rotate(25deg); }
+          30% { transform: rotate(-15deg); }
+          45% { transform: rotate(25deg); }
+          60% { transform: rotate(-15deg); }
+          75% { transform: rotate(25deg); }
+          100% { transform: rotate(0deg); }
+        }
+      `}</style>
     </div>
   );
 }
