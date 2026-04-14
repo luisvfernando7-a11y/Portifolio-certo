@@ -3,18 +3,20 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #0a0a0f;
-  --bg2: #111118;
-  --bg3: #18181f;
-  --border: rgba(255,255,255,0.07);
-  --border-hover: rgba(255,255,255,0.15);
-  --text: #f0f0f5;
-  --text-muted: #888898;
-  --text-faint: #444455;
-  --accent: #7c6df0;
-  --accent-light: #a99cf5;
-  --accent-bg: rgba(124,109,240,0.1);
-  --accent-bg-hover: rgba(124,109,240,0.18);
+  --bg: #09100b;
+  --bg2: #0e1a12;
+  --bg3: #152419;
+  --border: rgba(255,255,255,0.08);
+  --border-hover: rgba(255,255,255,0.18);
+  --text: #f0f5f1;
+  --text-muted: #8a988f;
+  --text-faint: #48554b;
+  --accent: #16a34a;
+  --accent-light: #4ade80;
+  --accent-bg: rgba(22, 163, 74, 0.12);
+  --accent-bg-hover: rgba(22, 163, 74, 0.2);
+  --yellow: #facc15;
+  --yellow-bg: rgba(250, 204, 21, 0.12);
   --green: #2dd4a0;
   --green-bg: rgba(45,212,160,0.1);
   --amber: #f0a832;
@@ -81,7 +83,7 @@ button { font-family: var(--font-body); cursor: pointer; border: none; backgroun
   color: var(--text);
   letter-spacing: -0.03em;
 }
-.nav-dot { color: var(--accent); }
+.nav-dot { color: var(--yellow); }
 
 .nav-links {
   display: flex;
@@ -123,9 +125,9 @@ button { font-family: var(--font-body); cursor: pointer; border: none; backgroun
   gap: 7px;
   font-size: 12px;
   font-family: var(--font-mono);
-  color: var(--green);
-  background: var(--green-bg);
-  border: 0.5px solid rgba(45,212,160,0.25);
+  color: var(--yellow);
+  background: var(--yellow-bg);
+  border: 0.5px solid rgba(250,204,21,0.25);
   padding: 4px 14px;
   border-radius: var(--radius-pill);
   margin-bottom: 1.5rem;
@@ -134,7 +136,7 @@ button { font-family: var(--font-body); cursor: pointer; border: none; backgroun
   content: '';
   width: 6px; height: 6px;
   border-radius: 50%;
-  background: var(--green);
+  background: var(--yellow);
   animation: pulse-dot 2s infinite;
 }
 @keyframes pulse-dot {
@@ -150,7 +152,7 @@ button { font-family: var(--font-body); cursor: pointer; border: none; backgroun
   color: var(--text);
   margin-bottom: 1rem;
 }
-.hero-title-accent { color: var(--accent-light); }
+.hero-title-accent { color: var(--yellow); }
 
 .hero-sub {
   font-size: 17px;
@@ -170,9 +172,9 @@ button { font-family: var(--font-body); cursor: pointer; border: none; backgroun
 .chip {
   font-size: 12px;
   font-family: var(--font-mono);
-  color: var(--accent-light);
-  background: var(--accent-bg);
-  border: 0.5px solid rgba(124,109,240,0.25);
+  color: var(--yellow);
+  background: var(--yellow-bg);
+  border: 0.5px solid rgba(250,204,21,0.25);
   padding: 4px 12px;
   border-radius: var(--radius-pill);
 }
@@ -192,7 +194,7 @@ button { font-family: var(--font-body); cursor: pointer; border: none; backgroun
   border-radius: var(--radius-pill);
   transition: all 0.15s;
 }
-.btn-primary:hover { background: #9080f5; transform: translateY(-1px); }
+.btn-primary:hover { background: #15803d; transform: translateY(-1px); }
 
 .btn-outline {
   font-size: 14px;
@@ -218,9 +220,9 @@ button { font-family: var(--font-body); cursor: pointer; border: none; backgroun
   transition: all 0.15s;
 }
 .btn-icon:hover {
-  color: var(--accent-light);
-  border-color: var(--accent-light);
-  background: var(--accent-bg);
+  color: var(--yellow);
+  border-color: var(--yellow);
+  background: var(--yellow-bg);
   transform: translateY(-1px);
 }
 
@@ -502,7 +504,7 @@ button { font-family: var(--font-body); cursor: pointer; border: none; backgroun
   font-weight: 400;
   font-style: italic;
   color: var(--text-muted);
-  border-left: 2px solid var(--accent);
+  border-left: 2px solid var(--yellow);
   padding-left: 1rem;
   margin-bottom: 2rem;
   line-height: 1.7;
@@ -540,7 +542,7 @@ button { font-family: var(--font-body); cursor: pointer; border: none; backgroun
 .timeline-year {
   font-family: var(--font-mono);
   font-size: 12px;
-  color: var(--accent-light);
+  color: var(--yellow);
   min-width: 36px;
   padding-top: 2px;
 }

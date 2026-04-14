@@ -43,7 +43,7 @@ export default function IntroAnimation({ onFinish }: { onFinish: () => void }) {
         p.y -= p.sy; p.x += p.sx; p.alpha -= 0.00035;
         if (p.y < -10 || p.alpha <= 0) pts[i] = spawn();
         ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = p.blue ? `rgba(55,138,221,${p.alpha})` : `rgba(133,183,235,${p.alpha})`;
+        ctx.fillStyle = p.blue ? `rgba(22,163,74,${p.alpha})` : `rgba(250,204,21,${p.alpha})`;
         ctx.fill();
       });
       raf = requestAnimationFrame(draw);
@@ -106,7 +106,7 @@ export default function IntroAnimation({ onFinish }: { onFinish: () => void }) {
       {/* Dot grid */}
       <div style={{
         position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none",
-        backgroundImage: "radial-gradient(circle, rgba(55,138,221,0.07) 1px, transparent 1px)",
+        backgroundImage: "radial-gradient(circle, rgba(22,163,74,0.08) 1px, transparent 1px)",
         backgroundSize: "32px 32px",
       }} />
       {/* Glow */}
@@ -114,7 +114,7 @@ export default function IntroAnimation({ onFinish }: { onFinish: () => void }) {
         position: "absolute", top: "50%", left: "50%",
         transform: "translate(-50%,-50%)",
         width: 600, height: 600,
-        background: "radial-gradient(ellipse at center, rgba(55,138,221,0.11) 0%, transparent 70%)",
+        background: "radial-gradient(ellipse at center, rgba(22,163,74,0.12) 0%, transparent 70%)",
         zIndex: 0, pointerEvents: "none",
       }} />
       <canvas ref={canvasRef} style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }} />
@@ -158,9 +158,9 @@ export default function IntroAnimation({ onFinish }: { onFinish: () => void }) {
           }}>Backend Developer · Machine Learning</div>
 
           <div style={{
-            height: 1.5, background: "#378ADD",
+            height: 1.5, background: "#facc15",
             margin: "22px auto 18px", borderRadius: 2,
-            boxShadow: "0 0 12px rgba(55,138,221,0.6)",
+            boxShadow: "0 0 12px rgba(250,204,21,0.6)",
             width: s2Line ? 200 : 0,
             transition: "width 0.6s cubic-bezier(.22,1,.36,1)",
           }} />
@@ -173,12 +173,12 @@ export default function IntroAnimation({ onFinish }: { onFinish: () => void }) {
             <span style={{
               fontFamily: "'DM Mono', monospace",
               fontSize: "clamp(11px,1.6vw,14px)",
-              color: "#85B7EB", letterSpacing: "0.01em",
+              color: "#4ade80", letterSpacing: "0.01em",
             }}>{typedUrl}</span>
             <span style={{
               display: "inline-block", width: 2, height: "1em",
-              background: "#378ADD", verticalAlign: "middle", marginLeft: 2,
-              boxShadow: "0 0 8px #378ADD",
+              background: "#facc15", verticalAlign: "middle", marginLeft: 2,
+              boxShadow: "0 0 8px #facc15",
               animation: "blink-cur 0.7s step-end infinite",
             }} />
           </div>
