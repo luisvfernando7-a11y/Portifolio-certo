@@ -1,83 +1,54 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, Languages } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 
 export function Header() {
     const [isOpen, setIsOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
-    const { dict, language, toggleLanguage } = useLanguage();
+    const { dict } = useLanguage();
 
     useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+        return () => {
+            document.body.style.overflow = "unset";
         };
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    }, [isOpen]);
 
     return (
-        <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 md:px-6 py-5 ${
-                scrolled 
-                    ? "bg-white/95 backdrop-blur-sm py-4 border-b border-gray-200 shadow-sm" 
-                    : "bg-transparent"
-            }`}
-        >
-            <nav className="container mx-auto max-w-5xl flex items-center justify-between">
+        <header className="navbar">
+            <nav className="site-wrap flex items-center justify-between">
                 {/* Logo */}
                 <motion.a
                     href="#inicio"
                     whileHover={{ opacity: 0.8 }}
-                    className={`text-lg font-bold transition-colors ${
-                        scrolled ? "text-gray-900" : "text-white"
-                    }`}
+                    className="nav-logo"
                 >
-                    LF<span className="text-gray-400">.</span>
+                    LF
                 </motion.a>
 
                 {/* Desktop Nav */}
-                <ul className="hidden md:flex items-center gap-2">
+                <ul className="nav-links">
                     {dict.header.items.map((item) => (
                         <li key={item.name}>
-                            <a
-                                href={item.href}
-                                className={`text-sm font-medium px-3 py-2 transition-colors ${
-                                    scrolled
-                                        ? "text-gray-600 hover:text-gray-900"
-                                        : "text-white/80 hover:text-white"
-                                }`}
-                            >
+                            <a href={item.href} className="nav-link">
                                 {item.name}
                             </a>
                         </li>
                     ))}
-                    <li className="ml-2 pl-3 border-l border-gray-300">
-                        <button
-                            onClick={toggleLanguage}
-                            className={`flex items-center gap-1 text-xs font-bold px-2 py-2 transition-colors ${
-                                scrolled
-                                    ? "text-gray-600 hover:text-gray-900"
-                                    : "text-white/60 hover:text-white"
-                            }`}
-                        >
-                            <Languages size={14} />
-                            {language.toUpperCase()}
-                        </button>
-                    </li>
                 </ul>
 
                 {/* Mobile Menu Toggle */}
-                <div className="flex md:hidden">
+                <div className="md:hidden">
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className={`p-2 transition-colors ${
-                            scrolled
-                                ? "text-gray-900 bg-gray-100 hover:bg-gray-200"
-                                : "text-white bg-white/10 hover:bg-white/20"
-                        }`}
+                        className="nav-btn"
+                        aria-label="Toggle menu"
                     >
                         {isOpen ? <X size={20} /> : <Menu size={20} />}
                     </button>
@@ -88,35 +59,26 @@ export function Header() {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        className="fixed inset-x-4 top-20 bg-white rounded-none border border-gray-200 shadow-lg z-40 md:hidden"
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="md:hidden border-t"
+                        style={{ borderColor: "var(--border)" }}
                     >
-                        <ul className="flex flex-col divide-y divide-gray-100">
+                        <ul className="site-wrap flex flex-col gap-2 py-4">
                             {dict.header.items.map((item) => (
                                 <li key={item.name}>
                                     <a
                                         href={item.href}
+                                        className="block py-2 text-sm transition-colors"
+                                        style={{ color: "var(--text-muted)" }}
                                         onClick={() => setIsOpen(false)}
-                                        className="block px-4 py-3 text-gray-900 hover:bg-gray-50 font-medium text-sm"
                                     >
                                         {item.name}
                                     </a>
                                 </li>
                             ))}
-                            <li className="px-4 py-3">
-                                <button
-                                    onClick={() => {
-                                        toggleLanguage();
-                                        setIsOpen(false);
-                                    }}
-                                    className="flex items-center gap-2 text-sm font-medium text-gray-600 w-full"
-                                >
-                                    <Languages size={16} />
-                                    {language === "pt" ? "English" : "Português"}
-                                </button>
-                            </li>
                         </ul>
                     </motion.div>
                 )}
