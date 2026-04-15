@@ -10,28 +10,26 @@ const SKILLS = [
   { name: "Redes Neurais / LSTM", level: 60, cat: "IA & ML" },
   { name: "MySQL", level: 80, cat: "Banco de Dados" },
   { name: "Supabase", level: 70, cat: "Banco de Dados" },
-  { name: "Java", level: 30, cat: "Aprendendo" },
-  { name: "APIs REST", level: 65, cat: "Aprendendo" },
 ];
 
-const CATS = ["Backend", "Frontend", "IA & ML", "Banco de Dados", "Aprendendo"];
+const CATEGORIES = ["Backend", "Frontend", "IA & ML", "Banco de Dados"];
 
 export default function Skills() {
+  const allSkills = SKILLS.map(s => s.name);
+  
   return (
-    <div className="skills-wrap">
-      {CATS.map((cat) => (
-        <div key={cat} className="skill-group">
-          <p className="skill-cat-label">{cat}</p>
-          {SKILLS.filter((s) => s.cat === cat).map((s) => (
-            <div key={s.name} className="skill-row">
-              <span className="skill-name">{s.name}</span>
-              <div className="skill-track">
-                <div className="skill-fill" style={{ width: `${s.level}%` }} />
-              </div>
-              <span className="skill-pct">{s.level}%</span>
-            </div>
-          ))}
-        </div>
+    <div style={{
+      display: "flex", flexWrap: "wrap", gap: 10,
+    }}>
+      {allSkills.map((skill) => (
+        <span key={skill} style={{
+          fontFamily: "var(--font-body)", fontSize: 13,
+          color: "var(--accent-light)",
+          background: "var(--accent-dim)",
+          border: "0.5px solid var(--accent-border)",
+          padding: "6px 14px",
+          borderRadius: 999,
+        }}>{skill}</span>
       ))}
     </div>
   );

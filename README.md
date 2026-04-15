@@ -1,53 +1,135 @@
-# 🚀 Paulo Gomes | Full-Stack Developer Portfolio
+# Portfólio Profissional - Luís Fernando
 
-[Read this document in Portuguese (Leia em Português)](README-pt.md)
-
-![Project Preview](assets/preview.png)
-
-A modern, high-performance developer portfolio built to showcase my projects and skills as a **Full-Stack Developer**. Designed with a focus on **User Experience**, **Accessibility**, and **Clean Code**.
+Portfólio desenvolvido com Next.js para apresentar experiência como desenvolvedor backend com foco em Python e machine learning.
 
 ---
 
-## 🌐 Live Demo
+## Visão Geral
 
-[Click here to visit the live site](https://pauloragdev.vercel.app)
-
----
-
-## ✨ Features
-
--   **🎨 Modern UI/UX:** Dark mode aesthetic with glassmorphism effects and smooth animations using **Framer Motion**.
--   **🌍 Internationalization (i18n):** Built-in support for **Portuguese (PT-BR)** and **English (EN)** using React Context API (no external heavy libraries).
--   **⚡ Performance:** Built on **Next.js 15** (App Router) for server-side rendering and optimized performance.
--   **📱 Fully Responsive:** Adaptive layout that works perfectly on desktops, tablets, and mobile devices via **Tailwind CSS**.
--   **🖱️ Smooth Scroll:** Integrated with **Lenis** for a premium scrolling experience.
--   **📋 Interactive Elements:** Copy-to-clipboard functionality for contact info and dynamic project cards.
+Portfólio profissional moderno e responsivo, construído com tecnologias contemporâneas de desenvolvimento web. Apresenta projetos, habilidades técnicas e informações de contato de forma clara e direta.
 
 ---
 
-## 🛠️ Tech Stack
+## Tecnologias Utilizadas
 
-This project harnesses the power of the latest web technologies:
-
--   **Framework:** Next.js 15 (App Router)
--   **Language:** TypeScript
--   **Styling:** Tailwind CSS
--   **Animations:** Framer Motion
--   **Icons:** Lucide React
--   **Scrolling:** Lenis
--   **Deployment:** Vercel
+- **Framework**: Next.js 16.0.10 com Turbopack
+- **Linguagem**: TypeScript com React
+- **Estilização**: CSS customizado com variáveis CSS
+- **Tipografia**: Syne (display), DM Sans (body), DM Mono (mono)
+- **Deploy**: Vercel
+- **Gerenciador de pacotes**: npm
 
 ---
 
-## 🚀 Getting Started
+## Seções do Site
 
-To run this project locally, follow these steps:
+**Hero** — Apresentação principal com título, bio profissional e tecnologias principais.
 
-### Prerequisites
+**Projetos** — Portfólio de trabalhos desenvolvidos, incluindo AgroSense IoT (TCC em progress).
 
-Make sure you have **Node.js** (v18 or higher) installed.
+**Sobre** — Informações pessoais, trajetória, timeline de eventos e habilidades técnicas.
 
-### Installation
+**Contato** — Forma direta de comunicação via e-mail.
+
+---
+
+## Como Executar Localmente
+
+### Requisitos
+
+- Node.js 18.x ou superior
+- npm ou yarn
+
+### Passos
+
+1. **Clonar e acessar o repositório**
+```bash
+git clone <url-do-repositorio>
+cd Portifolio-certo
+```
+
+2. **Instalar dependências**
+```bash
+npm install
+```
+
+3. **Executar em desenvolvimento**
+```bash
+npm run dev
+```
+Acesse em `http://localhost:3000`
+
+4. **Build para produção**
+```bash
+npm run build
+npm run start
+```
+
+---
+
+## Estrutura do Projeto
+
+```
+src/
+├── app/
+│   ├── page.tsx           # Página principal
+│   ├── layout.tsx         # Layout global
+│   ├── globals.css        # Estilos globais
+│   └── api/
+│       └── chat/route.ts  # Endpoint opcional
+├── components/
+│   ├── Navbar.tsx         # Navegação principal
+│   ├── Hero.tsx           # Seção principal
+│   ├── Projects.tsx       # Projetos
+│   ├── About.tsx          # Sobre
+│   ├── Contact.tsx        # Contato
+│   ├── Skills.tsx         # Habilidades
+│   ├── Footer.tsx         # Rodapé
+│   └── IntroAnimation.tsx # Animação de entrada
+└── context/
+    └── LanguageContext.tsx # Contexto de idioma
+```
+
+---
+
+## Paleta de Cores
+
+| Papel | Cor | Código |
+|------|-----|--------|
+| Fundo | Preto | #000000 |
+| Superfície | Cinza escuro | #0D0D14 |
+| Texto | Branco | #FFFFFF |
+| Texto muted | Cinza claro | #AAAAB8 |
+| Accent | Azul | #378ADD |
+| Verde | Verde menta | #2DD4A0 |
+
+---
+
+## Deploy na Vercel
+
+O projeto está pronto para deploy automático na Vercel.
+
+### Passos
+
+1. Conecte o repositório ao seu painel da Vercel
+2. Configure variáveis de ambiente (se necessário)
+3. Deploy automático a cada push para `main`
+
+```bash
+vercel deploy
+```
+
+---
+
+## Contato
+
+Email: [luisvfernando7@gmail.com](mailto:luisvfernando7@gmail.com)
+
+---
+
+## Licença
+
+Projeto pessoal - uso exclusivamente como portfólio profissional.
 
 1. Clone the repository:
 

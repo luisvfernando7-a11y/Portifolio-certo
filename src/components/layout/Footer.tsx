@@ -2,10 +2,8 @@
 
 import { Mail } from "lucide-react";
 import { motion } from "framer-motion";
-import { useLanguage } from "@/context/LanguageContext";
 
 export function Footer() {
-    const { dict } = useLanguage();
     const email = "luisvfernando7@gmail.com";
 
     return (
@@ -18,10 +16,6 @@ export function Footer() {
                     transition={{ duration: 0.6 }}
                     className="flex flex-col items-center justify-center gap-6"
                 >
-                    <p className="text-sm" style={{ color: "var(--text-muted)" }}>
-                        {dict.footer.text}
-                    </p>
-
                     <motion.a
                         href={`mailto:${email}`}
                         whileHover={{ opacity: 0.8 }}
@@ -35,13 +29,6 @@ export function Footer() {
                         <Mail size={16} />
                         {email}
                     </motion.a>
-
-                    <p 
-                        className="text-xs mt-4"
-                        style={{ color: "var(--text-muted)" }}
-                    >
-                        {dict.footer.copy}
-                    </p>
                 </motion.div>
             </div>
         </footer>

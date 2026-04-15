@@ -21,14 +21,16 @@ export function Hero() {
                         <span>👋 {dict.hero.greeting}</span>
                     </motion.div>
 
-                    {/* Main title - Syne 700 */}
+                    {/* Main title - Syne 800 */}
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.1 }}
                         className="hero-title"
                     >
-                        {dict.hero.name}
+                        Luis
+                        <br />
+                        <span className="text-muted">Fernando</span>
                     </motion.h1>
 
                     {/* Subtitle - DM Sans 300 */}

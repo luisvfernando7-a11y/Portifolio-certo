@@ -1,25 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Terminal, BrainCircuit, Globe } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 const categories = [
-    {
-        id: "backend",
-        icon: <Terminal className="w-5 h-5" />,
-        isPrimary: true
-    },
-    {
-        id: "ai",
-        icon: <BrainCircuit className="w-5 h-5" />,
-        isPrimary: false
-    },
-    {
-        id: "frontend",
-        icon: <Globe className="w-5 h-5" />,
-        isPrimary: false
-    }
+    { id: "backend", isPrimary: true },
+    { id: "frontend", isPrimary: false },
+    { id: "ai", isPrimary: false }
 ];
 
 export function Skills() {
@@ -49,29 +36,23 @@ export function Skills() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                                className="flex flex-col gap-6"
+                                className="flex flex-col gap-4"
                             >
-                                <div 
-                                    className="flex items-center gap-3 pb-4 border-b"
+                                <h3 
+                                    className="text-xs font-bold uppercase tracking-widest"
                                     style={{ 
-                                        borderColor: cat.isPrimary ? "var(--accent)" : "var(--border)",
-                                        color: cat.isPrimary ? "var(--accent)" : "var(--text-muted)"
+                                        fontFamily: "var(--font-mono)",
+                                        color: cat.isPrimary ? "var(--text)" : "var(--text-muted)"
                                     }}
                                 >
-                                    <span>{cat.icon}</span>
-                                    <h3 
-                                        className="text-base font-semibold"
-                                        style={{ fontFamily: "var(--font-display)" }}
-                                    >
-                                        {dictCat.title}
-                                    </h3>
-                                </div>
+                                    {dictCat.title}
+                                </h3>
 
-                                <ul className="space-y-3">
+                                <ul className="space-y-2">
                                     {dictCat.items.map((skill: string) => (
                                         <li
                                             key={skill}
-                                            className="text-sm transition-colors hover:opacity-80"
+                                            className="text-sm"
                                             style={{ 
                                                 color: cat.isPrimary ? "var(--text)" : "var(--text-muted)",
                                                 fontFamily: "var(--font-body)"
