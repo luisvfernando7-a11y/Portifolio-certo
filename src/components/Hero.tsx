@@ -100,19 +100,30 @@ export default function Hero() {
           Ver projetos
         </a>
 
-        <a href="#contato" style={{
-          fontFamily: "var(--font-body)",
-          fontSize: 14, fontWeight: 400,
-          color: "var(--text-muted)",
-          background: "transparent",
-          border: "0.5px solid var(--border-hover)",
-          padding: "10px 24px",
-          borderRadius: 999,
-          textDecoration: "none",
-          transition: "all 0.15s",
-        }}
-          onMouseEnter={e => { e.currentTarget.style.color = "var(--text)"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.25)"; }}
-          onMouseLeave={e => { e.currentTarget.style.color = "var(--text-muted)"; e.currentTarget.style.borderColor = "var(--border-hover)"; }}
+        <a
+          href="mailto:luisvfernando7@gmail.com?subject=Contato%20profissional%20via%20portfólio&body=Olá%20Luis,%20vi%20seu%20portfólio%20e%20gostaria%20de%20falar%20sobre..."
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: 14, fontWeight: 400,
+            color: "var(--text-muted)",
+            background: "transparent",
+            border: "0.5px solid var(--border-hover)",
+            padding: "10px 24px",
+            borderRadius: 999,
+            textDecoration: "none",
+            cursor: "pointer",
+            transition: "all 0.2s ease",
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.color = "var(--text)";
+            e.currentTarget.style.borderColor = "var(--accent-light)";
+            e.currentTarget.style.background = "rgba(55, 138, 221, 0.08)";
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.color = "var(--text-muted)";
+            e.currentTarget.style.borderColor = "var(--border-hover)";
+            e.currentTarget.style.background = "transparent";
+          }}
         >
           Entrar em contato
         </a>
