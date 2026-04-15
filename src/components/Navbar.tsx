@@ -56,7 +56,7 @@ export default function Navbar() {
           <div style={{ width: "0.5px", height: 18, background: "var(--border)", margin: "0 6px" }} />
 
           <a
-            href="https://github.com/luisvfernando7"
+            href="https://github.com/luisvfernando7-a11y"
             target="_blank"
             rel="noopener noreferrer"
             title="GitHub"
