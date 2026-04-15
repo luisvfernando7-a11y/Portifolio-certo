@@ -6,7 +6,7 @@ export default function IntroAnimation({ onFinish }: { onFinish: () => void }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const [typedUrl, setTypedUrl] = useState("");
-  const fullUrl = "https://site-sigma-flame.vercel.app/";
+  const fullUrl = "https://portifolio-certo-topaz.vercel.app/";
 
   const [s1Visible, setS1Visible] = useState(false);
   const [s1Exit, setS1Exit]     = useState(false);

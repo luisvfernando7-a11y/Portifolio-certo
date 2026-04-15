@@ -82,7 +82,77 @@ export default function Hero() {
         ))}
       </div>
 
-      <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
+      {/* Divisor */}
+      <div style={{
+        width: 40,
+        height: "1px",
+        background: "var(--border)",
+        margin: "32px auto 32px",
+      }} />
+
+      {/* Links com underline animado */}
+      <div style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: 16,
+        marginBottom: 32,
+      }}>
+        {/* URL do site */}
+        <a
+          href="https://portifolio-certo-topaz.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="link-underline"
+          style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: 13,
+            color: "var(--text-muted)",
+            textDecoration: "none",
+            position: "relative",
+            paddingBottom: 2,
+          }}
+        >
+          portifolio-certo-topaz.vercel.app
+        </a>
+
+        {/* Email */}
+        <a
+          href="mailto:luisvfernando7@gmail.com"
+          className="link-underline"
+          style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: 13,
+            color: "var(--text-muted)",
+            textDecoration: "none",
+            position: "relative",
+            paddingBottom: 2,
+          }}
+        >
+          luisvfernando7@gmail.com
+        </a>
+
+        {/* GitHub */}
+        <a
+          href="https://github.com/luisvfernando7-a11y"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="link-underline"
+          style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: 13,
+            color: "var(--text-muted)",
+            textDecoration: "none",
+            position: "relative",
+            paddingBottom: 2,
+          }}
+        >
+          github.com/luisvfernando7-a11y
+        </a>
+      </div>
+
+      {/* CTAs principais */}
+      <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 12, justifyContent: "center", marginTop: 32 }}>
         <a href="#projetos" style={{
           fontFamily: "var(--font-body)",
           fontSize: 14, fontWeight: 500,

@@ -98,6 +98,27 @@ section {
   padding: 5rem 0;
 }
 
+/* Animated underline for links */
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), rgba(55,138,221,0));
+  transition: width 0.3s ease;
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
 section:first-of-type {
   padding-top: 0;
 }
