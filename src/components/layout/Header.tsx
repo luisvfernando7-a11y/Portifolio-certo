@@ -20,38 +20,51 @@ export function Header() {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 md:px-6 py-6 ${
-                scrolled ? "bg-[#0a0a0b]/80 backdrop-blur-md py-4 border-b border-white/5" : "bg-transparent"
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 md:px-6 py-5 ${
+                scrolled 
+                    ? "bg-white/95 backdrop-blur-sm py-4 border-b border-gray-200 shadow-sm" 
+                    : "bg-transparent"
             }`}
         >
             <nav className="container mx-auto max-w-5xl flex items-center justify-between">
+                {/* Logo */}
                 <motion.a
                     href="#inicio"
-                    whileHover={{ opacity: 0.7 }}
-                    className="text-xl font-bold tracking-tighter text-white"
+                    whileHover={{ opacity: 0.8 }}
+                    className={`text-lg font-bold transition-colors ${
+                        scrolled ? "text-gray-900" : "text-white"
+                    }`}
                 >
-                    LF<span className="text-accent">.</span>
+                    LF<span className="text-gray-400">.</span>
                 </motion.a>
 
                 {/* Desktop Nav */}
-                <ul className="hidden md:flex items-center gap-8">
+                <ul className="hidden md:flex items-center gap-2">
                     {dict.header.items.map((item) => (
                         <li key={item.name}>
                             <a
                                 href={item.href}
-                                className="text-sm font-bold text-gray-400 hover:text-white transition-colors link-hover"
+                                className={`text-sm font-medium px-3 py-2 transition-colors ${
+                                    scrolled
+                                        ? "text-gray-600 hover:text-gray-900"
+                                        : "text-white/80 hover:text-white"
+                                }`}
                             >
                                 {item.name}
                             </a>
                         </li>
                     ))}
-                    <li className="ml-4 pl-8 border-l border-white/10">
+                    <li className="ml-2 pl-3 border-l border-gray-300">
                         <button
                             onClick={toggleLanguage}
-                            className="flex items-center gap-2 text-xs font-black text-gray-500 hover:text-accent transition-colors tracking-widest uppercase"
+                            className={`flex items-center gap-1 text-xs font-bold px-2 py-2 transition-colors ${
+                                scrolled
+                                    ? "text-gray-600 hover:text-gray-900"
+                                    : "text-white/60 hover:text-white"
+                            }`}
                         >
                             <Languages size={14} />
-                            {language}
+                            {language.toUpperCase()}
                         </button>
                     </li>
                 </ul>
@@ -60,41 +73,45 @@ export function Header() {
                 <div className="flex md:hidden">
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className="text-white bg-white/5 p-2 rounded-lg"
+                        className={`p-2 transition-colors ${
+                            scrolled
+                                ? "text-gray-900 bg-gray-100 hover:bg-gray-200"
+                                : "text-white bg-white/10 hover:bg-white/20"
+                        }`}
                     >
                         {isOpen ? <X size={20} /> : <Menu size={20} />}
                     </button>
                 </div>
             </nav>
 
-            {/* Mobile Menu Overlay */}
+            {/* Mobile Menu */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
-                        className="fixed inset-x-4 top-20 bg-[#111] p-8 rounded-2xl border border-white/5 shadow-2xl z-40 md:hidden"
+                        className="fixed inset-x-4 top-20 bg-white rounded-none border border-gray-200 shadow-lg z-40 md:hidden"
                     >
-                        <ul className="flex flex-col gap-6">
+                        <ul className="flex flex-col divide-y divide-gray-100">
                             {dict.header.items.map((item) => (
                                 <li key={item.name}>
                                     <a
                                         href={item.href}
                                         onClick={() => setIsOpen(false)}
-                                        className="block text-lg font-bold text-gray-300 hover:text-white"
+                                        className="block px-4 py-3 text-gray-900 hover:bg-gray-50 font-medium text-sm"
                                     >
                                         {item.name}
                                     </a>
                                 </li>
                             ))}
-                            <li className="pt-6 border-t border-white/5">
+                            <li className="px-4 py-3">
                                 <button
                                     onClick={() => {
                                         toggleLanguage();
                                         setIsOpen(false);
                                     }}
-                                    className="flex items-center gap-2 text-sm font-bold text-gray-500 uppercase tracking-widest"
+                                    className="flex items-center gap-2 text-sm font-medium text-gray-600 w-full"
                                 >
                                     <Languages size={16} />
                                     {language === "pt" ? "English" : "Português"}

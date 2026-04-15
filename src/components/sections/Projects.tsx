@@ -9,34 +9,31 @@ export function Projects() {
     return (
         <section
             id="projetos"
-            className="py-32 px-4 md:px-6 bg-[#0a0a0b]"
+            className="py-20 md:py-32 px-4 md:px-6"
         >
             <div className="container mx-auto max-w-4xl">
                 <div className="flex flex-col gap-12">
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="flex items-center gap-4"
-                    >
-                        <h2 className="text-3xl md:text-5xl font-black tracking-tighter">
-                            {dict.projects.subtitle}
-                        </h2>
-                        <div className="h-[1px] flex-grow bg-white/10" />
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 10 }}
+                    {/* Título */}
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="py-12"
+                        transition={{ duration: 0.6 }}
+                        className="text-4xl md:text-5xl font-bold"
                     >
-                        <p className="text-xl md:text-2xl font-medium text-gray-500 italic">
-                            {dict.projects.description}
-                        </p>
-                    </motion.div>
+                        {dict.projects.subtitle}
+                    </motion.h2>
+
+                    {/* Descrição */}
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.1 }}
+                        className="text-lg text-gray-600 italic max-w-2xl"
+                    >
+                        {dict.projects.description}
+                    </motion.p>
                 </div>
             </div>
         </section>

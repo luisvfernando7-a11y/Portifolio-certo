@@ -9,31 +9,30 @@ export function About() {
     return (
         <section
             id="sobre"
-            className="py-32 px-4 md:px-6 bg-[#0a0a0b] relative overflow-hidden"
+            className="py-20 md:py-32 px-4 md:px-6 relative"
         >
-            <div className="container mx-auto max-w-4xl relative z-10">
+            <div className="container mx-auto max-w-4xl">
                 <div className="flex flex-col gap-12">
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                    {/* Título */}
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="flex items-center gap-4"
+                        className="text-4xl md:text-5xl font-bold"
                     >
-                        <h2 className="text-3xl md:text-5xl font-black tracking-tighter">
-                            {dict.about.title}
-                        </h2>
-                        <div className="h-[1px] flex-grow bg-white/10" />
-                    </motion.div>
+                        {dict.about.title}
+                    </motion.h2>
 
+                    {/* Descrição */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="space-y-8"
+                        transition={{ duration: 0.8, delay: 0.1 }}
+                        className="max-w-3xl"
                     >
-                        <p className="text-xl md:text-3xl font-medium text-gray-200 leading-relaxed md:leading-tight">
+                        <p className="text-lg md:text-xl text-gray-600 leading-relaxed md:leading-loose">
                             {dict.about.description}
                         </p>
                     </motion.div>

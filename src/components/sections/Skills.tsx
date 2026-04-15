@@ -7,17 +7,17 @@ import { useLanguage } from "@/context/LanguageContext";
 const categories = [
     {
         id: "backend",
-        icon: <Terminal className="w-5 h-5 text-accent" />,
+        icon: <Terminal className="w-5 h-5 text-black" />,
         isPrimary: true
     },
     {
         id: "ai",
-        icon: <BrainCircuit className="w-5 h-5 text-gray-400" />,
+        icon: <BrainCircuit className="w-5 h-5 text-gray-600" />,
         isPrimary: false
     },
     {
         id: "frontend",
-        icon: <Globe className="w-5 h-5 text-gray-500" />,
+        icon: <Globe className="w-5 h-5 text-gray-600" />,
         isPrimary: false
     }
 ];
@@ -26,22 +26,21 @@ export function Skills() {
     const { dict } = useLanguage();
 
     return (
-        <section id="skills" className="py-32 px-4 md:px-6 bg-[#0a0a0b]">
+        <section id="skills" className="py-20 md:py-32 px-4 md:px-6">
             <div className="container mx-auto max-w-4xl">
-                <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                {/* Título */}
+                <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="flex items-center gap-4 mb-20"
+                    className="text-4xl md:text-5xl font-bold mb-16"
                 >
-                    <h2 className="text-3xl md:text-5xl font-black tracking-tighter">
-                        {dict.skills.subtitle}
-                    </h2>
-                    <div className="h-[1px] flex-grow bg-white/10" />
-                </motion.div>
+                    {dict.skills.subtitle}
+                </motion.h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+                {/* Grid de categorias */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                     {categories.map((cat, index) => {
                         const dictCat = (dict.skills as any)[cat.id];
                         return (
@@ -51,23 +50,29 @@ export function Skills() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                                className="flex flex-col gap-8"
+                                className="flex flex-col gap-6"
                             >
-                                <div className="flex items-center gap-3">
-                                    {cat.icon}
-                                    <h3 className={`text-xl font-bold ${cat.isPrimary ? "text-white" : "text-gray-400"}`}>
+                                {/* Cabeçalho da categoria */}
+                                <div className="flex items-center gap-3 pb-4 border-b border-gray-200">
+                                    <span className={`${cat.isPrimary ? "text-black" : "text-gray-400"}`}>
+                                        {cat.icon}
+                                    </span>
+                                    <h3 className={`text-lg font-semibold ${
+                                        cat.isPrimary ? "text-black" : "text-gray-600"
+                                    }`}>
                                         {dictCat.title}
                                     </h3>
                                 </div>
 
-                                <ul className="space-y-4">
+                                {/* Lista de skills */}
+                                <ul className="space-y-3">
                                     {dictCat.items.map((skill: string) => (
                                         <li
                                             key={skill}
-                                            className={`text-lg transition-colors ${
+                                            className={`text-base transition-colors ${
                                                 cat.isPrimary 
-                                                    ? "text-gray-300 hover:text-accent" 
-                                                    : "text-gray-500 hover:text-gray-300"
+                                                    ? "text-gray-700 hover:text-black" 
+                                                    : "text-gray-600 hover:text-gray-900"
                                             }`}
                                         >
                                             {skill}
