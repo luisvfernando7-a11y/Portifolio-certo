@@ -9,7 +9,7 @@ export default function EntryScreen({ onEnter }: { onEnter: () => void }) {
 
   const handleEnter = () => {
     setIsExiting(true);
-    setTimeout(() => onEnter(), 600);
+    setTimeout(() => onEnter(), 800);
   };
 
   return (
@@ -18,7 +18,7 @@ export default function EntryScreen({ onEnter }: { onEnter: () => void }) {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
+          transition={{ duration: 0.8 }}
           style={{
             position: "fixed",
             inset: 0,
@@ -37,127 +37,152 @@ export default function EntryScreen({ onEnter }: { onEnter: () => void }) {
               position: "absolute",
               inset: 0,
               background: `
-                radial-gradient(circle at 20% 50%, rgba(55, 138, 221, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(45, 212, 160, 0.05) 0%, transparent 50%)
+                radial-gradient(circle at 20% 50%, rgba(55, 138, 221, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(45, 212, 160, 0.04) 0%, transparent 50%)
               `,
               pointerEvents: "none",
             }}
           />
 
-          {/* Computer SVG */}
+          {/* Notebook SVG - Modern Design */}
           <motion.div
             animate={{
-              scale: isHovered ? 1.05 : 1,
+              scale: isHovered ? 1.08 : 1,
             }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
+            transition={{ duration: 0.3 }}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             style={{
               position: "relative",
               zIndex: 10,
-              marginBottom: 60,
+              marginBottom: 50,
             }}
           >
             <svg
-              width="280"
-              height="200"
-              viewBox="0 0 280 200"
+              width="320"
+              height="220"
+              viewBox="0 0 320 220"
               style={{
-                filter: isHovered ? "drop-shadow(0 0 20px rgba(55, 138, 221, 0.3))" : "drop-shadow(0 0 10px rgba(55, 138, 221, 0.15))",
-                transition: "filter 0.3s ease",
+                filter: isHovered 
+                  ? "drop-shadow(0 25px 50px rgba(55, 138, 221, 0.25))" 
+                  : "drop-shadow(0 10px 30px rgba(55, 138, 221, 0.1))",
+                transition: "filter 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
               }}
             >
-              {/* Monitor Body */}
-              <rect
-                x="40"
-                y="30"
-                width="200"
-                height="120"
-                rx="12"
-                fill="none"
-                stroke="#378ADD"
-                strokeWidth="2"
-              />
-
-              {/* Screen Display */}
               <defs>
-                <linearGradient id="screenGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#1a3a52" />
-                  <stop offset="100%" stopColor="#0f2839" />
+                <linearGradient id="notebookGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#1a1a2e" />
+                  <stop offset="100%" stopColor="#0f0f1a" />
+                </linearGradient>
+                <linearGradient id="screenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#152a3f" />
+                  <stop offset="50%" stopColor="#0d1b28" />
+                  <stop offset="100%" stopColor="#081019" />
                 </linearGradient>
               </defs>
-              <rect
-                x="44"
-                y="34"
-                width="192"
-                height="112"
-                rx="10"
-                fill="url(#screenGradient)"
-              />
 
-              {/* Screen Gloss */}
-              <rect
-                x="44"
-                y="34"
-                width="192"
-                height="20"
-                rx="10"
-                fill="rgba(255, 255, 255, 0.05)"
-              />
+              {/* Notebook Body - Lid */}
+              <g>
+                {/* Lid shadow */}
+                <ellipse cx="160" cy="85" rx="145" ry="85" fill="rgba(0,0,0,0.3)" />
+                
+                {/* Main lid body */}
+                <path
+                  d="M 30 80 Q 30 40 50 35 L 270 35 Q 290 40 290 80 Z"
+                  fill="url(#notebookGrad)"
+                  stroke="#2DD4A0"
+                  strokeWidth="2"
+                  strokeLinejoin="round"
+                />
 
-              {/* Decorative lines on screen */}
-              <line x1="60" y1="60" x2="220" y2="60" stroke="#378ADD" strokeWidth="1" opacity="0.3" />
-              <line x1="60" y1="75" x2="180" y2="75" stroke="#378ADD" strokeWidth="1" opacity="0.3" />
-              <line x1="60" y1="90" x2="190" y2="90" stroke="#378ADD" strokeWidth="1" opacity="0.2" />
-              <line x1="60" y1="105" x2="170" y2="105" stroke="#378ADD" strokeWidth="1" opacity="0.2" />
+                {/* Screen bezel */}
+                <rect
+                  x="50"
+                  y="50"
+                  width="220"
+                  height="120"
+                  rx="12"
+                  fill="url(#screenGrad)"
+                  stroke="#378ADD"
+                  strokeWidth="1.5"
+                />
 
-              {/* Stand */}
-              <rect x="115" y="155" width="50" height="8" rx="4" fill="#378ADD" opacity="0.8" />
+                {/* Screen gloss/shine */}
+                <rect
+                  x="55"
+                  y="55"
+                  width="210"
+                  height="25"
+                  rx="8"
+                  fill="rgba(255, 255, 255, 0.08)"
+                  opacity="0.6"
+                />
 
-              {/* Base */}
-              <ellipse cx="140" cy="170" rx="60" ry="8" fill="#378ADD" opacity="0.4" />
+                {/* Display content lines */}
+                <g opacity="0.4">
+                  <line x1="70" y1="80" x2="250" y2="80" stroke="#378ADD" strokeWidth="1.5" />
+                  <line x1="70" y1="100" x2="220" y2="100" stroke="#378ADD" strokeWidth="0.8" />
+                  <line x1="70" y1="118" x2="240" y2="118" stroke="#2DD4A0" strokeWidth="0.8" />
+                  <line x1="70" y1="135" x2="200" y2="135" stroke="#378ADD" strokeWidth="0.8" opacity="0.5" />
+                </g>
+
+                {/* Accent dot */}
+                <circle cx="160" cy="110" r="2.5" fill="#2DD4A0" opacity="0.8" />
+              </g>
+
+              {/* Notebook Base */}
+              <g>
+                {/* Base body */}
+                <path
+                  d="M 20 80 L 25 185 Q 25 200 40 205 L 280 205 Q 295 200 295 185 L 300 80 Z"
+                  fill="#0a0a0a"
+                  stroke="#2DD4A0"
+                  strokeWidth="1.5"
+                  opacity="0.7"
+                />
+
+                {/* Keyboard keys pattern */}
+                <g opacity="0.3">
+                  <rect x="50" y="120" width="8" height="8" rx="1" fill="#378ADD" />
+                  <rect x="60" y="120" width="8" height="8" rx="1" fill="#378ADD" />
+                  <rect x="70" y="120" width="8" height="8" rx="1" fill="#378ADD" />
+                  <rect x="85" y="120" width="8" height="8" rx="1" fill="#378ADD" />
+                  <rect x="95" y="120" width="8" height="8" rx="1" fill="#378ADD" />
+                  <rect x="105" y="120" width="8" height="8" rx="1" fill="#378ADD" />
+                </g>
+
+                {/* Trackpad */}
+                <rect x="130" y="155" width="60" height="35" rx="4" fill="none" stroke="#2DD4A0" strokeWidth="0.8" opacity="0.4" />
+              </g>
             </svg>
           </motion.div>
 
           {/* Text */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{
               opacity: isHovered ? 1 : 0,
-              y: isHovered ? 0 : 10,
+              y: isHovered ? 0 : 15,
             }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
+            transition={{ duration: 0.4 }}
             style={{
               position: "relative",
               zIndex: 10,
+              textAlign: "center",
             }}
           >
             <p
               style={{
                 fontFamily: "var(--font-display)",
-                fontSize: 20,
-                fontWeight: 600,
+                fontSize: "clamp(18px, 4vw, 26px)",
+                fontWeight: 700,
                 color: "#378ADD",
                 letterSpacing: "-0.02em",
-                textAlign: "center",
-                margin: 0,
+                margin: "0 0 8px 0",
               }}
             >
-              Clique para entrar
+              Explorar portfólio
             </p>
-          </motion.div>
-
-          {/* Fade in hint text */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 1 }}
-            style={{
-              position: "absolute",
-              bottom: 40,
-              zIndex: 10,
-            }}
-          >
             <p
               style={{
                 fontFamily: "var(--font-mono)",
@@ -167,7 +192,32 @@ export default function EntryScreen({ onEnter }: { onEnter: () => void }) {
                 margin: 0,
               }}
             >
-              clique para continuar
+              [ clique para continuar ]
+            </p>
+          </motion.div>
+
+          {/* Hint text at bottom */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.6 }}
+            transition={{ delay: 1.2, duration: 0.8 }}
+            style={{
+              position: "absolute",
+              bottom: "5%",
+              zIndex: 10,
+            }}
+          >
+            <p
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: 11,
+                color: "var(--text-faint)",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                margin: 0,
+              }}
+            >
+              Pressione ENTER ou clique
             </p>
           </motion.div>
         </motion.div>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import EntryScreen from "@/components/EntryScreen";
+import WelcomeScreen from "@/components/WelcomeScreen";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -10,14 +11,17 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 export default function Home() {
-  const [hasEntered, setHasEntered] = useState(false);
+  const [stage, setStage] = useState<"entry" | "welcome" | "main">("entry");
 
   return (
     <>
-      {!hasEntered && (
-        <EntryScreen onEnter={() => setHasEntered(true)} />
+      {stage === "entry" && (
+        <EntryScreen onEnter={() => setStage("welcome")} />
       )}
-      {hasEntered && (
+      {stage === "welcome" && (
+        <WelcomeScreen onFinish={() => setStage("main")} />
+      )}
+      {stage === "main" && (
         <>
           <Navbar />
           <main style={{ display: "flex", flexDirection: "column" }}>
