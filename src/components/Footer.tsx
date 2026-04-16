@@ -67,7 +67,7 @@ export default function Footer() {
           href="https://www.linkedin.com/in/luis-fernando-vieira-543325313"
           target="_blank"
           rel="noopener noreferrer"
-            title="LinkedIn (Luis Fernando Vieira)"
+            title="LinkedIn (Luis Galvani)"
           style={{
             width: 36,
             height: 36,
