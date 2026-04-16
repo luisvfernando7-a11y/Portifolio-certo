@@ -83,7 +83,7 @@ export default function Contact() {
           href="https://www.linkedin.com/in/luis-fernando-vieira-543325313"
           target="_blank"
           rel="noopener noreferrer"
-          title="LinkedIn"
+          title="LinkedIn (Luis Fernando Vieira)"
           style={{
             width: 40, height: 40, borderRadius: "50%",
             border: "0.5px solid var(--border-hover)",

@@ -90,7 +90,7 @@ export default function About() {
             fontFamily: "var(--font-display)", fontSize: 18,
             fontWeight: 700, color: "var(--text)",
             marginBottom: 4,
-          }}>Luis Fernando</h3>
+          }}>Luis Galvani</h3>
 
           <p style={{
             fontFamily: "var(--font-body)", fontSize: 14,

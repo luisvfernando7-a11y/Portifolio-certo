@@ -77,7 +77,7 @@ export default function Navbar() {
             href="https://www.linkedin.com/in/luis-fernando-vieira-543325313"
             target="_blank"
             rel="noopener noreferrer"
-            title="LinkedIn"
+            title="LinkedIn (Luis Fernando Vieira)"
             style={{
               width: 32, height: 32, borderRadius: "50%",
               border: "0.5px solid var(--border)",

@@ -154,7 +154,7 @@ export default function Hero() {
           href="https://www.linkedin.com/in/luis-fernando-vieira-543325313"
           target="_blank"
           rel="noopener noreferrer"
-          title="LinkedIn"
+          title="LinkedIn (Luis Fernando Vieira)"
           style={{
             width: 38, height: 38,
             borderRadius: "50%",

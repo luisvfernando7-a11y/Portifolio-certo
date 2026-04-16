@@ -75,7 +75,7 @@ export default function Hero() {
             fontStyle: "italic",
           }}
         >
-          Luis Fernando
+          Luis Galvani
         </motion.h1>
 
         {/* Subtitle */}

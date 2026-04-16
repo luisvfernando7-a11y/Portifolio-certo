@@ -12,7 +12,7 @@ export default function WelcomeScreen({ onFinish }: { onFinish: () => void }) {
   useEffect(() => {
     const timings = [
       { delay: 200, step: 1 },      // "Bem-vindo(a)"
-      { delay: 1000, step: 2 },     // "Luis Fernando"
+      { delay: 1000, step: 2 },     // "Luis Galvani"
       { delay: 2200, step: 3 },     // "Backend Developer..."
       { delay: 3400, step: 4 },     // Linha
       { delay: 4200, step: 5 },     // Email
@@ -111,7 +111,7 @@ export default function WelcomeScreen({ onFinish }: { onFinish: () => void }) {
           </h1>
         </motion.div>
 
-        {/* ETAPA 2: Luis Fernando - Typewriter */}
+        {/* ETAPA 2: Luis Galvani - Typewriter */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{
@@ -135,7 +135,7 @@ export default function WelcomeScreen({ onFinish }: { onFinish: () => void }) {
               fontStyle: "italic",
             }}
           >
-            Luis Fernando
+            Luis Galvani
           </motion.h2>
         </motion.div>
 

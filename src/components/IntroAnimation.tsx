@@ -6,7 +6,7 @@ export default function IntroAnimation({ onFinish }: { onFinish: () => void }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const [typedUrl, setTypedUrl] = useState("");
-  const fullUrl = "https://portifolio-certo-topaz.vercel.app/";
+  const fullUrl = "https://luisgalvani.vercel.app";
 
   const [s1Visible, setS1Visible] = useState(false);
   const [s1Exit, setS1Exit]     = useState(false);
@@ -148,7 +148,7 @@ export default function IntroAnimation({ onFinish }: { onFinish: () => void }) {
             opacity: s2Name ? 1 : 0,
             transform: s2Name ? "translateY(0)" : "translateY(18px)",
             transition: "opacity 0.55s cubic-bezier(.22,1,.36,1), transform 0.55s cubic-bezier(.22,1,.36,1)",
-          }}>Luis Fernando</div>
+          }}>Luis Galvani</div>
 
           <div style={{
             fontFamily: "'DM Sans', sans-serif", fontWeight: 300,
