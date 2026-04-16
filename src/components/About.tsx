@@ -4,8 +4,9 @@ import { motion } from "framer-motion";
 import Skills from "./Skills";
 
 const TIMELINE = [
-  { year: "2024", event: "Início do curso técnico na ETEC Jacinto Ferreira de Sá — Informática para Internet. Python, PHP e C#." },
-  { year: "2025", event: "Machine Learning e redes neurais. MySQL e Supabase no dia a dia. TCC AgroSense IoT." },
+  { year: "2024", event: "Início do curso técnico em Informática (ETEC Jacinto Ferreira de Sá). Primeiros contatos com programação e fundamentos web." },
+  { year: "2025", event: "Mergulho em Machine Learning e IA. Desenvolvimento do TCC: AgroSense (Sistema IoT integrado)." },
+  { year: "2026", event: "Conclusão da formação técnica. Consolidação de projetos ML/IA e continuidade em desenvolvimento de soluções escaláveis." },
 ];
 
 const containerVariants = {

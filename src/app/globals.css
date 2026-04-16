@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -7,23 +7,21 @@
 }
 
 :root {
-  --bg:            #000000;
-  --bg-surface:    #0D0D14;
-  --bg-raised:     #13131C;
-  --text:          #FFFFFF;
-  --text-muted:    #AAAAB8;
-  --text-faint:    #44445A;
-  --accent:        #378ADD;
-  --accent-light:  #85B7EB;
-  --accent-dim:    rgba(55,138,221,0.10);
-  --accent-border: rgba(55,138,221,0.25);
-  --green:         #2DD4A0;
-  --green-dim:     rgba(45,212,160,0.10);
-  --border:        rgba(255,255,255,0.06);
-  --border-hover:  rgba(255,255,255,0.12);
-  --font-display:  'Syne', sans-serif;
-  --font-body:     'DM Sans', sans-serif;
-  --font-mono:     'DM Mono', monospace;
+  --bg:            #0a0a0a;
+  --bg-surface:    #131313;
+  --bg-raised:     #1a1a1a;
+  --text:          #ffffff;
+  --text-muted:    #a8a8a8;
+  --text-faint:    #666666;
+  --accent:        #c9a96e;
+  --accent-light:  #d4b896;
+  --accent-dim:    rgba(201,169,110,0.1);
+  --accent-border: rgba(201,169,110,0.25);
+  --border:        rgba(255,255,255,0.05);
+  --border-hover:  rgba(255,255,255,0.1);
+  --font-display:  'Playfair Display', serif;
+  --font-body:     'Inter', sans-serif;
+  --font-mono:     'JetBrains Mono', monospace;
   
   /* Spacing scale */
   --spacing-1:     0.25rem;
