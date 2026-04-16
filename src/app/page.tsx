@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import IntroAnimation from "@/components/IntroAnimation";
+import EntryScreen from "@/components/EntryScreen";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -10,29 +10,29 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 export default function Home() {
-  const [introFinished, setIntroFinished] = useState(false);
+  const [hasEntered, setHasEntered] = useState(false);
 
   return (
     <>
-      {!introFinished && (
-        <IntroAnimation onFinish={() => setIntroFinished(true)} />
+      {!hasEntered && (
+        <EntryScreen onEnter={() => setHasEntered(true)} />
       )}
-      {introFinished && (
+      {hasEntered && (
         <>
           <Navbar />
           <main style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ maxWidth: 900, margin: "0 auto", width: "100%", padding: "0 1.25rem" }}>
+            <section style={{ maxWidth: 1200, margin: "0 auto", width: "100%", padding: "0 1.25rem", paddingTop: "4rem" }}>
               <Hero />
-            </div>
-            <div style={{ maxWidth: 900, margin: "0 auto", width: "100%", padding: "0 1.25rem" }}>
+            </section>
+            <section style={{ maxWidth: 1200, margin: "0 auto", width: "100%", padding: "0 1.25rem", paddingTop: "6rem", paddingBottom: "4rem" }}>
               <Projects />
-            </div>
-            <div style={{ maxWidth: 900, margin: "0 auto", width: "100%", padding: "0 1.25rem" }}>
+            </section>
+            <section style={{ maxWidth: 1200, margin: "0 auto", width: "100%", padding: "0 1.25rem", paddingTop: "6rem", paddingBottom: "4rem" }}>
               <About />
-            </div>
-            <div style={{ maxWidth: 900, margin: "0 auto", width: "100%", padding: "0 1.25rem" }}>
+            </section>
+            <section style={{ maxWidth: 1200, margin: "0 auto", width: "100%", padding: "0 1.25rem", paddingTop: "6rem", paddingBottom: "4rem" }}>
               <Contact />
-            </div>
+            </section>
           </main>
           <Footer />
         </>
