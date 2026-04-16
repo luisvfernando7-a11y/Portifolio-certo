@@ -11,11 +11,11 @@ export default function WelcomeScreen({ onFinish }: { onFinish: () => void }) {
   // Sequência controlada de etapas
   useEffect(() => {
     const timings = [
-      { delay: 200, step: 1 },      // "Bem-vindo(a)"
-      { delay: 1000, step: 2 },     // "Luis Galvani"
-      { delay: 2200, step: 3 },     // "Backend Developer..."
-      { delay: 3400, step: 4 },     // Linha
-      { delay: 4200, step: 5 },     // Email
+      { delay: 300, step: 1 },      // "Bem-vindo(a)"
+      { delay: 1200, step: 2 },     // "Luis Galvani"
+      { delay: 2400, step: 3 },     // "Backend Developer..."
+      { delay: 3600, step: 4 },     // Linha elegante
+      { delay: 4800, step: 5 },     // Email
     ];
 
     const timeouts = timings.map((t) =>
@@ -32,14 +32,14 @@ export default function WelcomeScreen({ onFinish }: { onFinish: () => void }) {
     if (typedText.length < fullEmail.length) {
       const timeout = setTimeout(() => {
         setTypedText((prev) => prev + fullEmail[prev.length]);
-      }, 60);
+      }, 70);
 
       return () => clearTimeout(timeout);
     } else {
       // Finalizar após terminar digitação
       const timeout = setTimeout(() => {
         setStep(6);
-      }, 1000);
+      }, 1200);
 
       return () => clearTimeout(timeout);
     }
@@ -93,7 +93,7 @@ export default function WelcomeScreen({ onFinish }: { onFinish: () => void }) {
             opacity: step >= 1 ? 1 : 0,
             y: step >= 1 ? 0 : 20,
           }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
           style={{ minHeight: 90 }}
         >
           <h1
@@ -118,7 +118,7 @@ export default function WelcomeScreen({ onFinish }: { onFinish: () => void }) {
             opacity: step >= 2 ? 1 : 0,
             y: step >= 2 ? 0 : 20,
           }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
           style={{ minHeight: 80, marginTop: 30 }}
         >
           <motion.h2
@@ -146,7 +146,7 @@ export default function WelcomeScreen({ onFinish }: { onFinish: () => void }) {
             opacity: step >= 3 ? 1 : 0,
             y: step >= 3 ? 0 : 20,
           }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
           style={{ minHeight: 60, marginTop: 24 }}
         >
           <p
@@ -164,20 +164,22 @@ export default function WelcomeScreen({ onFinish }: { onFinish: () => void }) {
           </p>
         </motion.div>
 
-        {/* ETAPA 4: Linha divisória */}
+        {/* ETAPA 4: Linha divisória elegante com gradiente */}
         <motion.div
           initial={{ opacity: 0, scaleX: 0 }}
           animate={{
-            opacity: step >= 4 ? 0.4 : 0,
+            opacity: step >= 4 ? 1 : 0,
             scaleX: step >= 4 ? 1 : 0,
           }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
           style={{
             marginTop: 40,
-            height: "1px",
-            width: "60px",
-            background: "#c9a96e",
+            height: "2px",
+            width: "140px",
+            background: "linear-gradient(90deg, rgba(201,169,110,0.2) 0%, rgba(201,169,110,1) 50%, rgba(201,169,110,0.2) 100%)",
             transformOrigin: "center",
+            boxShadow: "0 0 12px rgba(201, 169, 110, 0.3)",
+            borderRadius: 999,
           }}
         />
 
@@ -188,7 +190,7 @@ export default function WelcomeScreen({ onFinish }: { onFinish: () => void }) {
             opacity: step >= 5 ? 1 : 0,
             y: step >= 5 ? 0 : 20,
           }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
           style={{ minHeight: 50, marginTop: 32 }}
         >
           <p
