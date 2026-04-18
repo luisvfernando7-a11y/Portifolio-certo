@@ -66,7 +66,7 @@ export default function Hero() {
         maxWidth: 520,
         marginBottom: 12,
       }}>
-        17 anos · Ourinhos, SP · ETEC Jacinto Ferreira de Sá
+        17 anos · Ourinhos, SP · ETEC Jacinto Ferreira de Sá — Técnico em Informática para Internet
       </p>
 
       <p style={{
