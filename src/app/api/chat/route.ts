@@ -23,7 +23,7 @@ PROJETOS:
    Plataforma de venda de estruturas de suíte para empresas. Clientes terão sua marca exibida no portfólio — unindo negócio e vitrine de forma estratégica.
 
 TRAJETÓRIA:
-- 2024: Início do curso técnico na ETEC Jacinto Ferreira de Sá. Primeiros projetos práticos em Python, PHP e C#.
+- 2024: Início do curso Técnico em Informática para Internet na ETEC Jacinto Ferreira de Sá. Primeiros projetos práticos em Python, PHP e C#.
 - 2025: Aprofundamento em Machine Learning, redes neurais e LSTM. Uso regular de MySQL e Supabase. Desenvolvimento do TCC AgroSense IoT.
 - 2026: Conclusão prevista do curso técnico. Estudando Java e APIs avançadas. Planejamento do Suite Marketplace.
 

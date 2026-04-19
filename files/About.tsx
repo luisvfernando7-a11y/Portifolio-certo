@@ -1,7 +1,7 @@
 "use client";
 
 const TIMELINE = [
-  { year: "2022", event: "Início na ETEC Jacinto Ferreira de Sá — Informática para Internet." },
+  { year: "2022", event: "Início na ETEC Jacinto Ferreira de Sá — Técnico em Informática para Internet." },
   { year: "2023", event: "Aprofundamento em Python, PHP e C#. Primeiros projetos backend reais." },
   { year: "2024", event: "Mergulhou em Machine Learning, LSTM e redes neurais. MySQL e Supabase no dia a dia." },
   { year: "2025", event: "TCC AgroSense IoT em desenvolvimento. Aprendendo Java e APIs avançadas. Planejando Suite Marketplace." },
@@ -54,7 +54,7 @@ export default function About() {
             {[
               ["Idade", "17 anos"],
               ["Cidade", "Ourinhos, SP"],
-              ["Escola", "ETEC Jacinto Ferreira de Sá"],
+              ["Escola", "ETEC Jacinto Ferreira de Sá — Técnico em Informática para Internet"],
               ["Curso", "Informática para Internet"],
               ["Inglês", "Intermediário"],
             ].map(([label, value]) => (

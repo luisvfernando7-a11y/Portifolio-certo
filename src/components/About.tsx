@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Skills from "./Skills";
 
 const TIMELINE = [
-  { year: "2024", event: "Início do curso técnico em Informática (ETEC Jacinto Ferreira de Sá). Primeiros contatos com programação e fundamentos web." },
+  { year: "2024", event: "Início do curso Técnico em Informática para Internet (ETEC Jacinto Ferreira de Sá). Primeiros contatos com programação e fundamentos web." },
   { year: "2025", event: "Mergulho em Machine Learning e IA. Desenvolvimento do TCC: AgroSense (Sistema IoT integrado)." },
   { year: "2026", event: "Conclusão da formação técnica. Consolidação de projetos ML/IA e continuidade em desenvolvimento de soluções escaláveis." },
 ];
@@ -101,7 +101,7 @@ export default function About() {
             {[
               { label: "Idade", value: "17 anos" },
               { label: "Cidade", value: "Ourinhos, SP" },
-              { label: "Formação", value: "ETEC Jacinto Ferreira de Sá" },
+              { label: "Formação", value: "ETEC Jacinto Ferreira de Sá — Técnico em Informática para Internet" },
             ].map((item) => (
               <div key={item.label} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
                 <span style={{
