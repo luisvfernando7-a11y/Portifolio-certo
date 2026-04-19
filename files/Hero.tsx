@@ -1,6 +1,6 @@
 "use client";
 
-const CHIPS = ["Python", "PHP", "C#", "ML / IA", "LSTM", "IoT", "MySQL", "Supabase"];
+const CHIPS = ["Python", "PHP", "C#", "ML / IA", "LSTM", "IoT", "MySQL"];
 
 const GitHubIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
