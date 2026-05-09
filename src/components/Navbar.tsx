@@ -74,7 +74,7 @@ export default function Navbar() {
           </a>
 
           <a
-            href="https://www.linkedin.com/in/luis-fernando-vieira-543325313"
+            href="https://www.linkedin.com/in/luisfernandovieira"
             target="_blank"
             rel="noopener noreferrer"
             title="LinkedIn (Luis Galvani)"

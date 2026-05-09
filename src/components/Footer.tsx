@@ -64,7 +64,7 @@ export default function Footer() {
         </a>
 
         <a
-          href="https://www.linkedin.com/in/luis-fernando-vieira-543325313"
+          href="https://www.linkedin.com/in/luisfernandovieira"
           target="_blank"
           rel="noopener noreferrer"
             title="LinkedIn (Luis Galvani)"
@@ -126,7 +126,7 @@ export default function Footer() {
 
       {/* Copyright */}
       <span style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "var(--text-faint)" }}>
-        © 2025 Luís Fernando. Todos os direitos reservados.
+        © 2026 Luís Fernando. Todos os direitos reservados.
       </span>
     </footer>
   );

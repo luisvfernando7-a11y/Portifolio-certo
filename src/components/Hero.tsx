@@ -1,210 +1,209 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 
-const CHIPS = ["Python", "PHP", "C#", "JavaScript", "Machine Learning", "MySQL", "Supabase"];
+/*
+  HOSPEDAGEM DO VÍDEO — OPÇÕES RECOMENDADAS:
+
+  OPÇÃO 1 (Recomendada — gratuita):
+  Cloudinary — https://cloudinary.com
+  - Faça upload do vídeo no Cloudinary
+  - Substitua o src do <video> pela URL gerada
+  - O Cloudinary entrega o vídeo via CDN global com compressão automática
+  - Mantém o Lighthouse score alto pois o vídeo não fica no bundle da Vercel
+
+  OPÇÃO 2 (Simples — para vídeos curtos até 50MB):
+  Vídeo nativo na pasta assets/
+  - Exporte em H.264 + MP4, resolução máxima 1080p, bitrate ~2Mbps
+  - Use ffmpeg: ffmpeg -i original.mp4 -vcodec h264 -acodec aac -crf 28 agroclima-v1.mp4
+  - Coloque em public/assets/agroclima-v1.mp4
+
+  OPÇÃO 3 (YouTube/Vimeo embed):
+  - Substitua o <video> por um <iframe> do YouTube com parâmetros:
+    ?autoplay=1&mute=1&loop=1&controls=0&playlist=VIDEO_ID
+  - Menor controle visual mas zero impacto na Vercel
+*/
 
 export default function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    // Lazy Autoplay usando Intersection Observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            videoRef.current?.play().catch(err => console.warn("Autoplay prevenido pelo navegador:", err));
+          } else {
+            videoRef.current?.pause();
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (videoRef.current) {
+      observer.observe(videoRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.1,
-      },
+      transition: { staggerChildren: 0.08, delayChildren: 0.1 },
     },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
   return (
     <section style={{ padding: "3rem 0 4rem" }}>
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        {/* Status Badge */}
-        <motion.div
-          variants={itemVariants}
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 8,
-            fontSize: 12,
-            fontFamily: "var(--font-mono)",
-            color: "#c9a96e",
-            background: "var(--accent-dim)",
-            border: "0.5px solid var(--accent-border)",
-            padding: "6px 16px",
-            borderRadius: 999,
-            marginBottom: 32,
-          }}
-        >
-          <span
-            style={{
-              width: 6,
-              height: 6,
-              borderRadius: "50%",
-              background: "#c9a96e",
-              animation: "pulse-dot 2s ease infinite",
-            }}
-          />
-          Disponível para projetos
-        </motion.div>
-
-        {/* Main Title */}
-        <motion.h1
-          variants={itemVariants}
-          style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "clamp(48px, 9vw, 80px)",
-            fontWeight: 700,
-            lineHeight: 1.1,
-            letterSpacing: "-0.02em",
-            color: "var(--text)",
-            marginBottom: 16,
-            fontStyle: "italic",
-          }}
-        >
-          Luis Galvani
-        </motion.h1>
-
-        {/* Subtitle */}
-        <motion.h2
-          variants={itemVariants}
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "clamp(18px, 3.5vw, 28px)",
-            fontWeight: 500,
-            lineHeight: 1.4,
-            letterSpacing: "-0.01em",
-            color: "var(--text-muted)",
-            marginBottom: 24,
-          }}
-        >
-          Backend Developer &amp; Machine Learning
-        </motion.h2>
-
-        {/* Bio */}
-        <motion.p
-          variants={itemVariants}
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: 15,
-            color: "var(--text-muted)",
-            lineHeight: 1.7,
-            maxWidth: 480,
-            marginBottom: 12,
-          }}
-        >
-          17 anos · Ourinhos, SP · ETEC Jacinto Ferreira de Sá — Técnico em Informática para Internet
-        </motion.p>
-
-        <motion.p
-          variants={itemVariants}
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: 15,
-            color: "var(--text-faint)",
-            lineHeight: 1.7,
-            maxWidth: 540,
-            marginBottom: 32,
-          }}
-        >
-          Desenvolvedor backend com foco em Python e machine learning. Especializado em construir sistemas escaláveis e aplicar IA em problemas reais.
-        </motion.p>
-
-        {/* Skills */}
-        <motion.div
-          variants={itemVariants}
-          style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 40 }}
-        >
-          {CHIPS.map((c) => (
-            <span
-              key={c}
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 12,
-                color: "#c9a96e",
-                background: "var(--accent-dim)",
-                border: "0.5px solid var(--accent-border)",
-                padding: "4px 12px",
-                borderRadius: 4,
-              }}
-            >
-              {c}
-            </span>
-          ))}
-        </motion.div>
-
-        {/* CTA Buttons */}
-        <motion.div
-          variants={itemVariants}
-          style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 12 }}
-        >
-          <a
-            href="#projetos"
-            style={{
-              fontFamily: "var(--font-body)",
-              fontSize: 14,
+      <motion.div variants={containerVariants} initial="hidden" animate="visible">
+        
+        <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 48 }}>
+          <motion.div variants={itemVariants} style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+            {/* Main Title */}
+            <h1 style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(32px, 6vw, 56px)",
+              fontWeight: 800,
+              lineHeight: 1.1,
+              letterSpacing: "-0.02em",
+              color: "var(--text)",
+            }}>
+              AgroClima — Plataforma de Predição Agroclimática com IA
+            </h1>
+            
+            {/* Status Badge */}
+            <span style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+              fontSize: 12,
+              fontFamily: "var(--font-mono)",
               fontWeight: 600,
-              color: "#0a0a0a",
-              background: "#c9a96e",
-              padding: "10px 28px",
-              borderRadius: 4,
-              textDecoration: "none",
-              transition: "all 0.2s",
-              display: "inline-block",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#d4b896";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "#c9a96e";
-            }}
-          >
-            Ver projetos
-          </a>
+              color: "var(--accent)",
+              background: "#1F2937",
+              border: "1px solid var(--accent)",
+              padding: "4px 12px",
+              borderRadius: 999,
+              whiteSpace: "nowrap",
+            }}>
+              🚧 Em Desenvolvimento
+            </span>
+          </motion.div>
 
-          <a
-            href="mailto:luisvfernando7@gmail.com"
-            style={{
-              fontFamily: "var(--font-body)",
-              fontSize: 14,
-              fontWeight: 500,
-              color: "var(--text-muted)",
-              background: "transparent",
-              border: "0.5px solid var(--border-hover)",
-              padding: "10px 28px",
-              borderRadius: 4,
-              textDecoration: "none",
-              cursor: "pointer",
-              transition: "all 0.2s",
-              display: "inline-block",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = "var(--text)";
-              e.currentTarget.style.borderColor = "#c9a96e";
-              e.currentTarget.style.background = "var(--accent-dim)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = "var(--text-muted)";
-              e.currentTarget.style.borderColor = "var(--border-hover)";
-              e.currentTarget.style.background = "transparent";
-            }}
-          >
-            Entrar em contato
-          </a>
+          {/* Subtitle */}
+          <motion.h2 variants={itemVariants} style={{
+            fontFamily: "var(--font-body)",
+            fontSize: "clamp(16px, 3vw, 20px)",
+            fontWeight: 400,
+            lineHeight: 1.6,
+            color: "var(--text-muted)",
+            maxWidth: 720,
+          }}>
+            Arquitetura de microserviços integrando LSTM, Monte Carlo, IoT (ESP32) e API REST para predição de riscos em agricultura de precisão.
+          </motion.h2>
+        </div>
+
+        {/* Video Mockup Frame */}
+        <motion.div variants={itemVariants} style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
+          <div style={{
+            width: "100%",
+            maxWidth: 900,
+            background: "#0A0F1E",
+            border: "1px solid var(--border)",
+            borderRadius: "12px 12px 0 0",
+            overflow: "hidden",
+            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
+            position: "relative"
+          }}>
+            {/* Browser/Monitor Header Bar */}
+            <div style={{
+              height: 28,
+              background: "#111827",
+              borderBottom: "1px solid var(--border)",
+              display: "flex",
+              alignItems: "center",
+              padding: "0 12px",
+              gap: 6
+            }}>
+              <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#EF4444" }} />
+              <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#F59E0B" }} />
+              <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#10B981" }} />
+            </div>
+
+            {/* Video Container (16:9) */}
+            <div style={{ position: "relative", width: "100%", paddingTop: "56.25%", background: "#0A0F1E" }}>
+              <video
+                ref={videoRef}
+                preload="none"
+                muted
+                loop
+                playsInline
+                poster="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect width='100%25' height='100%25' fill='%230A0F1E'/%3E%3Ctext x='50%25' y='50%25' font-family='monospace' font-size='16' fill='%239CA3AF' text-anchor='middle' dominant-baseline='middle'%3EAgroClima v1.2.0 %E2%80%94 Demo%3C/text%3E%3C/svg%3E"
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                }}
+              >
+                {/* VÍDEO — coloque o arquivo em public/assets/agroclima-v1.mp4 para ativar */}
+                <source src="/assets/agroclima-v1.mp4" type="video/mp4" />
+                Seu navegador não suporta a tag de vídeo.
+              </video>
+            </div>
+            
+            {/* Monitor Base (reflexo sutil simulado com gradient) */}
+            <div style={{
+              position: "absolute",
+              top: 0, left: 0, right: 0, height: "40%",
+              background: "linear-gradient(to bottom, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%)",
+              pointerEvents: "none"
+            }} />
+          </div>
+          
+          {/* Monitor Stand (Base do Monitor) */}
+          <div style={{
+            width: 140,
+            height: 16,
+            background: "linear-gradient(to bottom, #1F2937, #111827)",
+            borderLeft: "1px solid var(--border)",
+            borderRight: "1px solid var(--border)",
+          }} />
+          <div style={{
+            width: 220,
+            height: 8,
+            background: "#1F2937",
+            borderRadius: "4px 4px 0 0",
+            borderTop: "1px solid var(--border)",
+          }} />
+
+          {/* Legenda Técnica */}
+          <p style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: 12,
+            color: "#9CA3AF",
+            textAlign: "center",
+            marginTop: 24,
+            maxWidth: "90%"
+          }}>
+            Execução de inferência LSTM em tempo real com integração IoT — AgroClima v1.2.0
+          </p>
         </motion.div>
+
       </motion.div>
     </section>
   );

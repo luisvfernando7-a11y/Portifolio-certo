@@ -3,19 +3,13 @@
 import { motion } from "framer-motion";
 import Skills from "./Skills";
 
-const TIMELINE = [
-  { year: "2024", event: "Início do curso Técnico em Informática para Internet (ETEC Jacinto Ferreira de Sá). Primeiros contatos com programação e fundamentos web." },
-  { year: "2025", event: "Mergulho em Machine Learning e IA. Desenvolvimento do TCC: AgroSense (Sistema IoT integrado)." },
-  { year: "2026", event: "Conclusão da formação técnica. Consolidação de projetos ML/IA e continuidade em desenvolvimento de soluções escaláveis." },
-];
-
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
       staggerChildren: 0.1,
-      delayChildren: 0.2,
+      delayChildren: 0.1,
     },
   },
 };
@@ -69,116 +63,104 @@ export default function About() {
         style={{
           display: "grid", gridTemplateColumns: "1fr",
           gap: 48,
-          marginBottom: 40,
+          marginBottom: 64,
         }}
         className="about-grid"
       >
-        {/* Left: Personal info */}
+        {/* Left: Bio Info */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 24, maxWidth: 640 }}>
+          <motion.h3 
+            variants={itemVariants}
+            style={{
+              fontFamily: "var(--font-display)", fontSize: "clamp(24px, 4vw, 32px)",
+              fontWeight: 800, color: "var(--accent)",
+              letterSpacing: "-0.01em", lineHeight: 1.2
+            }}
+          >
+            Backend & AI Systems Developer
+          </motion.h3>
+
+          <motion.p
+            variants={itemVariants}
+            style={{
+              fontFamily: "var(--font-body)", fontSize: 16,
+              color: "var(--text)", lineHeight: 1.7,
+            }}
+          >
+            Especialista em unir a inteligência do Python com a robustez do Java para projetar sistemas escaláveis orientados a dados. Desenvolvo desde pipelines de Machine Learning com PyTorch e FastAPI até camadas de orquestração em Spring Boot — com foco em arquiteturas que funcionam em produção.
+          </motion.p>
+
+          <motion.p
+            variants={itemVariants}
+            style={{
+              fontFamily: "var(--font-body)", fontSize: 15,
+              color: "var(--text-muted)", lineHeight: 1.7,
+            }}
+          >
+            Atualmente no 3º ano do Ensino Médio Técnico na ETEC, atuando como Jovem Aprendiz no Colégio Bagozzi e desenvolvendo o AgroClima como projeto de TCC. Direcionando minha formação para engenharia de software e ciência de dados em universidades de elite como UTFPR e UFSCar.
+          </motion.p>
+
+          <motion.div
+            variants={itemVariants}
+            style={{
+              background: "var(--bg-surface)",
+              borderLeft: "3px solid var(--accent)",
+              padding: "16px 20px",
+              borderRadius: "0 8px 8px 0",
+              marginTop: 8
+            }}
+          >
+            <p style={{
+              fontFamily: "var(--font-mono)", fontSize: 13,
+              color: "var(--accent-light)", fontWeight: 500
+            }}>
+              Inglês intermediário para leitura técnica · Open to internship opportunities
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Right: Info blocks */}
         <div>
           <div style={{
             width: 64, height: 64,
             borderRadius: 8,
             background: "var(--accent-dim)",
-            border: "0.5px solid var(--accent-border)",
+            border: "1px solid var(--accent-border)",
             display: "flex", alignItems: "center", justifyContent: "center",
             fontFamily: "var(--font-display)", fontSize: 24,
             fontWeight: 800, color: "var(--accent)",
-            marginBottom: 24,
+            marginBottom: 32,
           }}>LF</div>
 
-          <h3 style={{
-            fontFamily: "var(--font-display)", fontSize: 18,
-            fontWeight: 700, color: "var(--text)",
-            marginBottom: 4,
-          }}>Luis Galvani</h3>
-
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: 14,
-            color: "var(--accent-light)", marginBottom: 24,
-          }}>Backend Developer · Machine Learning</p>
-
-          <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             {[
               { label: "Idade", value: "17 anos" },
-              { label: "Cidade", value: "Ourinhos, SP" },
-              { label: "Formação", value: "ETEC Jacinto Ferreira de Sá — Técnico em Informática para Internet" },
+              { label: "Local", value: "Ourinhos, SP" },
+              { label: "Contato", value: "luisvfernando7@gmail.com" },
             ].map((item) => (
-              <div key={item.label} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+              <div key={item.label} style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                 <span style={{
-                  fontFamily: "var(--font-mono)", fontSize: 10,
+                  fontFamily: "var(--font-mono)", fontSize: 11,
                   color: "var(--text-faint)", textTransform: "uppercase",
                   letterSpacing: "0.08em",
                 }}>{item.label}</span>
                 <span style={{
-                  fontFamily: "var(--font-body)", fontSize: 14,
-                  color: "var(--text)",
+                  fontFamily: "var(--font-body)", fontSize: 15,
+                  color: "var(--text)", fontWeight: 500
                 }}>{item.value}</span>
               </div>
             ))}
           </div>
         </div>
-
-        {/* Right: Timeline */}
-        <div>
-          <div style={{
-            background: "linear-gradient(to right, var(--accent-light), var(--accent))",
-            padding: 16,
-            borderRadius: 8,
-            marginBottom: 32,
-          }}>
-            <p style={{
-              fontFamily: "var(--font-body)", fontSize: 13,
-              color: "var(--bg)", lineHeight: 1.7,
-            }}>
-              "É a curiosidade que me move. Quando algo me interessa, mergulho fundo até compreender."
-            </p>
-          </div>
-
-          <h3 style={{
-            fontFamily: "var(--font-body)", fontSize: 12,
-            fontWeight: 500, color: "var(--text)", textTransform: "uppercase",
-            letterSpacing: "0.08em", marginBottom: 16,
-          }}>Trajetória</h3>
-
-          {TIMELINE.map((t, i) => (
-            <div key={t.year} style={{
-              display: "flex", gap: 16, marginBottom: i < TIMELINE.length - 1 ? 24 : 0,
-            }}>
-              <div style={{ textAlign: "center", width: 50, flexShrink: 0 }}>
-                <span style={{
-                  fontFamily: "var(--font-display)", fontSize: 14,
-                  fontWeight: 700, color: "var(--accent)",
-                }}>{t.year}</span>
-                <div style={{
-                  width: 6, height: 6,
-                  borderRadius: "50%", background: "var(--accent)",
-                  margin: "8px auto",
-                }}/>
-                {i < TIMELINE.length - 1 && (
-                  <div style={{
-                    width: "2px", height: 32,
-                    background: "var(--accent-dim)",
-                    margin: "0 auto",
-                  }} />
-                )}
-              </div>
-              <p style={{
-                fontFamily: "var(--font-body)", fontSize: 13,
-                color: "var(--text-muted)", lineHeight: 1.7,
-                paddingTop: 2,
-              }}>{t.event}</p>
-            </div>
-          ))}
-        </div>
       </motion.div>
 
       {/* Skills Section */}
-      <div style={{ borderTop: "0.5px solid var(--border)", paddingTop: 40 }}>
+      <div style={{ borderTop: "1px solid var(--border)", paddingTop: 48 }}>
         <h3 style={{
-          fontFamily: "var(--font-body)", fontSize: 12,
-          fontWeight: 500, color: "var(--text)", textTransform: "uppercase",
-          letterSpacing: "0.08em", marginBottom: 20,
-        }}>Habilidades</h3>
+          fontFamily: "var(--font-mono)", fontSize: 13,
+          fontWeight: 600, color: "var(--text)", textTransform: "uppercase",
+          letterSpacing: "0.08em", marginBottom: 32,
+        }}>Competências Técnicas</h3>
         <Skills />
       </div>
     </section>

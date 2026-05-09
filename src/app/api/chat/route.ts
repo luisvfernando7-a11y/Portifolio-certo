@@ -9,23 +9,29 @@ PERFIL PROFISSIONAL:
 - Nome: Luis Galvani, 17 anos, Ourinhos, SP
 - Formação em andamento: ETEC Jacinto Ferreira de Sá — Técnico em Informática para Internet (2024–2026, conclusão prevista para 2026)
 - Não possui graduação; toda experiência foi adquirida de forma prática e autodidata
-- Foco principal: Desenvolvimento Backend com crescente atuação em Machine Learning
-- Tecnologias com experiência prática: Python, PHP, C#, JavaScript, HTML, CSS
-- Banco de dados: MySQL, Supabase
-- IA e ML: Machine Learning, redes neurais, LSTM, modelos preditivos
-- Em aprendizado ativo: Java, APIs REST avançadas
+- Foco principal: Desenvolvimento Backend, com sólida base em Java/Spring Boot e experiência complementar em Python/Machine Learning.
+- Tecnologias e ferramentas: Java, Spring Boot, Python, Docker, JPA/Hibernate, FastApi, HTML/CSS/JS/React/Next.js.
+- Banco de dados: MySQL, H2 Database, Supabase.
+- IA e ML: Machine Learning, redes neurais, LSTM, Monte Carlo.
+- Práticas: Desenvolvimento de APIs REST, Arquitetura em camadas, Containerização.
 
 PROJETOS:
-1. AgroSense IoT (TCC — em desenvolvimento)
-   Sistema IoT com análise de drift matemático em tempo real para monitoramento de umidade do solo. Auxilia pequenos agricultores com decisões baseadas em dados. A IA integrada também recomenda produtos agrícolas de acordo com o cenário da plantação.
+1. Agroclima (Projeto Core)
+   Plataforma full-stack que integra sensores IoT (ESP32), pipeline de Machine Learning (LSTM + Monte Carlo) e API REST para previsão de riscos climáticos em agricultura de precisão. Usa Python, FastAPI, Spring Boot e Docker.
 
-2. Suite Marketplace (planejamento)
-   Plataforma de venda de estruturas de suíte para empresas. Clientes terão sua marca exibida no portfólio — unindo negócio e vitrine de forma estratégica.
+2. People CRUD with H2 (Concluído)
+   API REST desenvolvida com Spring Boot 3, com banco de dados H2 em memória e mapeamento JPA/Hibernate.
+
+3. CRUD Spring Boot (Concluído)
+   API REST com persistência em MySQL, arquitetura em camadas e containerizada com Docker.
+
+4. Portfolio App (Concluído)
+   Portfólio construído com React, TypeScript e Next.js focado em apresentação limpa de projetos.
 
 TRAJETÓRIA:
-- 2024: Início do curso Técnico em Informática para Internet na ETEC Jacinto Ferreira de Sá. Primeiros projetos práticos em Python, PHP e C#.
-- 2025: Aprofundamento em Machine Learning, redes neurais e LSTM. Uso regular de MySQL e Supabase. Desenvolvimento do TCC AgroSense IoT.
-- 2026: Conclusão prevista do curso técnico. Estudando Java e APIs avançadas. Planejamento do Suite Marketplace.
+- 2024: Início do curso Técnico em Informática para Internet na ETEC Jacinto Ferreira de Sá. Primeiros projetos práticos.
+- 2025: Aprofundamento em desenvolvimento de APIs REST com Java e Spring Boot, containerização com Docker, e projetos de Machine Learning. Desenvolvimento da plataforma Agroclima.
+- 2026: Conclusão prevista do curso técnico. Foco total em buscar oportunidades e estágios como desenvolvedor backend Java.
 
 DISPONIBILIDADE:
 - Aberto a projetos, colaborações e primeiras oportunidades profissionais
