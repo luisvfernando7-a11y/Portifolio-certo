@@ -1,210 +1,161 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 
-/*
-  HOSPEDAGEM DO VÍDEO — OPÇÕES RECOMENDADAS:
-
-  OPÇÃO 1 (Recomendada — gratuita):
-  Cloudinary — https://cloudinary.com
-  - Faça upload do vídeo no Cloudinary
-  - Substitua o src do <video> pela URL gerada
-  - O Cloudinary entrega o vídeo via CDN global com compressão automática
-  - Mantém o Lighthouse score alto pois o vídeo não fica no bundle da Vercel
-
-  OPÇÃO 2 (Simples — para vídeos curtos até 50MB):
-  Vídeo nativo na pasta assets/
-  - Exporte em H.264 + MP4, resolução máxima 1080p, bitrate ~2Mbps
-  - Use ffmpeg: ffmpeg -i original.mp4 -vcodec h264 -acodec aac -crf 28 agroclima-v1.mp4
-  - Coloque em public/assets/agroclima-v1.mp4
-
-  OPÇÃO 3 (YouTube/Vimeo embed):
-  - Substitua o <video> por um <iframe> do YouTube com parâmetros:
-    ?autoplay=1&mute=1&loop=1&controls=0&playlist=VIDEO_ID
-  - Menor controle visual mas zero impacto na Vercel
-*/
+const SUBTITLES = [
+  "Java · Spring Boot · APIs REST",
+  "Python · Machine Learning · IoT",
+  "Arquiteturas escaláveis orientadas a dados"
+];
 
 export default function Hero() {
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const [currentSubtitleIndex, setCurrentSubtitleIndex] = useState(0);
+  const [fade, setFade] = useState(true);
 
   useEffect(() => {
-    // Lazy Autoplay usando Intersection Observer
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            videoRef.current?.play().catch(err => console.warn("Autoplay prevenido pelo navegador:", err));
-          } else {
-            videoRef.current?.pause();
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
+    const interval = setInterval(() => {
+      setFade(false); // inicia o fade out
+      
+      setTimeout(() => {
+        setCurrentSubtitleIndex((prev) => (prev + 1) % SUBTITLES.length);
+        setFade(true); // inicia o fade in com a nova frase
+      }, 500); // metade do ciclo para a transição
+      
+    }, 3000); // troca a cada 3s
 
-    if (videoRef.current) {
-      observer.observe(videoRef.current);
-    }
-
-    return () => {
-      observer.disconnect();
-    };
+    return () => clearInterval(interval);
   }, []);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.08, delayChildren: 0.1 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
-
   return (
-    <section style={{ padding: "3rem 0 4rem" }}>
-      <motion.div variants={containerVariants} initial="hidden" animate="visible">
+    <section className="section" style={{ minHeight: "90vh", display: "flex", alignItems: "center" }}>
+      <div className="container" style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+        gap: "4rem",
+        alignItems: "center"
+      }}>
         
-        <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 48 }}>
-          <motion.div variants={itemVariants} style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
-            {/* Main Title */}
-            <h1 style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(32px, 6vw, 56px)",
-              fontWeight: 800,
-              lineHeight: 1.1,
-              letterSpacing: "-0.02em",
-              color: "var(--text)",
-            }}>
-              AgroClima — Plataforma de Predição Agroclimática com IA
+        {/* Coluna Esquerda: Textos e CTAs */}
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "24px" }}>
+          
+          {/* Pill Tag */}
+          <span className="badge badge-outline" style={{ fontSize: "0.875rem" }}>
+            &lt; Backend Developer /&gt;
+          </span>
+
+          {/* Headline */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+            <h1 style={{ color: "var(--text-primary)", letterSpacing: "-1px" }}>
+              Luis Galvani
             </h1>
             
-            {/* Status Badge */}
-            <span style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 6,
-              fontSize: 12,
-              fontFamily: "var(--font-mono)",
-              fontWeight: 600,
-              color: "var(--accent)",
-              background: "#1F2937",
-              border: "1px solid var(--accent)",
-              padding: "4px 12px",
-              borderRadius: 999,
-              whiteSpace: "nowrap",
+            {/* Animated Subtitle */}
+            <h2 style={{ 
+              color: "var(--text-secondary)", 
+              fontSize: "clamp(1.2rem, 3vw, 1.75rem)",
+              fontFamily: "var(--font-body)",
+              fontWeight: 500,
+              minHeight: "3rem", // previne pulos de layout
+              transition: "opacity 0.5s ease-in-out",
+              opacity: fade ? 1 : 0
             }}>
-              🚧 Em Desenvolvimento
-            </span>
-          </motion.div>
+              {SUBTITLES[currentSubtitleIndex]}
+            </h2>
+          </div>
 
-          {/* Subtitle */}
-          <motion.h2 variants={itemVariants} style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "clamp(16px, 3vw, 20px)",
-            fontWeight: 400,
-            lineHeight: 1.6,
-            color: "var(--text-muted)",
-            maxWidth: 720,
+          {/* Bio Parágrafo */}
+          <p style={{
+            color: "var(--text-secondary)",
+            fontSize: "1.125rem",
+            maxWidth: "540px",
+            lineHeight: 1.7
           }}>
-            Arquitetura de microserviços integrando LSTM, Monte Carlo, IoT (ESP32) e API REST para predição de riscos em agricultura de precisão.
-          </motion.h2>
+            Desenvolvedor backend de 17 anos especializado em unir a robustez do Java com a inteligência do Python. Construo APIs REST, pipelines de ML e sistemas IoT que funcionam em produção.
+          </p>
+
+          {/* Botões */}
+          <div style={{ display: "flex", gap: "16px", marginTop: "16px", flexWrap: "wrap" }}>
+            <a href="#projetos" className="btn-primary">
+              Ver Projetos
+            </a>
+            <a 
+              href="/assets/Luis_Galvani_Curriculo.pdf" 
+              download="Luis_Galvani_Curriculo.pdf"
+              className="btn-outline"
+            >
+              Baixar Currículo
+            </a>
+          </div>
         </div>
 
-        {/* Video Mockup Frame */}
-        <motion.div variants={itemVariants} style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
-          <div style={{
-            width: "100%",
-            maxWidth: 900,
-            background: "#0A0F1E",
-            border: "1px solid var(--border)",
-            borderRadius: "12px 12px 0 0",
-            overflow: "hidden",
-            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
-            position: "relative"
+        {/* Coluna Direita: Status Card */}
+        <div className="card" style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+          <h3 style={{ 
+            fontFamily: "var(--font-mono)", 
+            color: "var(--accent-primary)",
+            fontSize: "1rem",
+            textTransform: "uppercase",
+            letterSpacing: "1px"
           }}>
-            {/* Browser/Monitor Header Bar */}
-            <div style={{
-              height: 28,
-              background: "#111827",
-              borderBottom: "1px solid var(--border)",
-              display: "flex",
-              alignItems: "center",
-              padding: "0 12px",
-              gap: 6
-            }}>
-              <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#EF4444" }} />
-              <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#F59E0B" }} />
-              <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#10B981" }} />
-            </div>
+            Status atual
+          </h3>
 
-            {/* Video Container (16:9) */}
-            <div style={{ position: "relative", width: "100%", paddingTop: "56.25%", background: "#0A0F1E" }}>
-              <video
-                ref={videoRef}
-                preload="none"
-                muted
-                loop
-                playsInline
-                poster="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect width='100%25' height='100%25' fill='%230A0F1E'/%3E%3Ctext x='50%25' y='50%25' font-family='monospace' font-size='16' fill='%239CA3AF' text-anchor='middle' dominant-baseline='middle'%3EAgroClima v1.2.0 %E2%80%94 Demo%3C/text%3E%3C/svg%3E"
-                style={{
+          <ul style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+            <li style={{ display: "flex", alignItems: "center", gap: "12px", color: "var(--text-primary)" }}>
+              {/* Green Pulse Dot */}
+              <span style={{ position: "relative", display: "flex", width: "10px", height: "10px" }}>
+                <span style={{
+                  animation: "ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite",
                   position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
+                  display: "inline-flex",
                   height: "100%",
-                  objectFit: "cover",
-                }}
-              >
-                {/* VÍDEO — coloque o arquivo em public/assets/agroclima-v1.mp4 para ativar */}
-                <source src="/assets/agroclima-v1.mp4" type="video/mp4" />
-                Seu navegador não suporta a tag de vídeo.
-              </video>
-            </div>
+                  width: "100%",
+                  borderRadius: "50%",
+                  backgroundColor: "var(--accent-primary)",
+                  opacity: 0.75
+                }}></span>
+                <span style={{ position: "relative", display: "inline-flex", borderRadius: "50%", height: "10px", width: "10px", backgroundColor: "var(--accent-primary)" }}></span>
+              </span>
+              Disponível para estágio
+            </li>
             
-            {/* Monitor Base (reflexo sutil simulado com gradient) */}
-            <div style={{
-              position: "absolute",
-              top: 0, left: 0, right: 0, height: "40%",
-              background: "linear-gradient(to bottom, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%)",
-              pointerEvents: "none"
-            }} />
+            <li style={{ display: "flex", alignItems: "flex-start", gap: "12px", color: "var(--text-secondary)" }}>
+              <span style={{ color: "var(--accent-primary)", marginTop: "2px" }}>▸</span>
+              TCC em desenvolvimento — AgroClima
+            </li>
+            
+            <li style={{ display: "flex", alignItems: "flex-start", gap: "12px", color: "var(--text-secondary)" }}>
+              <span style={{ color: "var(--accent-primary)", marginTop: "2px" }}>▸</span>
+              3º ano ETEC Jacinto Ferreira de Sá
+            </li>
+            
+            <li style={{ display: "flex", alignItems: "flex-start", gap: "12px", color: "var(--text-secondary)" }}>
+              <span style={{ color: "var(--accent-primary)", marginTop: "2px" }}>▸</span>
+              Jovem Aprendiz @ Colégio Bagozzi
+            </li>
+          </ul>
+
+          <div style={{ height: "1px", background: "var(--border)", margin: "8px 0" }}></div>
+
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+            <span className="badge badge-secondary">Java</span>
+            <span className="badge badge-secondary">Python</span>
+            <span className="badge badge-secondary">Spring Boot</span>
+            <span className="badge badge-secondary">Docker</span>
+            <span className="badge badge-secondary">ML</span>
           </div>
-          
-          {/* Monitor Stand (Base do Monitor) */}
-          <div style={{
-            width: 140,
-            height: 16,
-            background: "linear-gradient(to bottom, #1F2937, #111827)",
-            borderLeft: "1px solid var(--border)",
-            borderRight: "1px solid var(--border)",
-          }} />
-          <div style={{
-            width: 220,
-            height: 8,
-            background: "#1F2937",
-            borderRadius: "4px 4px 0 0",
-            borderTop: "1px solid var(--border)",
-          }} />
+        </div>
 
-          {/* Legenda Técnica */}
-          <p style={{
-            fontFamily: "var(--font-mono)",
-            fontSize: 12,
-            color: "#9CA3AF",
-            textAlign: "center",
-            marginTop: 24,
-            maxWidth: "90%"
-          }}>
-            Execução de inferência LSTM em tempo real com integração IoT — AgroClima v1.2.0
-          </p>
-        </motion.div>
+      </div>
 
-      </motion.div>
+      <style>{`
+        @keyframes ping {
+          75%, 100% {
+            transform: scale(2.5);
+            opacity: 0;
+          }
+        }
+      `}</style>
     </section>
   );
 }
