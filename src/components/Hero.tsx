@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 
 const roles = [
-  'Java · Spring Boot · APIs REST',
+  'Java · Spring Boot 3 · APIs REST',
   'Python · Machine Learning · IoT',
   'Arquiteturas escaláveis orientadas a dados',
 ]
@@ -24,7 +24,7 @@ export function AnimatedRole() {
 
   return (
     <p
-      className={`font-mono text-lg font-medium text-accent transition-opacity duration-300 ${
+      className={`font-mono text-base text-[#A0A0A0] transition-opacity duration-400 ${
         visible ? 'opacity-100' : 'opacity-0'
       }`}
     >
@@ -35,85 +35,88 @@ export function AnimatedRole() {
 
 export default function Hero() {
   return (
-    <section id="hero" className="min-h-screen bg-navy flex flex-col justify-center py-16 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <section id="hero" className="min-h-screen bg-[#080808] flex flex-col justify-center py-20">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         
         {/* Coluna Esquerda: Texto */}
-        <div className="flex flex-col gap-6 order-2 lg:order-1">
+        <div className="flex flex-col items-start order-2 lg:order-1">
           
-          <div className="inline-flex items-center gap-2 border border-border px-4 py-1.5 rounded-full w-fit bg-surface/50 backdrop-blur-sm">
-            <span className="font-mono text-accent text-sm font-medium">
-              &lt; Backend Developer /&gt;
-            </span>
+          <span className="font-mono text-xs text-[#4A4A4A] border border-[#1E1E1E] bg-[#0F0F0F] px-3 py-1 rounded-sm tracking-widest uppercase">
+            Backend Developer
+          </span>
+
+          <h1 className="font-space text-6xl lg:text-8xl font-bold text-white leading-none tracking-tight mt-6">
+            Luis<br />
+            <span className="text-white/60">Galvani</span>
+          </h1>
+
+          <div className="h-8 flex items-center mt-4">
+            <AnimatedRole />
           </div>
 
-          <div className="flex flex-col gap-3">
-            <h1 className="font-space text-5xl lg:text-7xl font-bold text-primary tracking-tight leading-[1.1]">
-              Luis Galvani
-            </h1>
-            <div className="h-8 flex items-center">
-              <AnimatedRole />
-            </div>
-          </div>
-
-          <p className="text-muted text-lg lg:text-xl leading-relaxed max-w-xl">
-            Desenvolvedor backend de 17 anos especializado em unir a robustez do Java com a inteligência do Python. Construo APIs REST, pipelines de ML e sistemas IoT que funcionam em produção.
+          <p className="text-[#A0A0A0] text-lg leading-relaxed mt-6 max-w-lg">
+            Desenvolvedor backend de 17 anos. Construo{' '}
+            <span className="text-white font-medium">APIs REST</span>,{' '}
+            <span className="text-white font-medium">pipelines de ML</span> e{' '}
+            <span className="text-white font-medium">sistemas IoT</span>{' '}
+            com Java e Python.
           </p>
 
-          <div className="flex flex-wrap items-center gap-4 mt-4">
-            <a 
+          <div className="flex flex-wrap gap-4 mt-10">
+            <a
               href="#projetos"
-              className="px-10 py-4 bg-accent text-navy font-bold rounded-lg hover:brightness-110 hover:shadow-[0_0_20px_rgba(45,212,160,0.3)] transition-all duration-300"
+              className="bg-white text-[#080808] font-semibold font-mono text-sm px-8 py-4 rounded-sm hover:bg-white/90 transition-all"
             >
               Ver Projetos
             </a>
-            
-            <a 
+
+            <a
               href="/assets/Luis_Galvani_Curriculo.pdf"
               download="Luis_Galvani_Curriculo.pdf"
-              className="px-10 py-4 border-2 border-accent text-accent font-bold rounded-lg hover:bg-accent/10 transition-all duration-300"
+              className="border border-[#2A2A2A] text-[#F5F5F5] font-mono text-sm px-8 py-4 rounded-sm hover:border-white/60 hover:bg-white/5 transition-all"
             >
-              Baixar Currículo
+              Baixar Currículo ↓
             </a>
           </div>
 
+          <div className="flex flex-wrap gap-2 mt-12">
+            {['Java 17', 'Spring Boot 3', 'Python', 'FastAPI', 'Docker', 'ML'].map(tech => (
+              <span key={tech} className="font-mono text-xs text-[#4A4A4A] border border-[#1E1E1E] px-2 py-1 rounded-sm">
+                {tech}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* Coluna Direita: Status Card */}
         <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-          <div className="bg-surface border border-border p-8 rounded-2xl shadow-2xl w-full max-w-md relative group hover:border-accent/30 transition-colors">
-            <div className="flex items-center justify-between mb-8">
-              <span className="font-mono text-accent text-sm uppercase tracking-widest font-bold">
-                Status atual
-              </span>
-              <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-border"></div>
-                <div className="w-3 h-3 rounded-full bg-border"></div>
-                <div className="w-3 h-3 rounded-full bg-accent animate-pulse"></div>
+          <div className="border border-[#1E1E1E] bg-[#0F0F0F] rounded-sm p-8 font-mono w-full max-w-sm shadow-card">
+            <p className="text-[#4A4A4A] text-xs mb-6 tracking-widest uppercase">// status</p>
+
+            <div className="space-y-4 text-sm">
+              <div className="flex items-center gap-3">
+                <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                <span className="text-[#F5F5F5] font-medium">Open to internship</span>
+              </div>
+              <div className="flex items-start gap-3 text-[#A0A0A0]">
+                <span className="text-white/40 mt-1">▸</span>
+                <span>TCC em desenvolvimento — AgroClima</span>
+              </div>
+              <div className="flex items-start gap-3 text-[#A0A0A0]">
+                <span className="text-white/40 mt-1">▸</span>
+                <span>3º ano ETEC Jacinto Ferreira de Sá</span>
+              </div>
+              <div className="flex items-start gap-3 text-[#A0A0A0]">
+                <span className="text-white/40 mt-1">▸</span>
+                <span>Jovem Aprendiz @ Colégio Bagozzi</span>
               </div>
             </div>
 
-            <ul className="flex flex-col gap-5 text-primary font-medium">
-              <li className="flex items-start gap-4">
-                <span className="text-accent mt-1">▸</span>
-                <span>TCC em desenvolvimento — AgroClima</span>
-              </li>
-              <li className="flex items-start gap-4">
-                <span className="text-accent mt-1">▸</span>
-                <span>3º ano ETEC Jacinto Ferreira de Sá</span>
-              </li>
-              <li className="flex items-start gap-4">
-                <span className="text-accent mt-1">▸</span>
-                <span>Jovem Aprendiz @ Colégio Bagozzi</span>
-              </li>
-            </ul>
-
-            <div className="mt-10 pt-8 border-t border-border flex flex-wrap gap-2">
-              {['Java', 'Python', 'Spring Boot', 'Docker', 'ML'].map(tech => (
-                <span key={tech} className="px-3 py-1.5 bg-navy border border-border text-muted text-xs font-mono rounded-md group-hover:border-accent/20 transition-colors">
-                  {tech}
-                </span>
-              ))}
+            <div className="border-t border-[#1E1E1E] mt-6 pt-6">
+              <p className="text-[#4A4A4A] text-xs tracking-widest uppercase mb-2">// meta</p>
+              <p className="text-[#A0A0A0] text-xs leading-relaxed">
+                UTFPR · UFSCar · Engenharia de Software
+              </p>
             </div>
           </div>
         </div>

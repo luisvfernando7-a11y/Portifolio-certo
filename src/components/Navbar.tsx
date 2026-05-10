@@ -23,25 +23,25 @@ export default function Navbar() {
 
   return (
     <nav 
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-[#0E1117]/90 backdrop-blur-md border-b border-border shadow-sm py-4" : "bg-transparent py-6"
+      className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${
+        scrolled ? "bg-[#080808]/95 backdrop-blur-md border-[#1E1E1E] py-4" : "bg-transparent border-transparent py-6"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between">
         
         {/* Logo */}
-        <a href="#" className="font-mono font-bold text-accent text-xl tracking-tighter">
+        <a href="#" className="font-mono font-bold text-white text-lg tracking-tighter">
           LG
         </a>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
-          <div className="flex gap-6">
+        <div className="hidden md:flex items-center gap-12">
+          <div className="flex gap-8">
             {navLinks.map((link) => (
               <a 
                 key={link.name} 
                 href={link.href}
-                className="text-sm font-medium text-muted hover:text-accent transition-colors"
+                className="font-mono text-sm text-[#A0A0A0] hover:text-white transition-colors"
               >
                 {link.name}
               </a>
@@ -51,7 +51,7 @@ export default function Navbar() {
           <a 
             href="/assets/Luis_Galvani_Curriculo.pdf"
             download="Luis_Galvani_Curriculo.pdf"
-            className="px-4 py-2 border border-accent text-accent text-sm font-medium rounded hover:bg-accent/10 transition-colors"
+            className="font-mono text-sm border border-[#2A2A2A] text-[#F5F5F5] px-4 py-1.5 rounded-sm hover:border-white/60 hover:bg-white/5 transition-all"
           >
             Currículo ↓
           </a>
@@ -59,16 +59,11 @@ export default function Navbar() {
 
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden text-primary p-2"
+          className="md:hidden text-white p-2"
           onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle Menu"
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            {isOpen ? (
-              <path d="M18 6L6 18M6 6l12 12" />
-            ) : (
-              <path d="M4 12h16M4 6h16M4 18h16" />
-            )}
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            {isOpen ? <path d="M18 6L6 18M6 6l12 12" /> : <path d="M4 12h16M4 6h16M4 18h16" />}
           </svg>
         </button>
 
@@ -76,12 +71,12 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-[#161B27] border-b border-border shadow-lg py-4 px-6 flex flex-col gap-4">
+        <div className="md:hidden absolute top-full left-0 w-full bg-[#0F0F0F] border-b border-[#1E1E1E] py-8 px-6 flex flex-col gap-6 shadow-2xl">
           {navLinks.map((link) => (
             <a 
               key={link.name} 
               href={link.href}
-              className="text-base font-medium text-primary py-2 border-b border-border"
+              className="font-mono text-lg text-white border-b border-[#1E1E1E] pb-4"
               onClick={() => setIsOpen(false)}
             >
               {link.name}
@@ -90,7 +85,7 @@ export default function Navbar() {
           <a 
             href="/assets/Luis_Galvani_Curriculo.pdf"
             download="Luis_Galvani_Curriculo.pdf"
-            className="mt-4 px-4 py-3 bg-accent text-navy text-center font-medium rounded"
+            className="bg-white text-[#080808] text-center font-mono py-4 rounded-sm"
           >
             Baixar Currículo
           </a>

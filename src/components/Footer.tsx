@@ -1,12 +1,9 @@
 export default function Footer() {
   return (
-    <footer className="py-8 bg-navy border-t border-border mt-auto">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center justify-center gap-2 text-center">
-        <p className="font-mono text-xs text-muted">
+    <footer className="border-t border-[#1E1E1E] bg-[#080808] py-12">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <p className="font-mono text-[10px] text-[#4A4A4A] text-center tracking-[0.3em] uppercase">
           Luis Fernando Galvani Vieira · Backend Developer · 2026
-        </p>
-        <p className="font-mono text-xs text-faint">
-          Feito com HTML, CSS e JS puro · Hospedado na Vercel
         </p>
       </div>
     </footer>
