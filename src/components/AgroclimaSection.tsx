@@ -32,7 +32,7 @@ export default function AgroclimaSection() {
         
         {/* Título da Seção */}
         <div className="flex flex-col gap-2 mb-12">
-          <span className="font-mono text-accent text-sm">{"// projeto em destaque"}</span>
+          <span className="font-mono text-accent text-sm font-bold">{"// projeto em destaque"}</span>
           <h2 className="font-space text-3xl lg:text-4xl font-bold text-primary">
             AgroClima — Sistema de Predição Agroclimática
           </h2>
@@ -41,68 +41,67 @@ export default function AgroclimaSection() {
           </p>
         </div>
 
-        {/* Badge Flutuante */}
-        <div className="mb-8">
-          <span className="inline-flex items-center px-3 py-1 bg-accent/10 border border-accent/30 text-accent font-mono text-sm rounded-full">
-            🚧 Em Desenvolvimento · TCC 2026
-          </span>
-        </div>
-
-        {/* Mockup de Monitor CSS */}
-        <div className="flex flex-col items-center w-full max-w-5xl mx-auto mb-16">
+        {/* Mockup do Monitor + Legenda */}
+        <div className="flex flex-col items-center w-full max-w-5xl mx-auto mb-20">
           
-          {/* Base do Monitor (Tela) */}
-          <div className="w-full bg-[#0A0F1E] rounded-xl border-4 border-border overflow-hidden shadow-2xl relative flex flex-col">
-            
-            {/* Barra superior (Estilo macOS) */}
-            <div className="h-8 bg-surface w-full flex items-center px-4 gap-2 border-b border-border">
-              <div className="w-3 h-3 rounded-full bg-[#FF5F57]"></div>
-              <div className="w-3 h-3 rounded-full bg-[#FEBC2E]"></div>
-              <div className="w-3 h-3 rounded-full bg-[#28C840]"></div>
-            </div>
+          {/* Badge Flutuante */}
+          <div className="mb-6 w-full flex justify-end">
+            <span className="inline-flex items-center px-4 py-1.5 bg-accent/10 border border-accent/30 text-accent font-mono text-xs font-bold rounded-full">
+              🚧 Em Desenvolvimento · TCC 2026
+            </span>
+          </div>
 
-            {/* Área de Vídeo (16:9) */}
-            <div className="w-full relative bg-[#060D1F]" style={{ aspectRatio: "16/9" }}>
+          {/* Container do Monitor */}
+          <div className="w-full relative">
+            {/* Moldura da Tela */}
+            <div className="w-full bg-[#0A0F1E] rounded-2xl border-[3px] border-border overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] relative flex flex-col">
               
-              <video
-                ref={videoRef}
-                src="/assets/agroclima-demo.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                className="w-full h-full object-cover absolute inset-0 z-10"
-              />
+              {/* Barra superior (Estilo macOS) */}
+              <div className="h-9 bg-surface w-full flex items-center px-5 gap-2 border-b border-border">
+                <div className="w-3.5 h-3.5 rounded-full bg-[#FF5F57]"></div>
+                <div className="w-3.5 h-3.5 rounded-full bg-[#FEBC2E]"></div>
+                <div className="w-3.5 h-3.5 rounded-full bg-[#28C840]"></div>
+              </div>
 
-              {/* Fallback caso não haja vídeo */}
-              <div 
-                className="absolute inset-0 z-0 flex items-center justify-center bg-[#060D1F] border border-border"
-              >
-                <div className="font-mono text-faint text-sm">
-                  {"// demo em renderização — em breve"}
+              {/* Área do Vídeo (16:9) */}
+              <div className="w-full relative bg-navy" style={{ aspectRatio: "16/9" }}>
+                <video
+                  ref={videoRef}
+                  src="/assets/agroclima-demo.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  className="w-full h-full object-cover absolute inset-0"
+                />
+
+                {/* Fallback */}
+                <div className="absolute inset-0 flex items-center justify-center bg-navy/90 -z-10">
+                  <span className="font-mono text-faint text-sm italic">
+                    {"// demo em renderização — em breve"}
+                  </span>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Haste do monitor */}
-          <div className="w-16 h-10 bg-border"></div>
-          {/* Base do monitor */}
-          <div className="w-32 h-3 bg-border rounded-md"></div>
+            {/* Suporte do Monitor */}
+            <div className="flex flex-col items-center">
+              <div className="w-16 h-10 bg-border"></div>
+              <div className="w-36 h-3 bg-border rounded-full"></div>
+            </div>
 
-          {/* Legenda */}
-          <div className="mt-6 font-mono text-xs text-faint text-center">
-            Execução de inferência LSTM em tempo real com integração IoT — AgroClima v1.2.0
+            {/* Legenda (Item 09 - Agrupada e Centralizada) */}
+            <p className="mt-6 font-mono text-xs text-muted text-center tracking-tight">
+              Execução de inferência LSTM em tempo real com integração IoT — AgroClima v1.2.0
+            </p>
           </div>
         </div>
 
         {/* Grid de Arquitetura */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-16">
-          
-          {/* Coluna 1: O que o sistema faz */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
           <div className="flex flex-col gap-6">
-            <h3 className="font-space text-2xl font-semibold text-primary">Arquitetura</h3>
+            <h3 className="font-space text-2xl font-bold text-primary">Arquitetura</h3>
             <ul className="flex flex-col gap-4 text-muted">
               {[
                 "Ingestão de dados em tempo real via ESP32 + Zigbee mesh",
@@ -113,29 +112,27 @@ export default function AgroclimaSection() {
                 "Segregação de bancos: ODS (séries temporais) + banco de domínio"
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
-                  <span className="text-faint mt-1">▸</span>
-                  <span className="leading-relaxed">{item}</span>
+                  <span className="text-accent font-bold mt-1">▸</span>
+                  <span className="leading-relaxed text-base">{item}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Coluna 2: Stack do Projeto */}
           <div className="flex flex-col gap-6">
-            <h3 className="font-space text-2xl font-semibold text-primary">Stack</h3>
-            <div className="flex flex-wrap gap-3">
+            <h3 className="font-space text-2xl font-bold text-primary">Stack do Projeto</h3>
+            <div className="flex flex-wrap gap-2.5">
               {[
                 "Python", "FastAPI", "Spring Boot 3", "Java 17", "PyTorch", 
                 "scikit-learn", "PostgreSQL", "TimescaleDB", "Docker", "MQTT", 
                 "ESP32", "Spring Security"
               ].map(tech => (
-                <span key={tech} className="px-4 py-2 bg-surface text-primary border border-border rounded text-sm font-medium">
+                <span key={tech} className="px-4 py-2 bg-surface text-primary border border-border rounded-md text-sm font-mono font-medium hover:border-accent/30 transition-colors">
                   {tech}
                 </span>
               ))}
             </div>
           </div>
-
         </div>
 
       </div>
