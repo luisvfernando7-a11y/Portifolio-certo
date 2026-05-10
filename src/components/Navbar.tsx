@@ -1,132 +1,101 @@
 "use client";
 
-import { useState } from "react";
-
-const LINKS = [
-  { label: "Sobre", href: "#sobre" },
-  { label: "Projetos", href: "#projetos" },
-  { label: "Experiência", href: "#experiencia" },
-  { label: "Contato", href: "#contato" },
-];
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: "Sobre", href: "#sobre" },
+    { name: "Projetos", href: "#projetos" },
+    { name: "Experiência", href: "#experiencia" },
+    { name: "Contato", href: "#contato" },
+  ];
 
   return (
-    <nav style={{
-      position: "sticky",
-      top: 0,
-      zIndex: 50,
-      background: "rgba(6, 13, 31, 0.95)",
-      backdropFilter: "blur(12px)",
-      borderBottom: "1px solid var(--border)",
-    }}>
-      <div className="container" style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        height: "72px",
-      }}>
+    <nav 
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled ? "bg-[#0E1117]/90 backdrop-blur-md border-b border-border shadow-sm py-4" : "bg-transparent py-6"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between">
+        
         {/* Logo */}
-        <a href="#" style={{
-          fontFamily: "var(--font-mono)",
-          fontSize: "1.5rem",
-          fontWeight: 700,
-          color: "var(--accent-primary)",
-        }}>
+        <a href="#" className="font-mono font-bold text-accent text-xl tracking-tighter">
           LG
         </a>
 
-        {/* Desktop Links */}
-        <div style={{
-          display: "none",
-          alignItems: "center",
-          gap: "24px",
-        }} className="desktop-menu">
-          {LINKS.map(l => (
-            <a key={l.label} href={l.href} style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "0.875rem",
-              color: "var(--text-secondary)",
-            }}
-            onMouseEnter={e => e.currentTarget.style.color = "var(--accent-primary)"}
-            onMouseLeave={e => e.currentTarget.style.color = "var(--text-secondary)"}
-            >
-              {l.label}
-            </a>
-          ))}
-          
-          <a
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-8">
+          <div className="flex gap-6">
+            {navLinks.map((link) => (
+              <a 
+                key={link.name} 
+                href={link.href}
+                className="text-sm font-medium text-muted hover:text-accent transition-colors"
+              >
+                {link.name}
+              </a>
+            ))}
+          </div>
+
+          <a 
             href="/assets/Luis_Galvani_Curriculo.pdf"
             download="Luis_Galvani_Curriculo.pdf"
-            className="btn-outline"
-            style={{ padding: "8px 16px", fontSize: "0.75rem" }}
+            className="px-4 py-2 border border-accent text-accent text-sm font-medium rounded hover:bg-accent/10 transition-colors"
           >
             Currículo ↓
           </a>
         </div>
 
         {/* Mobile Toggle */}
-        <div className="mobile-menu-btn" style={{ display: "block", cursor: "pointer" }} onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            {isMenuOpen ? (
-              <>
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </>
+        <button 
+          className="md:hidden text-primary p-2"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle Menu"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            {isOpen ? (
+              <path d="M18 6L6 18M6 6l12 12" />
             ) : (
-              <>
-                <line x1="3" y1="12" x2="21" y2="12" />
-                <line x1="3" y1="6" x2="21" y2="6" />
-                <line x1="3" y1="18" x2="21" y2="18" />
-              </>
+              <path d="M4 12h16M4 6h16M4 18h16" />
             )}
           </svg>
-        </div>
+        </button>
+
       </div>
 
-      {/* Mobile Dropdown */}
-      {isMenuOpen && (
-        <div style={{
-          position: "absolute",
-          top: "72px",
-          left: 0,
-          width: "100%",
-          background: "var(--bg-secondary)",
-          borderBottom: "1px solid var(--border)",
-          padding: "24px 0",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "24px",
-          boxShadow: "0 10px 30px -10px rgba(0,0,0,0.5)",
-        }}>
-          {LINKS.map(l => (
-            <a key={l.label} href={l.href} style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "1rem",
-              color: "var(--text-primary)",
-            }} onClick={() => setIsMenuOpen(false)}>
-              {l.label}
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden absolute top-full left-0 w-full bg-[#161B27] border-b border-border shadow-lg py-4 px-6 flex flex-col gap-4">
+          {navLinks.map((link) => (
+            <a 
+              key={link.name} 
+              href={link.href}
+              className="text-base font-medium text-primary py-2 border-b border-border"
+              onClick={() => setIsOpen(false)}
+            >
+              {link.name}
             </a>
           ))}
-          <a
+          <a 
             href="/assets/Luis_Galvani_Curriculo.pdf"
             download="Luis_Galvani_Curriculo.pdf"
-            className="btn-outline"
-            onClick={() => setIsMenuOpen(false)}
+            className="mt-4 px-4 py-3 bg-accent text-navy text-center font-medium rounded"
           >
-            Currículo ↓
+            Baixar Currículo
           </a>
         </div>
       )}
-      
-      <style>{`
-        @media (min-width: 768px) {
-          .desktop-menu { display: flex !important; }
-          .mobile-menu-btn { display: none !important; }
-        }
-      `}</style>
     </nav>
   );
 }

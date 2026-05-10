@@ -28,58 +28,49 @@ const PROJECTS: Project[] = [
     tag: "Frontend",
     desc: "Este portfólio. Desenvolvido com foco em UX para recrutadores técnicos, performance no Lighthouse e identidade visual consistente.",
     stack: ["HTML", "CSS", "JavaScript"],
-    github: "https://github.com/luisvfernando7-a11y/portfolio-app", // placeholder ou link real
+    github: "https://github.com/luisvfernando7-a11y/portfolio-app",
   },
 ];
 
 export default function Projects() {
   return (
-    <section id="projetos" className="section">
-      <div className="container">
+    <section id="projetos" className="py-24 bg-navy">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         
-        <div className="section-header">
-          <span className="section-tag">{"// Repositórios"}</span>
+        <div className="mb-12">
+          <span className="font-mono text-accent text-sm">{"// Repositórios"}</span>
         </div>
 
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-          gap: "24px",
-          alignItems: "stretch"
-        }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {PROJECTS.map((p) => (
-            <div key={p.name} className="card" style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+            <div 
+              key={p.name} 
+              className="flex flex-col h-full bg-surface border border-border p-8 rounded-xl hover:border-borderHover hover:shadow-[0_0_24px_rgba(100,255,218,0.08)] transition-all duration-300"
+            >
               
-              <div style={{ marginBottom: "24px", flexGrow: 1 }}>
-                <span style={{ 
-                  fontFamily: "var(--font-mono)", 
-                  fontSize: "0.875rem", 
-                  color: "var(--accent-primary)",
-                  display: "block",
-                  marginBottom: "12px"
-                }}>
+              <div className="mb-6 flex-grow">
+                <span className="font-mono text-xs text-accent block mb-3">
                   {p.tag}
                 </span>
                 
-                <h3 style={{ 
-                  color: "var(--text-primary)", 
-                  fontSize: "1.5rem", 
-                  marginBottom: "16px" 
-                }}>
+                <h3 className="font-space text-2xl font-bold text-primary mb-4">
                   {p.name}
                 </h3>
                 
-                <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem" }}>
+                <p className="text-muted text-base leading-relaxed">
                   {p.desc}
                 </p>
               </div>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: "24px", marginTop: "auto" }}>
+              <div className="flex flex-col gap-6 mt-auto">
                 
                 {/* Badges */}
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                <div className="flex flex-wrap gap-2">
                   {p.stack.map(tech => (
-                    <span key={tech} className="badge badge-secondary" style={{ padding: "4px 10px" }}>
+                    <span 
+                      key={tech} 
+                      className="px-2.5 py-1 bg-navy border border-border text-muted text-xs font-mono rounded"
+                    >
                       {tech}
                     </span>
                   ))}
@@ -90,19 +81,7 @@ export default function Projects() {
                   href={p.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.875rem",
-                    color: "var(--text-primary)",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    fontWeight: 600,
-                    width: "fit-content",
-                    transition: "color 0.2s"
-                  }}
-                  onMouseEnter={e => e.currentTarget.style.color = "var(--accent-primary)"}
-                  onMouseLeave={e => e.currentTarget.style.color = "var(--text-primary)"}
+                  className="font-mono text-sm font-semibold text-primary inline-flex items-center gap-2 w-fit hover:text-accent transition-colors"
                 >
                   Ver no GitHub →
                 </a>

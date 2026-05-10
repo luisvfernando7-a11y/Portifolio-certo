@@ -22,60 +22,64 @@ const GitHubIcon = () => (
 
 export default function Contact() {
   return (
-    <section id="contato" style={{ background: "var(--bg-secondary)", padding: "8rem 0" }}>
-      <div className="container" style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+    <section id="contato" className="py-32 bg-surface">
+      <div className="max-w-4xl mx-auto px-6 lg:px-8 flex flex-col items-center text-center">
         
-        <h2 style={{ color: "var(--text-primary)", fontSize: "clamp(2rem, 4vw, 3rem)", marginBottom: "16px" }}>
+        <h2 className="font-space text-4xl lg:text-5xl font-bold text-primary mb-4">
           Vamos conversar?
         </h2>
-        <p style={{ color: "var(--text-secondary)", fontSize: "1.125rem", marginBottom: "48px" }}>
+        <p className="text-muted text-lg mb-16">
           Aberto a oportunidades de estágio em Backend · Respondo em até 24h
         </p>
 
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: "24px",
-          width: "100%",
-          maxWidth: "1000px",
-          marginBottom: "48px"
-        }}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mb-16">
           
-          {/* Email */}
-          <a href="mailto:luisvfernando7@gmail.com" className="card" style={{
-            display: "flex", flexDirection: "column", alignItems: "center", gap: "16px", textDecoration: "none"
-          }}>
-            <div style={{ color: "var(--accent-primary)" }}><EnvelopeIcon /></div>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.875rem", color: "var(--text-muted)", textTransform: "uppercase" }}>Email</span>
-            <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>luisvfernando7@gmail.com</span>
+          <a
+            href="mailto:luisvfernando7@gmail.com"
+            className="flex flex-col items-center justify-center gap-4 p-8 border border-border bg-surface rounded-sm hover:border-borderHover hover:bg-[#1C2333] transition-all duration-300 group"
+          >
+            <div className="text-muted group-hover:text-accent transition-colors">
+              <EnvelopeIcon />
+            </div>
+            <span className="font-mono text-xs tracking-widest text-faint group-hover:text-muted transition-colors uppercase">
+              EMAIL
+            </span>
           </a>
 
-          {/* LinkedIn */}
-          <a href="https://www.linkedin.com/in/luisfernandovieira" target="_blank" rel="noopener noreferrer" className="card" style={{
-            display: "flex", flexDirection: "column", alignItems: "center", gap: "16px", textDecoration: "none"
-          }}>
-            <div style={{ color: "var(--accent-primary)" }}><LinkedInIcon /></div>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.875rem", color: "var(--text-muted)", textTransform: "uppercase" }}>LinkedIn</span>
-            <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>linkedin.com/in/luisfernandovieira</span>
+          <a
+            href="https://www.linkedin.com/in/luisfernandovieira"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center justify-center gap-4 p-8 border border-border bg-surface rounded-sm hover:border-borderHover hover:bg-[#1C2333] transition-all duration-300 group"
+          >
+            <div className="text-muted group-hover:text-accent transition-colors">
+              <LinkedInIcon />
+            </div>
+            <span className="font-mono text-xs tracking-widest text-faint group-hover:text-muted transition-colors uppercase">
+              LINKEDIN
+            </span>
           </a>
 
-          {/* GitHub */}
-          <a href="https://github.com/luisvfernando7-a11y" target="_blank" rel="noopener noreferrer" className="card" style={{
-            display: "flex", flexDirection: "column", alignItems: "center", gap: "16px", textDecoration: "none"
-          }}>
-            <div style={{ color: "var(--accent-primary)" }}><GitHubIcon /></div>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.875rem", color: "var(--text-muted)", textTransform: "uppercase" }}>GitHub</span>
-            <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>github.com/luisvfernando7-a11y</span>
+          <a
+            href="https://github.com/luisvfernando7-a11y"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center justify-center gap-4 p-8 border border-border bg-surface rounded-sm hover:border-borderHover hover:bg-[#1C2333] transition-all duration-300 group"
+          >
+            <div className="text-muted group-hover:text-accent transition-colors">
+              <GitHubIcon />
+            </div>
+            <span className="font-mono text-xs tracking-widest text-faint group-hover:text-muted transition-colors uppercase">
+              GITHUB
+            </span>
           </a>
 
         </div>
 
-        {/* CURRÍCULO: renomeie o arquivo recebido para Luis_Galvani_Curriculo.pdf e coloque em public/assets/ */}
         <a
           href="/assets/Luis_Galvani_Curriculo.pdf"
           download="Luis_Galvani_Curriculo.pdf"
-          className="btn-primary"
-          style={{ padding: "16px 32px", fontSize: "1rem" }}
+          className="px-8 py-4 bg-accent text-navy font-semibold rounded-md hover:bg-accent/90 transition-colors inline-block"
         >
           Baixar Currículo — PDF
         </a>

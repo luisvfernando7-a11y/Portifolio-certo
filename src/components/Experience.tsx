@@ -22,88 +22,48 @@ const EXPERIENCES = [
 
 export default function Experience() {
   return (
-    <section id="experiencia" className="section">
-      <div className="container">
+    <section id="experiencia" className="py-24 bg-navy">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         
-        <div className="section-header">
-          <span className="section-tag">{"// experiência e formação"}</span>
+        <div className="mb-16">
+          <span className="font-mono text-accent text-sm">{"// experiência e formação"}</span>
         </div>
 
-        <div style={{
-          position: "relative",
-          maxWidth: "800px",
-          margin: "0 auto",
-          padding: "20px 0"
-        }}>
+        <div className="relative max-w-4xl mx-auto py-4">
           
           {/* Linha Central */}
-          <div style={{
-            position: "absolute",
-            top: 0,
-            bottom: 0,
-            left: "24px",
-            width: "2px",
-            background: "var(--border)",
-            transform: "translateX(-50%)"
-          }} className="timeline-line"></div>
+          <div className="absolute top-0 bottom-0 left-6 w-0.5 bg-border -translate-x-1/2"></div>
 
           {/* Itens */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "48px" }}>
+          <div className="flex flex-col gap-12">
             {EXPERIENCES.map((exp, i) => (
-              <div key={i} style={{
-                position: "relative",
-                paddingLeft: "64px"
-              }} className="timeline-item">
+              <div key={i} className="relative pl-16">
                 
                 {/* Ponto */}
-                <div style={{
-                  position: "absolute",
-                  left: "24px",
-                  top: "6px",
-                  width: "14px",
-                  height: "14px",
-                  borderRadius: "50%",
-                  background: "var(--accent-primary)",
-                  boxShadow: "0 0 0 4px var(--bg-primary)",
-                  transform: "translateX(-50%)",
-                  zIndex: 2
-                }}></div>
+                <div className="absolute left-6 top-1.5 w-3.5 h-3.5 rounded-full bg-accent shadow-[0_0_0_4px_#0E1117] -translate-x-1/2 z-10"></div>
 
                 {/* Conteúdo */}
-                <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
-                    <span style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.875rem",
-                      color: "var(--accent-primary)"
-                    }}>
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-3 flex-wrap">
+                    <span className="font-mono text-sm text-accent">
                       {exp.period}
                     </span>
                     {exp.badge && (
-                      <span className="badge badge-outline" style={{ fontSize: "0.7rem", padding: "2px 8px" }}>
+                      <span className="px-2 py-0.5 border border-accent text-accent text-[0.7rem] uppercase tracking-wider rounded-full">
                         {exp.badge}
                       </span>
                     )}
                   </div>
                   
-                  <h3 style={{ color: "var(--text-primary)", fontSize: "1.25rem", marginTop: "4px" }}>
+                  <h3 className="text-primary text-xl font-space font-bold mt-1">
                     {exp.title}
                   </h3>
                   
-                  <span style={{
-                    fontFamily: "var(--font-body)",
-                    color: "var(--text-secondary)",
-                    fontWeight: 500,
-                    fontSize: "0.95rem"
-                  }}>
+                  <span className="font-sans text-muted font-medium text-base">
                     {exp.local}
                   </span>
                   
-                  <p style={{
-                    color: "var(--text-secondary)",
-                    lineHeight: 1.6,
-                    marginTop: "8px"
-                  }}>
+                  <p className="text-muted leading-relaxed mt-2">
                     {exp.desc}
                   </p>
                 </div>
