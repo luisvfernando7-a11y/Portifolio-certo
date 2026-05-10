@@ -26,7 +26,7 @@ export default function Experience() {
       <div className="container">
         
         <div className="section-header">
-          <span className="section-tag">// experiência e formação</span>
+          <span className="section-tag">{"// experiência e formação"}</span>
         </div>
 
         <div style={{

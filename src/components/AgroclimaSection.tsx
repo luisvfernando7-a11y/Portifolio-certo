@@ -50,7 +50,7 @@ export default function AgroclimaSection() {
 
         {/* Título da Seção */}
         <div className="section-header">
-          <span className="section-tag">// projeto em destaque</span>
+          <span className="section-tag">{"// projeto em destaque"}</span>
           <h2 style={{ color: "var(--text-primary)", marginBottom: "8px" }}>
             AgroClima — Sistema de Predição Agroclimática
           </h2>
@@ -121,7 +121,7 @@ export default function AgroclimaSection() {
                 color: "var(--text-secondary)",
                 fontSize: "1rem"
               }}>
-                // demo em renderização — em breve
+                {"// demo em renderização — em breve"}
               </div>
             </div>
           </div>

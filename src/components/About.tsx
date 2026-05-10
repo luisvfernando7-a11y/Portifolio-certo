@@ -12,7 +12,7 @@ export default function About() {
         <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
           
           <div className="section-header" style={{ marginBottom: "16px" }}>
-            <span className="section-tag">// sobre</span>
+            <span className="section-tag">{"// sobre"}</span>
             <h2 style={{ color: "var(--text-primary)", fontSize: "2.5rem" }}>
               Luis Fernando Galvani Vieira
             </h2>
@@ -47,7 +47,7 @@ export default function About() {
           {/* Grupo Backend */}
           <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
             <h4 style={{ fontFamily: "var(--font-mono)", color: "var(--text-muted)", fontSize: "0.9rem" }}>
-              // backend
+              {"// backend"}
             </h4>
             <div style={{ color: "var(--text-primary)", fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.6 }}>
               Java 17 · Spring Boot 3 · APIs REST · JPA/Hibernate · Spring Security · Flask
@@ -57,7 +57,7 @@ export default function About() {
           {/* Grupo Dados & IA */}
           <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
             <h4 style={{ fontFamily: "var(--font-mono)", color: "var(--text-muted)", fontSize: "0.9rem" }}>
-              // dados & ia
+              {"// dados & ia"}
             </h4>
             <div style={{ color: "var(--text-primary)", fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.6 }}>
               Python · PyTorch · scikit-learn · FastAPI · Pandas · NumPy · LSTM · Monte Carlo
@@ -67,7 +67,7 @@ export default function About() {
           {/* Grupo Infra */}
           <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
             <h4 style={{ fontFamily: "var(--font-mono)", color: "var(--text-muted)", fontSize: "0.9rem" }}>
-              // infra
+              {"// infra"}
             </h4>
             <div style={{ color: "var(--text-primary)", fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.6 }}>
               Docker · Docker Compose · MySQL · PostgreSQL · TimescaleDB · H2 · Git · GitHub

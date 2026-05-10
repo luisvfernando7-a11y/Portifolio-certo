@@ -38,7 +38,7 @@ export default function Projects() {
       <div className="container">
         
         <div className="section-header">
-          <span className="section-tag">// Repositórios</span>
+          <span className="section-tag">{"// Repositórios"}</span>
         </div>
 
         <div style={{
