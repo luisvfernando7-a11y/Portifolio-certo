@@ -16,7 +16,7 @@ PERFIL PROFISSIONAL:
 - Práticas: Desenvolvimento de APIs REST, Arquitetura em camadas, Containerização.
 
 PROJETOS:
-1. Agroclima (Projeto Core)
+1. BrainSoil (Projeto Core)
    Plataforma full-stack que integra sensores IoT (ESP32), pipeline de Machine Learning (LSTM + Monte Carlo) e API REST para previsão de riscos climáticos em agricultura de precisão. Usa Python, FastAPI, Spring Boot e Docker.
 
 2. People CRUD with H2 (Concluído)
@@ -30,7 +30,7 @@ PROJETOS:
 
 TRAJETÓRIA:
 - 2024: Início do curso Técnico em Informática para Internet na ETEC Jacinto Ferreira de Sá. Primeiros projetos práticos.
-- 2025: Aprofundamento em desenvolvimento de APIs REST com Java e Spring Boot, containerização com Docker, e projetos de Machine Learning. Desenvolvimento da plataforma Agroclima.
+- 2025: Aprofundamento em desenvolvimento de APIs REST com Java e Spring Boot, containerização com Docker, e projetos de Machine Learning. Desenvolvimento da plataforma BrainSoil.
 - 2026: Conclusão prevista do curso técnico. Foco total em buscar oportunidades e estágios como desenvolvedor backend Java.
 
 DISPONIBILIDADE:
