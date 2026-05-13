@@ -1,84 +1,68 @@
-const EXPERIENCES = [
+const items = [
   {
-    period: "2026 — EM ANDAMENTO",
-    title: "TCC — SISTEMA IOT DE TELEMETRIA E PREDIÇÃO",
-    local: "ETEC Jacinto Ferreira de Sá",
-    desc: "Arquitetura de microserviços com Spring Boot 3 e Java 17. Rede ESP32 com Zigbee mesh, serviço de ML em Python para predição, Docker e orquestração TimescaleDB.",
-    badge: "EM DESENVOLVIMENTO"
+    period: '2026 — Em andamento',
+    badge: 'Em Desenvolvimento',
+    title: 'TCC — Sistema IoT de Telemetria e Predição',
+    place: 'ETEC Jacinto Ferreira de Sá',
+    desc: 'Arquitetura de microserviços com Java 17 + Spring Boot como API Gateway. Rede ESP32 com Zigbee mesh, serviço de ML em Python para predição de umidade do solo, Docker e Spring Security.',
   },
   {
-    period: "ATUAL",
-    title: "JOVEM APRENDIZ ADMINISTRATIVO",
-    local: "Colégio Bagozzi",
-    desc: "Gestão de processos administrativos, comunicação corporativa e maturidade profissional.",
+    period: 'Atual',
+    badge: 'Atual',
+    title: 'Jovem Aprendiz Administrativo',
+    place: 'Colégio Bagozzi',
+    desc: 'Gestão de processos administrativos, comunicação corporativa e trabalho colaborativo em ambiente profissional.',
   },
   {
-    period: "2024 — 2026",
-    title: "ENSINO MÉDIO TÉCNICO EM INFORMÁTICA",
-    local: "ETEC Jacinto Ferreira de Sá",
-    desc: "Formação técnica focada em algoritmos, banco de dados e engenharia de software.",
-  }
-];
+    period: '2024 — 2026',
+    badge: null,
+    title: 'Ensino Médio Técnico em Informática para Internet',
+    place: 'ETEC Jacinto Ferreira de Sá',
+    desc: 'Formação técnica com ênfase em desenvolvimento web, banco de dados e programação orientada a objetos.',
+  },
+]
 
-export default function Experience() {
+export function Experience() {
   return (
-    <section id="experiencia" className="py-24 bg-[#080808]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        
-        <div className="mb-20">
-          <p className="font-mono text-xs text-[#4A4A4A] tracking-widest uppercase mb-3">
-            // experiência e formação
-          </p>
-          <h2 className="font-space text-3xl lg:text-4xl font-bold text-white">
-            Trajetória Técnica
-          </h2>
-          <div className="w-12 h-px bg-white/20 mt-4" />
+    <section id="experiencia" className="py-24 bg-[#080C14]">
+      <div className="max-w-5xl mx-auto px-6 lg:px-8">
+
+        <div className="mb-14">
+          <p className="font-mono text-[10px] text-[#484F58] tracking-[0.2em] uppercase mb-3">// trajetória</p>
+          <h2 className="font-space text-3xl lg:text-4xl font-bold text-[#F0F6FC]">Experiência e Formação</h2>
+          <div className="w-8 h-px bg-[#60A5FA] mt-4" />
         </div>
 
-        <div className="relative max-w-4xl mx-auto py-8">
-          
-          {/* Linha Central */}
-          <div className="absolute top-0 bottom-0 left-6 w-px bg-[#1E1E1E]"></div>
+        <div className="flex flex-col gap-0">
+          {items.map((item, i) => (
+            <div key={i} className="flex gap-8 group">
 
-          {/* Itens */}
-          <div className="flex flex-col gap-16">
-            {EXPERIENCES.map((exp, i) => (
-              <div key={i} className="relative pl-16 group">
-                
-                {/* Ponto */}
-                <div className="absolute left-6 top-2 w-2 h-2 rounded-full bg-white shadow-[0_0_0_4px_#080808] -translate-x-1/2 z-10 group-hover:scale-125 transition-transform"></div>
-
-                {/* Conteúdo */}
-                <div className="flex flex-col gap-3">
-                  <div className="flex items-center gap-4 flex-wrap">
-                    <span className="font-mono text-xs text-[#F5F5F5] font-bold">
-                      {exp.period}
-                    </span>
-                    {exp.badge && (
-                      <span className="font-mono text-[9px] border border-[#2A2A2A] bg-[#0F0F0F] px-2 py-0.5 rounded-full text-[#A0A0A0] tracking-tighter">
-                        {exp.badge}
-                      </span>
-                    )}
-                  </div>
-                  
-                  <h3 className="text-white text-xl font-space font-bold">
-                    {exp.title}
-                  </h3>
-                  
-                  <span className="font-mono text-sm text-[#4A4A4A] uppercase tracking-wider">
-                    {exp.local}
-                  </span>
-                  
-                  <p className="text-[#A0A0A0] leading-relaxed mt-2 max-w-2xl text-sm">
-                    {exp.desc}
-                  </p>
-                </div>
+              {/* Linha do tempo */}
+              <div className="flex flex-col items-center">
+                <div className="w-3 h-3 rounded-full bg-[#60A5FA] mt-1.5 shrink-0 group-hover:shadow-[0_0_10px_rgba(96,165,250,0.5)] transition-shadow" />
+                {i < items.length - 1 && <div className="w-px flex-1 bg-[#1E2D45] my-2" />}
               </div>
-            ))}
-          </div>
 
+              {/* Conteúdo */}
+              <div className="pb-10 flex-1">
+                <div className="flex flex-wrap items-center gap-3 mb-1">
+                  <span className="font-mono text-xs text-[#484F58]">{item.period}</span>
+                  {item.badge && (
+                    <span className="font-mono text-[10px] text-[#60A5FA] border border-[#60A5FA]/25 px-2 py-0.5 rounded-full">
+                      {item.badge}
+                    </span>
+                  )}
+                </div>
+                <h3 className="font-space text-lg font-semibold text-[#F0F6FC] mb-0.5">{item.title}</h3>
+                <p className="text-[#60A5FA] text-sm font-mono mb-3">{item.place}</p>
+                <p className="text-[#8B949E] text-sm leading-relaxed">{item.desc}</p>
+              </div>
+
+            </div>
+          ))}
         </div>
+
       </div>
     </section>
-  );
+  )
 }

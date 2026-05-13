@@ -1,59 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
-@theme {
-  /* Fundos */
-  --color-bg-base: #080808;
-  --color-bg-surface: #0F0F0F;
-  --color-bg-elevated: #161616;
-
-  /* Texto */
-  --color-tx-primary: #F5F5F5;
-  --color-tx-secondary: #A0A0A0;
-  --color-tx-muted: #4A4A4A;
-
-  /* Bordas */
-  --color-bd-subtle: #1E1E1E;
-  --color-bd-medium: #2A2A2A;
-  --color-bd-strong: #3D3D3D;
-
-  /* Accent MÍNIMO */
-  --color-ac-white: #FFFFFF;
-
-  /* Mantendo nomes de utilitários para compatibilidade ou criando novos conforme prompt */
-  --color-navy: #080808;
-  --color-surface: #0F0F0F;
-  --color-border: #1E1E1E;
-  --color-borderHover: #2A2A2A;
-  --color-primary: #F5F5F5;
-  --color-muted: #A0A0A0;
-  --color-faint: #4A4A4A;
-  --color-accent: #FFFFFF;
-
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
-  --font-space: "Space Grotesk", sans-serif;
-
-  --shadow-card: 0 1px 3px rgba(0,0,0,0.5), 0 1px 2px rgba(0,0,0,0.3);
-  --shadow-card-lg: 0 4px 24px rgba(0,0,0,0.6);
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; color-scheme: dark; }
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
 
 body {
-  background-color: #080808;
-  color: #F5F5F5;
+  background-color: #080C14;
+  color: #C9D1D9;
   font-family: 'Inter', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Scrollbar customizada */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #080808; }
-::-webkit-scrollbar-thumb { background: #2A2A2A; border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: #3D3D3D; }
+::selection {
+  background: #60A5FA;
+  color: #080C14;
+}
 
-/* Seleção de texto */
-::selection { background: #F5F5F5; color: #080808; }
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: #080C14; }
+::-webkit-scrollbar-thumb { background: #1E2D45; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #30363D; }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
