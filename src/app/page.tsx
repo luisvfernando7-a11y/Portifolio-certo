@@ -392,7 +392,7 @@ export default function Portfolio() {
                     ref={videoRef}
                     src="/assets/agroclima-demo.mp4"
                     autoPlay loop muted playsInline preload="metadata"
-                    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+                    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', backgroundColor: '#0A0F1E' }}
                     onError={() => setVideoErr(true)}
                   />
                 ) : (
