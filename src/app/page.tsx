@@ -336,7 +336,7 @@ export default function Portfolio() {
             <p style={S.sectionLabel}>// status</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               {[
-                'TCC em desenvolvimento — AgroClima',
+                'TCC em desenvolvimento — BrainSoil',
                 '3º ano · ETEC Jacinto Ferreira de Sá',
                 'Jovem Aprendiz @ Colégio Bagozzi',
               ].map(item => (
@@ -355,12 +355,12 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* ── AGROCLIMA ──────────────────────────── */}
-      <section id="agroclima" style={S.section(C.bg1)}>
+      {/* ── BRAINSOIL ──────────────────────────── */}
+      <section id="brainsoil" style={S.section(C.bg1)}>
         <div style={S.container}>
           <div style={{ marginBottom: '48px' }}>
             <p style={S.sectionLabel}>// projeto em destaque · tcc 2026</p>
-            <h2 style={S.h2}>AgroClima — Predição Agroclimática com IA</h2>
+            <h2 style={S.h2}>BrainSoil — Predição Agroclimática com IA</h2>
             <p style={{ fontSize: '14px', color: C.t400, marginTop: '8px' }}>
               Arquitetura de microserviços · LSTM + Monte Carlo · IoT ESP32 · API REST
             </p>
@@ -376,17 +376,17 @@ export default function Portfolio() {
           </div>
 
           {/* Monitor */}
-          <div style={{ maxWidth: '860px', margin: '0 auto' }}>
-            <div style={{ border: `2px solid ${C.b1}`, borderRadius: '12px', overflow: 'hidden', boxShadow: '0 25px 60px rgba(0,0,0,0.5)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 16px', backgroundColor: C.bg2, borderBottom: `1px solid ${C.b1}` }}>
-                <span style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#FF5F57' }} />
-                <span style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#FEBC2E' }} />
-                <span style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#28C840' }} />
+          <div style={{ maxWidth: '100%', margin: '0 auto' }}>
+            <div style={{ border: `2px solid ${C.b2}`, borderRadius: '16px', overflow: 'hidden', boxShadow: '0 32px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(59,130,246,0.1)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '14px 20px', backgroundColor: C.bg2, borderBottom: `1px solid ${C.b1}` }}>
+                <span style={{ width: '14px', height: '14px', borderRadius: '50%', backgroundColor: '#FF5F57' }} />
+                <span style={{ width: '14px', height: '14px', borderRadius: '50%', backgroundColor: '#FEBC2E' }} />
+                <span style={{ width: '14px', height: '14px', borderRadius: '50%', backgroundColor: '#28C840' }} />
                 <span style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '11px', color: C.t500, marginLeft: '8px' }}>
-                  agroclima-demo · v1.2.0
+                  brainsoil-demo · v1.2.0
                 </span>
               </div>
-              <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', backgroundColor: C.bg0, overflow: 'hidden' }}>
+              <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', minHeight: '480px', backgroundColor: C.bg0, overflow: 'hidden' }}>
                 {!videoErr ? (
                   <video
                     ref={videoRef}
@@ -398,7 +398,7 @@ export default function Portfolio() {
                 ) : (
                   <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
                     <p style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '13px', color: C.t500 }}>// demo em renderização</p>
-                    <p style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '11px', color: C.a300 }}>agroclima v1.2.0 — em breve</p>
+                    <p style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '11px', color: C.a300 }}>brainsoil v1.2.0 — em breve</p>
                   </div>
                 )}
               </div>
@@ -408,7 +408,7 @@ export default function Portfolio() {
               <div style={{ width: '80px', height: '8px', backgroundColor: C.b1, borderRadius: '4px' }} />
             </div>
             <p style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '11px', color: C.t500, textAlign: 'center', marginTop: '12px' }}>
-              Execução de inferência LSTM em tempo real with integração IoT — AgroClima v1.2.0
+              Execução de inferência LSTM em tempo real with integração IoT — BrainSoil v1.2.0
             </p>
           </div>
 
