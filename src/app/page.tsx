@@ -5,10 +5,10 @@ import { useState, useEffect, useRef } from 'react'
 /* ─── DADOS ─────────────────────────────────── */
 
 const ROLES = [
-  'Java · Spring Boot 3 · APIs REST',
-  'Python · Machine Learning · IoT',
-  'Sistemas escaláveis orientados a dados',
-  'Backend Developer em formação',
+  'Engenharia de Software Avançada',
+  'Ciência de Computação Aplicada',
+  'Pesquisa de Modelos · IoT',
+  'Divulgação Científica · Tech Speaker',
 ]
 
 const PROJECTS = [
@@ -66,22 +66,22 @@ const SKILLS = [
 
 const EXP = [
   {
-    period: '2026 — Em andamento', badge: 'Em Desenvolvimento',
-    title: 'TCC — Sistema IoT de Telemetria e Predição',
-    place: 'ETEC Jacinto Ferreira de Sá',
-    desc: 'Arquitetura de microserviços com Java 17 + Spring Boot como API Gateway. Rede ESP32 com Zigbee mesh, serviço de ML em Python para predição de umidade do solo, Docker e Spring Security.',
+    period: '2026 — Presente', badge: 'Pesquisa Ativa',
+    title: 'Pesquisador Líder — Sistema IoT de Telemetria e Predição (BrainSoil)',
+    place: 'Pesquisa & Desenvolvimento',
+    desc: 'Engenharia de arquitetura de microserviços com Java 17 + Spring Boot (API Gateway). Desenvolvimento de redes ESP32 com topologia Zigbee mesh e modelagem de Machine Learning preditiva em Python, orquestrados via Docker.',
   },
   {
-    period: 'Atual', badge: 'Atual',
-    title: 'Jovem Aprendiz Administrativo',
-    place: 'Colégio Bagozzi',
-    desc: 'Gestão de processos administrativos, comunicação corporativa e trabalho colaborativo em ambiente profissional.',
+    period: '2025 — Presente', badge: 'Speaker',
+    title: 'Palestrante de Tecnologia & Divulgador Científico',
+    place: 'Comunidade de Desenvolvimento',
+    desc: 'Condução de circuitos imersivos de palestras tecnológicas. Destaque para o seminário massivo de 4 horas focado em Engenharia de Software e Sistemas, impactando diretamente mais de 300 membros do setor de tecnologia.',
   },
   {
     period: '2024 — 2026', badge: null,
-    title: 'Ensino Médio Técnico em Informática para Internet',
-    place: 'ETEC Jacinto Ferreira de Sá',
-    desc: 'Formação técnica com ênfase em desenvolvimento web, banco de dados e programação orientada a objetos.',
+    title: 'Pesquisa Acadêmica Aplicada',
+    place: 'Instituição de Ensino Técnico',
+    desc: 'Aprofundamento científico e prático em desenvolvimento de sistemas complexos, estruturação avançada de banco de dados e evolução dos paradigmas de programação orientada a objetos.',
   },
 ]
 
@@ -301,7 +301,7 @@ export default function Portfolio() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: C.a400, display: 'inline-block' }} />
-              <span style={{ ...S.sectionLabel, marginBottom: 0 }}>Backend Developer</span>
+              <span style={{ ...S.sectionLabel, marginBottom: 0 }}>Applied Computer Scientist</span>
             </div>
 
             <div style={{ lineHeight: 1 }}>
@@ -318,11 +318,11 @@ export default function Portfolio() {
             </p>
 
             <p style={{ fontSize: '15px', color: C.t400, lineHeight: 1.7, maxWidth: '440px' }}>
-              Desenvolvedor backend de 17 anos. Construo{' '}
-              <span style={{ color: C.t200, fontWeight: 500 }}>APIs REST</span>,{' '}
+              Cientista de Computação Aplicada & Pesquisador. Construo{' '}
+              <span style={{ color: C.t200, fontWeight: 500 }}>arquiteturas de alta performance</span>,{' '}
               <span style={{ color: C.t200, fontWeight: 500 }}>pipelines de ML</span> e{' '}
-              <span style={{ color: C.t200, fontWeight: 500 }}>sistemas IoT</span>{' '}
-              com Java e Python — focado em arquiteturas que funcionam em produção.
+              <span style={{ color: C.t200, fontWeight: 500 }}>ecossistemas IoT</span>{' '}
+              na vanguarda do desenvolvimento tecnológico.
             </p>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
@@ -341,12 +341,12 @@ export default function Portfolio() {
 
           {/* STATUS CARD */}
           <div style={{ border: `1px solid ${C.b1}`, backgroundColor: C.bg2, borderRadius: '12px', padding: '24px' }}>
-            <p style={S.sectionLabel}>// status</p>
+            <p style={S.sectionLabel}>// status da pesquisa</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               {[
-                'TCC em desenvolvimento — BrainSoil',
-                '3º ano · ETEC Jacinto Ferreira de Sá',
-                'Jovem Aprendiz @ Colégio Bagozzi',
+                'Arquitetura em desenvolvimento — BrainSoil',
+                'Pesquisa Aplicada em Modelos IoT',
+                'Tech Speaker e Divulgador Científico',
               ].map(item => (
                 <div key={item} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
                   <span style={{ color: C.a400, fontSize: '11px', marginTop: '3px', flexShrink: 0 }}>▸</span>
@@ -355,8 +355,8 @@ export default function Portfolio() {
               ))}
             </div>
             <div style={{ borderTop: `1px solid ${C.b1}`, marginTop: '20px', paddingTop: '16px' }}>
-              <p style={S.sectionLabel}>// foco acadêmico</p>
-              <p style={{ fontSize: '12px', color: C.t400 }}>UTFPR · UFSCar · Eng. de Software</p>
+              <p style={S.sectionLabel}>// escopo de atuação</p>
+              <p style={{ fontSize: '12px', color: C.t400 }}>Eng. de Software Avançada · Ciência de Dados</p>
             </div>
           </div>
 
@@ -367,7 +367,7 @@ export default function Portfolio() {
       <section id="brainsoil" style={S.section(C.bg1)}>
         <div style={S.container}>
           <div style={{ marginBottom: '48px' }}>
-            <p style={S.sectionLabel}>// projeto em destaque · tcc 2026</p>
+            <p style={S.sectionLabel}>// laboratório · p&d</p>
             <h2 style={S.h2}>BrainSoil — Predição Agroclimática com IA</h2>
             <p style={{ fontSize: '14px', color: C.t400, marginTop: '8px' }}>
               Arquitetura de microserviços · LSTM + Monte Carlo · IoT ESP32 · API REST
@@ -378,7 +378,7 @@ export default function Portfolio() {
               color: C.a300, border: `1px solid ${C.a300}30`,
               backgroundColor: `${C.a300}08`, borderRadius: '20px', padding: '4px 12px',
             }}>
-              Em Desenvolvimento · TCC 2026
+              Pesquisa Avançada · Em Desenvolvimento
             </span>
             <div style={S.divider} />
           </div>
@@ -479,16 +479,16 @@ export default function Portfolio() {
             <p style={S.sectionLabel}>// sobre</p>
             <h2 style={S.h2}>Luis Fernando Galvani Vieira</h2>
             <p style={{ fontSize: '13px', color: C.a300, fontFamily: '"JetBrains Mono", monospace', marginTop: '6px' }}>
-              Backend Developer · 17 anos · Ourinhos, SP
+              Cientista de Computação Aplicada · Tech Speaker · Pesquisador
             </p>
             <div style={S.divider} />
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: '56px' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', fontSize: '14px', color: C.t400, lineHeight: 1.8 }}>
               {[
-                <>Especialista em unir a robustez do <b style={{ color: C.t200, fontWeight: 500 }}>Java</b> com a inteligência do <b style={{ color: C.t200, fontWeight: 500 }}>Python</b> para projetar sistemas escaláveis orientados a dados. Construo desde pipelines de Machine Learning com PyTorch e FastAPI até camadas de orquestração em Spring Boot.</>,
-                <>Atualmente no 3º ano do Ensino Médio Técnico em Informática para Internet na <span style={{ color: C.t200 }}>ETEC Jacinto Ferreira de Sá</span>, com conclusão prevista para 2026. Atuando como Jovem Aprendiz no <span style={{ color: C.t200 }}>Colégio Bagozzi</span>, desenvolvendo comunicação profissional em ambiente corporativo.</>,
-                <>Direcionando minha formação para engenharia de software e ciência de dados, com interesse em <span style={{ color: C.t200 }}>UTFPR</span> e <span style={{ color: C.t200 }}>UFSCar</span>. Inglês intermediário para leitura técnica.</>,
+                <>Especialista na interseção entre a robustez arquitetural do <b style={{ color: C.t200, fontWeight: 500 }}>Java</b> e a inteligência computacional do <b style={{ color: C.t200, fontWeight: 500 }}>Python</b>. O escopo da minha pesquisa engloba desde o treinamento de modelos probabilísticos até a orquestração e deploy de ecossistemas escaláveis orientados a dados.</>,
+                <>Como <span style={{ color: C.t200 }}>Cientista de Computação Aplicada</span>, construo soluções na vanguarda tecnológica. Minha atuação centraliza-se no projeto de sistemas complexos de alta performance, pesquisa de algoritmos não-triviais e na estruturação profunda de dados.</>,
+                <>Paralelamente à engenharia, atuo ativamente como <span style={{ color: C.t200 }}>Tech Speaker e Divulgador Científico</span>. Um marco recente foi a condução de um circuito técnico imersivo de 4 horas, focado em lógica computacional e evolução de software, impactando diretamente mais de 300 pesquisadores e estudantes no setor de tecnologia.</>,
               ].map((text, i) => <p key={i}>{text}</p>)}
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
