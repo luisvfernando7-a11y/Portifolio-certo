@@ -27,6 +27,14 @@ const PROJECTS = [
     url: 'https://github.com/luisvfernando7-a11y/crud1-spring-boote',
   },
   {
+    tag: 'P&D · Eng. de Interface',
+    title: 'Soluções Vieira',
+    desc: 'Projeto de Pesquisa & Desenvolvimento em Engenharia de Interface. Demonstração de Web Performance Optimization (WPO), arquitetado sob padrões de HTML5 Semântico e conformidade com Acessibilidade Digital (a11y).',
+    stack: ['HTML5 Semântico', 'CSS3 Avançado', 'WPO / a11y'],
+    url: 'https://github.com/luisvfernando7-a11y/solucoes-vieira-landingpage',
+    linkText: 'Acessar Documentação Técnica',
+  },
+  {
     tag: 'Frontend',
     title: 'Portfolio App',
     desc: 'Este portfólio. Desenvolvido com Next.js 15, Tailwind CSS e foco em UX para recrutadores técnicos.',
@@ -456,7 +464,7 @@ export default function Portfolio() {
                 </div>
                 <a href={p.url} target="_blank" rel="noopener noreferrer"
                    style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '12px', color: C.a300, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                  Ver no GitHub <ArrowIcon />
+                  {(p as any).linkText || 'Ver no GitHub'} <ArrowIcon />
                 </a>
               </div>
             ))}
