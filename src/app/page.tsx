@@ -31,8 +31,8 @@ const PROJECTS = [
     title: 'Soluções Vieira',
     desc: 'Projeto de Pesquisa & Desenvolvimento em Engenharia de Interface. Demonstração de Web Performance Optimization (WPO), arquitetado sob padrões de HTML5 Semântico e conformidade com Acessibilidade Digital (a11y).',
     stack: ['HTML5 Semântico', 'CSS3 Avançado', 'WPO / a11y'],
-    url: 'https://github.com/luisvfernando7-a11y/solucoes-vieira-landingpage',
-    linkText: 'Acessar Documentação Técnica',
+    url: 'https://solucoes-vieira.vercel.app',
+    linkText: 'Visualizar Projeto Online',
   },
   {
     tag: 'Frontend',
