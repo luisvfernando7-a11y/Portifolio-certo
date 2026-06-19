@@ -148,7 +148,7 @@ const S = {
   container: {
     maxWidth: '1024px',
     margin: '0 auto',
-    padding: '0 32px',
+    padding: '0 20px',
   } as React.CSSProperties,
   sectionLabel: {
     fontFamily: '"JetBrains Mono", monospace',
@@ -275,14 +275,16 @@ export default function Portfolio() {
         backdropFilter: 'blur(12px)',
         display: 'flex', alignItems: 'center',
       }}>
-        <div style={{ ...S.container, display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+        <div style={S.container} className="flex items-center justify-between w-full">
           <a href="#" style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '14px', fontWeight: 700, color: C.t100, textDecoration: 'none', letterSpacing: '0.2em' }}>
             LG
           </a>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
-            {[['Sobre','#sobre'],['Projetos','#projetos'],['Experiência','#experiencia'],['Contato','#contato']].map(([l,h]) => (
-              <a key={l} href={h} style={{ fontSize: '13px', color: C.t400, textDecoration: 'none' }}>{l}</a>
-            ))}
+          <div className="flex items-center gap-4 md:gap-8">
+            <div className="hidden md:flex items-center gap-8">
+              {[['Sobre','#sobre'],['Projetos','#projetos'],['Experiência','#experiencia'],['Contato','#contato']].map(([l,h]) => (
+                <a key={l} href={h} style={{ fontSize: '13px', color: C.t400, textDecoration: 'none' }}>{l}</a>
+              ))}
+            </div>
             <a
               href="/assets/Luis_Galvani_Curriculo.pdf"
               download="Luis_Galvani_Curriculo.pdf"
@@ -296,7 +298,7 @@ export default function Portfolio() {
 
       {/* ── HERO ───────────────────────────────── */}
       <section style={{ ...S.section(C.bg0), paddingTop: '120px', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
-        <div style={{ ...S.container, display: 'grid', gridTemplateColumns: '1fr 300px', gap: '64px', alignItems: 'center' }}>
+        <div style={S.container} className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-10 md:gap-16 items-center">
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -394,7 +396,7 @@ export default function Portfolio() {
                   brainsoil-demo · v1.2.0
                 </span>
               </div>
-              <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', minHeight: '480px', backgroundColor: C.bg0, overflow: 'hidden' }}>
+              <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', minHeight: '240px', backgroundColor: C.bg0, overflow: 'hidden' }}>
                 {!videoErr ? (
                   <video
                     ref={videoRef}
@@ -421,7 +423,7 @@ export default function Portfolio() {
           </div>
 
           {/* Arch + Stack */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px', marginTop: '56px' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 mt-10 md:mt-14">
             <div>
               <p style={S.sectionLabel}>// o que o sistema faz</p>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -453,7 +455,7 @@ export default function Portfolio() {
             <h2 style={S.h2}>Projetos Selecionados</h2>
             <div style={S.divider} />
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {PROJECTS.map(p => (
               <div key={p.title} style={S.card}>
                 <span style={S.badge}>{p.tag}</span>
@@ -483,7 +485,7 @@ export default function Portfolio() {
             </p>
             <div style={S.divider} />
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: '56px' }}>
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_280px] gap-10 md:gap-14">
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', fontSize: '14px', color: C.t400, lineHeight: 1.8 }}>
               {[
                 <>Especialista na interseção entre a robustez arquitetural do <b style={{ color: C.t200, fontWeight: 500 }}>Java</b> e a inteligência computacional do <b style={{ color: C.t200, fontWeight: 500 }}>Python</b>. O escopo da minha pesquisa engloba desde o treinamento de modelos probabilísticos até a orquestração e deploy de ecossistemas escaláveis orientados a dados.</>,
@@ -515,7 +517,7 @@ export default function Portfolio() {
           </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             {EXP.map((e, i) => (
-              <div key={i} style={{ display: 'flex', gap: '32px' }}>
+              <div key={i} className="flex gap-4 md:gap-8">
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                   <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: C.a400, flexShrink: 0, marginTop: '4px', boxShadow: `0 0 12px ${C.a400}60` }} />
                   {i < EXP.length - 1 && <div style={{ width: '1px', flex: 1, backgroundColor: C.b1, margin: '6px 0' }} />}
@@ -583,7 +585,7 @@ export default function Portfolio() {
 
       {/* ── FOOTER ─────────────────────────────── */}
       <footer style={{ borderTop: `1px solid ${C.b1}`, backgroundColor: C.bg0, padding: '32px 0' }}>
-        <div style={{ ...S.container, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={S.container} className="flex flex-col-reverse md:flex-row items-center justify-between gap-6 md:gap-0">
           <p style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '11px', color: C.t500 }}>
             Luis Galvani · {new Date().getFullYear()}
           </p>
