@@ -1,183 +1,95 @@
-# Portfólio Profissional - Luís Fernando
+# Luis Galvani — Portfólio
 
-Portfólio desenvolvido com Next.js para apresentar experiência como desenvolvedor backend com foco em Python e machine learning.
+Portfólio pessoal desenvolvido com Next.js, TypeScript e Tailwind CSS. Apresenta trajetória
+acadêmica, projetos, palestras técnicas e experiência prática em desenvolvimento backend e
+engenharia de dados.
 
----
-
-## Visão Geral
-
-Portfólio profissional moderno e responsivo, construído com tecnologias contemporâneas de desenvolvimento web. Apresenta projetos, habilidades técnicas e informações de contato de forma clara e direta.
+🔗 **Site no ar:** [luisgalvani.vercel.app](https://luisgalvani.vercel.app)
 
 ---
 
-## Tecnologias Utilizadas
+## Stack
 
-- **Framework**: Next.js 16.0.10 com Turbopack
-- **Linguagem**: TypeScript com React
-- **Estilização**: CSS customizado com variáveis CSS
-- **Tipografia**: Syne (display), DM Sans (body), DM Mono (mono)
-- **Deploy**: Vercel
-- **Gerenciador de pacotes**: npm
-
----
-
-## Seções do Site
-
-**Hero** — Apresentação principal com título, bio profissional e tecnologias principais.
-
-**Projetos** — Portfólio de trabalhos desenvolvidos, incluindo AgroSense IoT (TCC em progress).
-
-**Sobre** — Informações pessoais, trajetória, timeline de eventos e habilidades técnicas.
-
-**Contato** — Forma direta de comunicação via e-mail.
+- **Framework:** Next.js 16 (App Router, Turbopack)
+- **Linguagem:** TypeScript
+- **Estilização:** Tailwind CSS + estilos inline com tokens centralizados (`src/data/theme.ts`)
+- **Animação:** Framer Motion (scroll-linked animations) + Lenis (smooth scroll)
+- **Deploy:** Vercel
 
 ---
 
-## Como Executar Localmente
-
-### Requisitos
-
-- Node.js 18.x ou superior
-- npm ou yarn
-
-### Passos
-
-1. **Clonar e acessar o repositório**
-```bash
-git clone <url-do-repositorio>
-cd Portifolio-certo
-```
-
-2. **Instalar dependências**
-```bash
-npm install
-```
-
-3. **Executar em desenvolvimento**
-```bash
-npm run dev
-```
-Acesse em `http://localhost:3000`
-
-4. **Build para produção**
-```bash
-npm run build
-npm run start
-```
-
----
-
-## Estrutura do Projeto
+## Estrutura do projeto
 
 ```
 src/
-├── app/
-│   ├── page.tsx           # Página principal
-│   ├── layout.tsx         # Layout global
-│   ├── globals.css        # Estilos globais
-│   └── api/
-│       └── chat/route.ts  # Endpoint opcional
-├── components/
-│   ├── Navbar.tsx         # Navegação principal
-│   ├── Hero.tsx           # Seção principal
-│   ├── Projects.tsx       # Projetos
-│   ├── About.tsx          # Sobre
-│   ├── Contact.tsx        # Contato
-│   ├── Skills.tsx         # Habilidades
-│   ├── Footer.tsx         # Rodapé
-│   └── IntroAnimation.tsx # Animação de entrada
-└── context/
-    └── LanguageContext.tsx # Contexto de idioma
+  app/
+    page.tsx          # orquestra a ordem das seções
+    layout.tsx
+    globals.css        # design tokens (cores, tipografia, spacing)
+  components/           # um componente por seção da página
+    Nav.tsx
+    Hero.tsx
+    BrainSoil.tsx       # projeto de TCC em destaque, com zoom-on-scroll
+    Talks.tsx           # palestras, com carrossel de fotos
+    Carousel.tsx
+    Projects.tsx
+    ClientWork.tsx
+    About.tsx
+    Timeline.tsx        # trajetória, com linha animada no scroll
+    Contact.tsx
+    Footer.tsx
+    icons.tsx
+  data/                  # conteúdo separado da apresentação
+    theme.ts
+    projects.ts
+    talks.ts
+    clientwork.ts
+    experience.ts
+  lib/
+    SmoothScroll.tsx     # provider do Lenis, respeita prefers-reduced-motion
+public/
+  about/                 # foto da seção Sobre
+  talks/                 # fotos das palestras
+  assets/                # currículo em PDF, vídeo demo, previews
 ```
 
----
-
-## Paleta de Cores
-
-| Papel | Cor | Código |
-|------|-----|--------|
-| Fundo | Preto | #000000 |
-| Superfície | Cinza escuro | #0D0D14 |
-| Texto | Branco | #FFFFFF |
-| Texto muted | Cinza claro | #AAAAB8 |
-| Accent | Azul | #378ADD |
-| Verde | Verde menta | #2DD4A0 |
+Cada seção é um componente isolado e o conteúdo (textos, links, dados de projetos e palestras)
+fica em `src/data/`, separado da apresentação. Para atualizar informações, normalmente basta
+editar os arquivos em `data/` — não é necessário mexer nos componentes.
 
 ---
 
-## Deploy na Vercel
-
-O projeto está pronto para deploy automático na Vercel.
-
-### Passos
-
-1. Conecte o repositório ao seu painel da Vercel
-2. Configure variáveis de ambiente (se necessário)
-3. Deploy automático a cada push para `main`
+## Rodando localmente
 
 ```bash
-vercel deploy
+npm install
+npm run dev
+```
+
+Abre em [http://localhost:3000](http://localhost:3000).
+
+```bash
+npm run build   # build de produção
+npm run lint    # checagem de lint
 ```
 
 ---
 
-## Contato
+## Variáveis de ambiente
 
-Email: [luisvfernando7@gmail.com](mailto:luisvfernando7@gmail.com)
+Nenhuma variável de ambiente é necessária para rodar o projeto atualmente. Se `.env.local`
+existir localmente, ele **não é versionado** (está no `.gitignore`).
+
+---
+
+## Deploy
+
+Deploy contínuo via Vercel: todo push para a branch principal gera um novo deploy de produção
+automaticamente.
 
 ---
 
 ## Licença
 
-Projeto pessoal - uso exclusivamente como portfólio profissional.
-
-1. Clone the repository:
-
-    git clone https://github.com/paulorag/portfolio.git
-
-2. Navigate to the project directory:
-
-    cd portfolio
-
-3. Install dependencies:
-
-    npm install
-
-    # or
-
-    yarn install
-
-4. Run the development server:
-
-    npm run dev
-
-5. Open your browser:
-   Visit http://localhost:3000 to see the application running.
-
----
-
-## 📂 Project Structure
-
-    src/
-    ├── app/              # App Router pages and layout
-    ├── components/       # Reusable UI components
-    │   ├── layout/       # Header, Footer
-    │   ├── sections/     # Hero, About, Projects
-    │   └── ui/           # Buttons, Scroll wrappers
-    ├── context/          # React Context (Language/i18n)
-    ├── lib/              # Utilities and Dictionary data
-    └── public/           # Static assets (images, icons)
-
----
-
-## 📫 Contact
-
-Developed by **Paulo Gomes**.
-
--   **LinkedIn:** [Paulo Gomes](https://linkedin.com/in/paulorag)
--   **GitHub:** [paulorag](https://github.com/paulorag)
--   **Email:** devpaulorag@gmail.com
-
----
-
-© 2025 Paulo Gomes. All rights reserved.
+Código aberto para fins de estudo e portfólio. Sinta-se à vontade para se inspirar na
+estrutura — pediria apenas que não copiasse o conteúdo textual/pessoal diretamente.

@@ -1,0 +1,113 @@
+// Paleta e estilos compartilhados entre todas as seções.
+// Monocromático (preto / branco / cinza) — o "accent" é o próprio branco,
+// usado com intenção em CTAs, hovers e estados ativos.
+
+export const C = {
+  bg0: '#0A0A0A',
+  bg1: '#141414',
+  bg2: '#1C1C1C',
+  bg3: '#262624',
+
+  t100: '#F5F5F3',
+  t300: '#C9C9C5',
+  t400: '#A8A8A4',
+  t500: '#7A7A76',
+  t600: '#6B6B67',
+
+  b1: '#2A2A28',
+  b2: '#3D3D3A',
+
+  accent: '#F5F5F3',
+} as const
+
+export const S = {
+  section: (bg: string) => ({
+    padding: 'clamp(64px, 10vw, 128px) 0',
+    backgroundColor: bg,
+  }),
+  container: {
+    maxWidth: '1200px',
+    margin: '0 auto',
+    padding: '0 24px',
+  } as React.CSSProperties,
+  sectionLabel: {
+    fontFamily: '"JetBrains Mono", monospace',
+    fontSize: '12px',
+    color: C.t600,
+    letterSpacing: '0.18em',
+    textTransform: 'uppercase' as const,
+    marginBottom: '14px',
+  },
+  h2: {
+    fontFamily: '"Space Grotesk", sans-serif',
+    fontSize: 'clamp(1.5rem, 3.2vw, 2.25rem)',
+    fontWeight: 600,
+    color: C.t100,
+    lineHeight: 1.2,
+    letterSpacing: '-0.01em',
+  },
+  divider: {
+    width: '40px',
+    height: '1px',
+    backgroundColor: C.b2,
+    marginTop: '20px',
+  },
+  card: {
+    border: `1px solid ${C.b1}`,
+    backgroundColor: C.bg1,
+    borderRadius: '4px',
+    padding: '32px',
+    display: 'flex',
+    flexDirection: 'column' as const,
+    gap: '18px',
+    transition: 'border-color 0.25s ease',
+  },
+  badge: {
+    fontFamily: '"JetBrains Mono", monospace',
+    fontSize: '11px',
+    color: C.t500,
+    letterSpacing: '0.14em',
+    textTransform: 'uppercase' as const,
+  },
+  techPill: {
+    fontFamily: '"JetBrains Mono", monospace',
+    fontSize: '12px',
+    color: C.t400,
+    border: `1px solid ${C.b1}`,
+    borderRadius: '3px',
+    padding: '4px 10px',
+    display: 'inline-block',
+  },
+  btnPrimary: {
+    fontFamily: '"JetBrains Mono", monospace',
+    fontSize: '14px',
+    fontWeight: 600,
+    backgroundColor: C.t100,
+    color: C.bg0,
+    border: 'none',
+    borderRadius: '3px',
+    padding: '13px 26px',
+    cursor: 'pointer',
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '8px',
+    textDecoration: 'none',
+    transition: 'opacity 0.2s',
+  },
+  btnOutline: {
+    fontFamily: '"JetBrains Mono", monospace',
+    fontSize: '14px',
+    fontWeight: 500,
+    backgroundColor: 'transparent',
+    color: C.t300,
+    border: `1px solid ${C.b2}`,
+    borderRadius: '3px',
+    padding: '13px 26px',
+    cursor: 'pointer',
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '8px',
+    textDecoration: 'none',
+    transition: 'all 0.2s',
+  },
+}

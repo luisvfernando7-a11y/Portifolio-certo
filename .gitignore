@@ -1,6 +1,32 @@
-node_modules
-.next
-.env.local
+# dependências
+/node_modules
+
+# build
+/.next/
+/out/
+/build
+
+# variáveis de ambiente — NUNCA versionar
+.env
 .env*.local
-temp_files
+.env.production
+.env.development
+
+# vercel
 .vercel
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# editor / SO
+.DS_Store
+*.pem
+.vscode/*
+!.vscode/extensions.json
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
