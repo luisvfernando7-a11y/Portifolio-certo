@@ -62,13 +62,14 @@ button { font: inherit; }
 
 .hero-role { max-width: 1000px; font-size: clamp(1.1rem, 2.2vw, 1.7rem); font-weight: 600; line-height: 1.5; color: var(--ink); }
 .hero-role-separator { color: var(--muted); padding: 0 .35em; }
-.stack-carousel { margin-top: 48px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--white); }
+.stack-carousel { margin-top: 28px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--white); }
 .stack-carousel-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 0; }
-.stack-carousel-window { overflow: hidden; padding: 20px 0 32px; }
-.stack-carousel-track { display: flex; width: max-content; animation: stack-drift 68s linear infinite; }
-.stack-carousel-group { display: flex; align-items: center; gap: 40px; padding-right: 40px; flex-shrink: 0; margin: 0; list-style: none; }
-.stack-carousel-item { display: flex; width: 64px; height: 64px; flex-shrink: 0; align-items: center; justify-content: center; }
-.stack-carousel-item img { width: 48px; height: 48px; object-fit: contain; filter: grayscale(1) contrast(1.15); }
+.stack-carousel-window { overflow: hidden; padding: 12px 0 24px; }
+.stack-carousel-track { display: flex; width: max-content; animation: stack-drift 96s linear infinite; }
+.stack-carousel-group { display: flex; align-items: center; gap: 24px; padding-right: 24px; flex-shrink: 0; margin: 0; list-style: none; }
+.stack-carousel-item { display: flex; flex-direction: column; gap: 12px; width: 96px; min-height: 92px; flex-shrink: 0; align-items: center; justify-content: center; }
+.stack-carousel-item img { width: 56px; height: 56px; object-fit: contain; filter: grayscale(1) contrast(1.15); }
+.stack-carousel-label { font-size: 11px; font-weight: 500; color: var(--muted); white-space: nowrap; }
 .stack-carousel[data-paused="true"] .stack-carousel-track,
 .stack-carousel-window:hover .stack-carousel-track { animation-play-state: paused; }
 .stack-motion-toggle { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 6px; color: var(--ink); background: var(--white); }
@@ -78,4 +79,22 @@ button { font: inherit; }
   .stack-carousel-track { animation: none; width: 100%; transform: none; }
   .stack-carousel-group { flex-wrap: wrap; justify-content: center; padding-right: 0; gap: 16px; }
   .stack-carousel-group[aria-hidden="true"], .stack-motion-toggle { display: none; }
+}
+
+.hero-intro h1 { animation: quiet-enter .7s ease-out both; }
+.section-enter > div { animation: quiet-enter .65s ease-out both; }
+@keyframes quiet-enter { from { opacity: .3; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.certificate-document { aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center; }
+.certificate-document img { max-height: 100%; filter: none; }
+.certificate-card img { filter: none; }
+.certificate-original { text-underline-offset: 5px; }
+@media (hover: hover) {
+  .certificate-card, .contact-link { transition: transform .25s ease, border-color .25s ease; }
+  .certificate-card:hover, .contact-link:hover { transform: translateY(-3px); }
+  .link-arrow { position: relative; }
+  .link-arrow::after { content: ''; position: absolute; left: 8px; right: 8px; bottom: 7px; height: 1px; background: var(--black); transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
+  .link-arrow:hover::after { transform: scaleX(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .certificate-card:hover, .contact-link:hover { transform: none; }
 }

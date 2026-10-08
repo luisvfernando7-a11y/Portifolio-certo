@@ -37,9 +37,9 @@ export default function Certificates() {
             <li key={certificate.id}>
               <button type="button" aria-haspopup="dialog" aria-label={`Ver certificado: ${certificate.title}`}
                 onClick={event => { triggerRef.current = event.currentTarget; setSelected(certificate) }}
-                className="flex h-full w-full flex-col overflow-hidden rounded-lg border border-line bg-white text-left transition-colors hover:border-black">
+                className="certificate-card flex h-full w-full flex-col overflow-hidden rounded-lg border border-line bg-white text-left transition-colors hover:border-black">
                 <span className="relative block aspect-[4/3] w-full border-b border-line bg-white">
-                  <Image src={certificate.image} alt={`Certificado ${certificate.title}`} fill unoptimized className="object-scale-down p-3" />
+                  <Image src={certificate.image} alt={`Certificado ${certificate.title}`} fill unoptimized className="object-contain p-3" />
                 </span>
                 <span className="flex flex-1 flex-col gap-3 p-5">
                   <span className="text-lg font-semibold text-black">{certificate.title}</span>
@@ -63,9 +63,10 @@ export default function Certificates() {
             </div>
             <button type="button" autoFocus aria-label="Fechar certificado" onClick={close} className="flex size-11 shrink-0 items-center justify-center rounded-md border border-line bg-white text-black hover:border-black"><X aria-hidden="true" size={20} /></button>
           </div>
-          <div className="flex w-full justify-center rounded border border-line bg-white p-3">
-            <Image src={selected.image} alt={`Certificado ${selected.title}`} unoptimized className="h-auto max-w-full" />
+          <div className="certificate-document rounded border border-line bg-white p-3">
+            <Image src={selected.image} alt={`Certificado ${selected.title}`} unoptimized className="h-auto w-full object-contain" />
           </div>
+          <a href={selected.image.src} target="_blank" rel="noopener noreferrer" className="certificate-original mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-ink">Abrir documento original <span aria-hidden="true">↗</span><span className="sr-only"> (nova aba)</span></a>
           <h4 className="mb-3 mt-6 font-semibold text-ink">Competências relacionadas</h4>
           <ul className="flex flex-wrap gap-2">{selected.skills.map(skill => <li key={skill} className="rounded border border-line bg-surface px-3 py-1 text-sm text-ink">{skill}</li>)}</ul>
         </div>}

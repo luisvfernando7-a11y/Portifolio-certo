@@ -83,3 +83,22 @@ dos arquivos anteriores. Os demais certificados têm 484 × 374 px.
 
 Na retomada, ESLint completo, TypeScript e build de produção passaram.
 As capturas anteriores de mobile e desktop continuam disponíveis em /tmp.
+
+## Refinamento da apresentação
+
+Hero com título profissional completo e carrossel logo abaixo das competências.
+Ícones de 56 px com nomes visíveis, deslocamento contínuo para a direita de
+25 px/s (ciclo de 96 segundos), pausa por botão/hover e modo estático com movimento reduzido.
+Branco permanece predominante; preto e cinza compõem tipografia, linhas e controles.
+Entradas sutis nas seções e interações de hover respeitam movimento reduzido.
+
+Certificados com quadros 4:3 consistentes, conteúdo integral sem recorte, cores
+originais, modal responsivo e link para abrir o documento original. A padronização
+é de apresentação: os pixels dos arquivos originais foram preservados, sem
+afirmação de recuperação de detalhes nos certificados de 484 × 374 px.
+
+ESLint e build de produção aprovados; Hero conferido em 390 × 1000 e 1440 × 1000.
+
+Verificação no Chrome via DevTools: cinco documentos carregados no modal, sem
+overflow horizontal em desktop/mobile; animação do carrossel em movimento,
+pausa funcional e ausência de animação/repetição com movimento reduzido.

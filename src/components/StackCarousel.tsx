@@ -23,7 +23,8 @@ export default function StackCarousel() {
             <ul key={copy} className="stack-carousel-group" aria-hidden={copy === 1 ? true : undefined}>
               {STACK_ICONS.map(([label, file]) => (
                 <li key={file} className="stack-carousel-item" title={label}>
-                  <Image src={`/stack/${file}.svg`} alt="" width={48} height={48} unoptimized />
+                  <Image src={`/stack/${file}.svg`} alt="" width={56} height={56} unoptimized />
+                  <span className="stack-carousel-label">{label}</span>
                 </li>
               ))}
             </ul>

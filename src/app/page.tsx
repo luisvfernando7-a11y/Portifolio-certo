@@ -10,6 +10,7 @@ import Timeline from '@/components/Timeline'
 import Contact from '@/components/Contact'
 import Certificates from '@/components/Certificates'
 import Footer from '@/components/Footer'
+import SectionMotion from '@/components/SectionMotion'
 
 export default function Portfolio() {
   return (
@@ -24,6 +25,7 @@ export default function Portfolio() {
       <a href="#conteudo" className="skip-link">Pular para o conteúdo</a>
       <Header />
       <main id="conteudo" tabIndex={-1}>
+        <SectionMotion />
         <Hero />
         <BrainSoil />
         <Talks />
