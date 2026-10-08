@@ -9,6 +9,7 @@ const eslintConfig = defineConfig([
   globalIgnores([
     // Default ignores of eslint-config-next:
     ".next/**",
+    "teste1/**", // Cópia arquivada; não pertence ao aplicativo publicado.
     "out/**",
     "build/**",
     "next-env.d.ts",

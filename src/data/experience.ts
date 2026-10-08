@@ -6,6 +6,21 @@ export type ExperienceItem = {
   desc: string
 }
 
+export const PROFESSIONAL_EXPERIENCE: ExperienceItem[] = [
+  {
+    period: 'Out/2026 – Momento', badge: 'Estágio',
+    title: 'Técnico de Suporte de TI (Estágio)', place: 'Lider Computadores',
+    desc: 'Atendimento N1/N2, manutenção preventiva e corretiva de hardware, diagnóstico de redes e parametrização de sistemas Windows/Linux.',
+  },
+  {
+    period: 'Jul/2026 – Momento', badge: 'Atuação atual',
+    title: 'Founder / Desenvolvedor Full Stack & Arquiteto', place: 'Galvani Studio',
+    desc: 'Arquitetura de microsserviços, desenvolvimento de APIs REST com Python/Java, modelagem SQL e interfaces com Next.js/Tailwind.',
+  },
+]
+
+export const CURRENT_ROLE = PROFESSIONAL_EXPERIENCE[0]
+
 export const EXP: ExperienceItem[] = [
   {
     period: '2026 — Presente', badge: 'TCC em andamento',

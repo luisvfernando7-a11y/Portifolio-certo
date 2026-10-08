@@ -8,9 +8,6 @@ export type ClientWork = {
   url: string
 }
 
-// Galvani Studio ainda não é uma empresa formalizada (sem CNPJ/MEI até o momento) —
-// é o nome que uso para os projetos que desenvolvo por conta própria, incluindo
-// trabalhos pontuais para terceiros. A copy reflete isso com honestidade.
 export const CLIENT_WORK: ClientWork[] = [
   {
     tag: 'Projeto para terceiro · Direito',
@@ -29,7 +26,7 @@ export const CLIENT_WORK: ClientWork[] = [
     tag: 'Projeto pessoal',
     title: 'Galvani Studio — Site Próprio',
     client: 'Projeto autoral',
-    desc: 'Nome que uso para organizar os projetos que desenvolvo por conta própria. Este site é onde testo decisões de design e arquitetura antes de aplicar em outros trabalhos.',
+    desc: 'Site do Galvani Studio, onde atuo como Founder, Desenvolvedor Full Stack e Arquiteto desde julho de 2026.',
     highlights: [
       'Design minimalista e consistente',
       'Micro-interações com Framer Motion',

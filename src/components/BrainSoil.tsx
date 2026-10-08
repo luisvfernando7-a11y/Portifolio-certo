@@ -1,74 +1,73 @@
 'use client'
 
-import { useRef, useState, useEffect } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { useState } from 'react'
 import { C, S } from '@/data/theme'
 import { ARCH, STACK_AGRO, BRAINSOIL_REPO_URL } from '@/data/projects'
-import { LockIcon, ArrowIcon } from './icons'
+
+const LockSvg = () => (
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+  </svg>
+)
 
 export default function BrainSoil() {
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const videoRef = useRef<HTMLVideoElement>(null)
   const [videoErr, setVideoErr] = useState(false)
 
-  // Zoom ligado ao scroll: o "monitor" com o vídeo cresce suavemente
-  // enquanto a seção passa pela viewport. Não é um efeito disparado uma
-  // vez — ele acompanha a posição do scroll em tempo real.
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start'],
-  })
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.92, 1.02, 0.97])
-  const opacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0.5, 1, 1, 0.65])
-
-  // Autoplay apenas quando o vídeo está visível — economiza recursos.
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
-    const obs = new IntersectionObserver(
-      ([e]) => { e.isIntersecting ? video.play().catch(() => {}) : video.pause() },
-      { threshold: 0.3 }
-    )
-    obs.observe(video)
-    return () => obs.disconnect()
-  }, [])
-
   return (
-    <section id="brainsoil" ref={sectionRef} style={S.section(C.bg1)}>
+    <section id="brainsoil" style={{ ...S.section(C.bg0), borderBottom: `1px solid ${C.b1}` }}>
       <div style={S.container}>
-        <div style={{ marginBottom: '56px' }}>
-          <p style={S.sectionLabel}>// tcc · em desenvolvimento</p>
-          <h2 style={S.h2}>BrainSoil — Predição Agroclimática com IA</h2>
-          <p style={{ fontSize: 'var(--fs-body)', color: C.t400, marginTop: '10px', maxWidth: '580px' }}>
+
+        {/* Cabeçalho com enquadramento diferenciado para o TCC */}
+        <div style={{ marginBottom: '52px' }}>
+          {/* Badge de destaque principal — enquadramento retangular sem glow */}
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            border: `2px solid ${C.accent}`,
+            borderRadius: '4px',
+            padding: '5px 14px',
+            marginBottom: '14px',
+            fontFamily: 'var(--font-mono)',
+            fontSize: '11px',
+            fontWeight: 700,
+            color: C.accent,
+            letterSpacing: '0.1em',
+          }}>
+            ★ PROJETO EM DESTAQUE · TCC
+          </div>
+
+          <p style={{ ...S.sectionLabel, display: 'block', marginBottom: '10px' }}>TRABALHO DE CONCLUSÃO DE CURSO</p>
+          <h2 style={{ ...S.h2, fontSize: 'clamp(1.7rem, 3.8vw, 2.6rem)' }}>
+            BrainSoil — Predição Agroclimática com IA
+          </h2>
+          <p style={{ fontSize: 'var(--fs-body)', color: C.t400, marginTop: '12px', maxWidth: '620px', lineHeight: 1.7 }}>
             Sistema de telemetria IoT com Machine Learning (LSTM) para prever a necessidade de irrigação
             a partir de dados de sensores em campo.
           </p>
 
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '16px' }}>
-            {/* Badge de status do repositório — vira link automaticamente quando BRAINSOIL_REPO_URL for preenchida em data/projects.ts */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '18px' }}>
             {BRAINSOIL_REPO_URL ? (
               <a
                 href={BRAINSOIL_REPO_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  display: 'inline-flex', alignItems: 'center', gap: '6px',
-                  fontFamily: '"JetBrains Mono", monospace', fontSize: '12px',
-                  color: C.t100, border: `1px solid ${C.b2}`,
-                  borderRadius: '20px', padding: '5px 14px',
-                  textDecoration: 'none',
-                }}
+                style={S.btnPrimary}
+                className="hover:bg-blue-hover"
               >
-                Ver Repositório <ArrowIcon />
+                Ver Repositório →
               </a>
             ) : (
               <span style={{
-                display: 'inline-flex', alignItems: 'center', gap: '6px',
-                fontFamily: '"JetBrains Mono", monospace', fontSize: '12px',
-                color: C.t500, border: `1px solid ${C.b1}`,
-                borderRadius: '20px', padding: '5px 14px',
+                display: 'inline-flex', alignItems: 'center', gap: '8px',
+                fontFamily: 'var(--font-mono)', fontSize: '12px',
+                color: C.t500,
+                backgroundColor: C.bg1,
+                border: `1px solid ${C.b2}`,
+                borderRadius: '4px', padding: '6px 14px',
               }}>
-                <LockIcon size={12} /> Repositório privado — liberação após defesa do TCC
+                <LockSvg /> Repositório privado — liberação após defesa do TCC
               </span>
             )}
           </div>
@@ -76,61 +75,90 @@ export default function BrainSoil() {
           <div style={S.divider} />
         </div>
 
-        {/* Monitor com zoom no scroll */}
-        <motion.div style={{ maxWidth: '100%', margin: '0 auto', scale, opacity }}>
-          <div style={{ border: `1px solid ${C.b2}`, borderRadius: '8px', overflow: 'hidden', boxShadow: '0 32px 80px rgba(0,0,0,0.6)' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '14px 20px', backgroundColor: C.bg2, borderBottom: `1px solid ${C.b1}` }}>
-              <span style={{ width: '12px', height: '12px', borderRadius: '50%', border: `1px solid ${C.b2}` }} />
-              <span style={{ width: '12px', height: '12px', borderRadius: '50%', border: `1px solid ${C.b2}` }} />
-              <span style={{ width: '12px', height: '12px', borderRadius: '50%', border: `1px solid ${C.b2}` }} />
-              <span style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '12px', color: C.t500, marginLeft: '8px' }}>
-                brainsoil-demo · v1.2.0
+        {/* Monitor de demonstração — enquadramento retangular limpo */}
+        <div style={{ maxWidth: '100%', margin: '0 auto' }}>
+          <div style={{
+            border: `2px solid ${C.b2}`,
+            borderRadius: '8px',
+            overflow: 'hidden',
+          }}>
+            {/* Barra do terminal */}
+            <div style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              padding: '12px 18px', flexWrap: 'wrap', gap: '12px',
+              backgroundColor: C.t100,
+              borderBottom: `1px solid ${C.b2}`,
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
+                <span style={{ width: '11px', height: '11px', borderRadius: '50%', backgroundColor: C.accent }} />
+                <span style={{ width: '11px', height: '11px', borderRadius: '50%', backgroundColor: C.accentHover }} />
+                <span style={{ width: '11px', height: '11px', borderRadius: '50%', backgroundColor: C.bg1 }} />
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: C.bg0, marginLeft: '10px' }}>
+                  brainsoil-demo · v1.2.0
+                </span>
+              </div>
+              <span style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '11px',
+                color: C.bg1,
+                backgroundColor: C.t200,
+                padding: '2px 8px',
+                borderRadius: '3px',
+                border: `1px solid ${C.accent}`,
+              }}>
+                ● ATIVO
               </span>
             </div>
-            <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', minHeight: '240px', backgroundColor: C.bg0, overflow: 'hidden' }}>
+
+            {/* Vídeo */}
+            <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', minHeight: '240px', backgroundColor: C.t200 }}>
               {!videoErr ? (
                 <video
-                  ref={videoRef}
                   src="/assets/agroclima-demo.mp4"
-                  autoPlay loop muted playsInline preload="metadata"
-                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', backgroundColor: C.bg0 }}
+                  controls muted playsInline preload="metadata" aria-label="Demonstração do BrainSoil"
+                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain' }}
                   onError={() => setVideoErr(true)}
                 />
               ) : (
                 <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-                  <p style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '14px', color: C.t500 }}>// demo em renderização</p>
-                  <p style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '12px', color: C.t400 }}>brainsoil v1.2.0 — em breve</p>
+                  <p style={{ fontFamily: 'var(--font-mono)', fontSize: '14px', color: C.accentLight }}>Demonstração indisponível no momento</p>
+                  <p style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: C.accentLight }}>brainsoil v1.2.0 — em breve</p>
                 </div>
               )}
             </div>
           </div>
-          <p style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '12px', color: C.t500, textAlign: 'center', marginTop: '18px' }}>
+
+          <p style={{ textAlign: 'center', marginTop: '14px', fontFamily: 'var(--font-mono)', fontSize: '12px', color: C.t500 }}>
             Inferência LSTM com integração de sensores IoT — BrainSoil v1.2.0
           </p>
-        </motion.div>
+        </div>
 
-        {/* Arch + Stack */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 mt-14 md:mt-20">
-          <div>
-            <p style={S.sectionLabel}>// o que o sistema faz</p>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '14px' }}>
+        {/* Arquitetura + Stack */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-14">
+          <div style={{ border: `1px solid ${C.b1}`, borderRadius: '8px', padding: '26px 30px', backgroundColor: C.bg0 }}>
+            <p style={{ ...S.sectionLabel, marginBottom: '12px' }}>O QUE O SISTEMA FAZ</p>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {ARCH.map(a => (
                 <li key={a} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-                  <span style={{ color: C.t500, fontSize: '13px', marginTop: '2px', flexShrink: 0 }}>—</span>
+                  <span style={{ color: C.accent, fontSize: '14px', marginTop: '1px', flexShrink: 0 }}>·</span>
                   <span style={{ fontSize: 'var(--fs-small)', color: C.t400, lineHeight: 1.65 }}>{a}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <div>
-            <p style={S.sectionLabel}>// stack do projeto</p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+
+          <div style={{ border: `1px solid ${C.b1}`, borderRadius: '8px', padding: '26px 30px', backgroundColor: C.bg0 }}>
+            <p style={{ ...S.sectionLabel, marginBottom: '12px' }}>STACK DO PROJETO</p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
               {STACK_AGRO.map(t => (
-                <span key={t} style={{ ...S.techPill, padding: '6px 14px', color: C.t300 }}>{t}</span>
+                <span key={t} style={{ ...S.techPill, fontSize: '12px', color: C.t200 }}>
+                  {t}
+                </span>
               ))}
             </div>
           </div>
         </div>
+
       </div>
     </section>
   )

@@ -2,13 +2,11 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import { motion, AnimatePresence } from 'framer-motion'
 import { C } from '@/data/theme'
 
 type Slide = { src: string; alt: string }
 
-// Carrossel manual e estático — não gira sozinho. A pessoa navega
-// pelas setas ou pelos indicadores. Pensado para fotos de evento,
-// onde cada imagem merece ser vista em tamanho real, não em miniatura.
 export default function Carousel({ slides }: { slides: Slide[] }) {
   const [idx, setIdx] = useState(0)
   if (slides.length === 0) return null
@@ -16,48 +14,72 @@ export default function Carousel({ slides }: { slides: Slide[] }) {
   const go = (dir: 1 | -1) => setIdx(i => (i + dir + slides.length) % slides.length)
 
   return (
-    <div style={{ position: 'relative' }}>
-      <div style={{ position: 'relative', width: '100%', aspectRatio: '4/3', borderRadius: '6px', overflow: 'hidden', border: `1px solid ${C.b1}`, backgroundColor: C.bg2 }}>
-        <Image
-          key={slides[idx].src}
-          src={slides[idx].src}
-          alt={slides[idx].alt}
-          fill
-          style={{ objectFit: 'cover', filter: 'grayscale(1) contrast(1.05)' }}
-          sizes="(max-width: 768px) 100vw, 480px"
-        />
+    <div style={{ position: 'relative', width: '100%' }}>
+      <div
+        style={{
+          position: 'relative',
+          width: '100%',
+          aspectRatio: '16/10',
+          borderRadius: '6px',
+          overflow: 'hidden',
+          border: `1px solid ${C.b2}`,
+          backgroundColor: C.bg2,
+        }}
+      >
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={slides[idx].src}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            style={{ position: 'absolute', inset: 0 }}
+          >
+            <Image
+              src={slides[idx].src}
+              alt={slides[idx].alt}
+              fill
+              style={{ objectFit: 'cover' }}
+              sizes="(max-width: 768px) 100vw, 500px"
+            />
+          </motion.div>
+        </AnimatePresence>
 
         {slides.length > 1 && (
           <>
-            <button
-              onClick={() => go(-1)}
-              aria-label="Foto anterior"
-              style={navBtnStyle('left')}
-            >‹</button>
-            <button
-              onClick={() => go(1)}
-              aria-label="Próxima foto"
-              style={navBtnStyle('right')}
-            >›</button>
-
-            <div style={{ position: 'absolute', bottom: '12px', left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: '6px' }}>
+            <button onClick={() => go(-1)} aria-label="Foto anterior" style={navBtn('left')}>‹</button>
+            <button onClick={() => go(1)} aria-label="Próxima foto" style={navBtn('right')}>›</button>
+            <div style={{
+              position: 'absolute', bottom: '10px', left: '50%', transform: 'translateX(-50%)',
+              display: 'flex', gap: '6px', backgroundColor: C.bg0,
+              padding: '4px 8px', borderRadius: '10px',
+            }}>
               {slides.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setIdx(i)}
-                  aria-label={`Ver foto ${i + 1}`}
+                  aria-label={`Foto ${i + 1}`}
+                  aria-pressed={i === idx}
                   style={{
-                    width: '6px', height: '6px', borderRadius: '50%', border: 'none', padding: 0, cursor: 'pointer',
-                    backgroundColor: i === idx ? C.t100 : 'rgba(245,245,243,0.35)',
+                    width: '44px',
+                    height: '44px',
+                    borderRadius: '4px',
+                    border: 'none',
+                    padding: 0,
+                    cursor: 'pointer',
+                    backgroundColor: i === idx ? C.accent : C.bg0,
+                    color: i === idx ? C.bg0 : C.t200,
+                    transition: 'all 0.25s ease',
                   }}
-                />
+                >{i + 1}</button>
               ))}
             </div>
           </>
         )}
       </div>
+
       {slides.length > 1 && (
-        <p style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '11px', color: C.t500, marginTop: '10px', textAlign: 'center' }}>
+        <p style={{ textAlign: 'center', marginTop: '8px', fontFamily: 'var(--font-mono)', fontSize: '11px', color: C.t500 }}>
           {idx + 1} / {slides.length}
         </p>
       )}
@@ -65,12 +87,13 @@ export default function Carousel({ slides }: { slides: Slide[] }) {
   )
 }
 
-function navBtnStyle(side: 'left' | 'right'): React.CSSProperties {
+function navBtn(side: 'left' | 'right'): React.CSSProperties {
   return {
     position: 'absolute', top: '50%', transform: 'translateY(-50%)', [side]: '10px',
-    width: '36px', height: '36px', borderRadius: '50%',
-    backgroundColor: 'rgba(10,10,10,0.6)', border: `1px solid ${C.b2}`,
-    color: C.t100, fontSize: '20px', lineHeight: 1, cursor: 'pointer',
+    width: '44px', height: '44px', borderRadius: '50%',
+    backgroundColor: C.bg0, border: `1px solid ${C.b2}`,
+    color: C.t200, fontSize: '20px', lineHeight: 1, cursor: 'pointer',
     display: 'flex', alignItems: 'center', justifyContent: 'center',
+    transition: 'border-color 0.2s',
   } as React.CSSProperties
 }

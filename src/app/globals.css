@@ -1,69 +1,64 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss" source(none);
+@source "../";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@theme {
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-blue: #1d4ed8;
+  --color-blue-hover: #1e40af;
+  --color-blue-navy: #0f172a;
+  --color-blue-slate: #334155;
+  --color-blue-surface: #eff6ff;
+  --color-blue-border: #bfdbfe;
+  --font-sans: Arial, Helvetica, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Consolas, monospace;
+}
 
 :root {
-  /* fundo — near-black quente, com camadas para hierarquia */
-  --bg-0: #0A0A0A;
-  --bg-1: #141414;
-  --bg-2: #1C1C1C;
-  --bg-3: #262624;
-
-  /* texto — branco quente até cinza escuro */
-  --t-100: #F5F5F3;
-  --t-300: #C9C9C5;
-  --t-400: #A8A8A4;
-  --t-500: #7A7A76;
-  --t-600: #6B6B67;
-
-  /* bordas */
-  --b-1: #2A2A28;
-  --b-2: #3D3D3A;
-
-  /* o único "accent" é o branco em si — usado com intenção */
-  --accent: #F5F5F3;
-
-  /* escala tipográfica fluida */
-  --fs-display: clamp(2.75rem, 7vw, 5rem);
+  color-scheme: light;
+  --white: #ffffff;
+  --black: #000000;
+  --blue: #1d4ed8;
+  --blue-hover: #1e40af;
+  --blue-navy: #0f172a;
+  --blue-slate: #334155;
+  --blue-surface: #eff6ff;
+  --blue-border: #bfdbfe;
+  --fs-display: clamp(2rem, 6vw, 4.5rem);
   --fs-h1: clamp(2rem, 4.5vw, 3rem);
-  --fs-h2: clamp(1.5rem, 3.2vw, 2.25rem);
-  --fs-h3: 1.375rem;
+  --fs-h2: clamp(1.6rem, 3.2vw, 2.4rem);
+  --fs-h3: clamp(1.1rem, 2vw, 1.3rem);
   --fs-body-lg: 1.0625rem;
   --fs-body: 1rem;
   --fs-small: 0.875rem;
-  --fs-mono: 0.8125rem;
-  --fs-mono-sm: 0.6875rem;
-
-  /* spacing */
-  --section-py: clamp(64px, 10vw, 128px);
-  --container-w: 1200px;
+  --fs-mono: 0.8rem;
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; color-scheme: dark; }
-
-body {
-  background-color: var(--bg-0);
-  color: var(--t-400);
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: var(--fs-body);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+body { margin: 0; background: var(--white); color: var(--blue-slate); font-family: var(--font-sans); line-height: 1.65; }
+h1, h2, h3, p { overflow-wrap: anywhere; }
+.grid > *, .flex > * { min-width: 0; }
+img, video { max-width: 100%; filter: grayscale(1); }
+a { overflow-wrap: anywhere; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { font: inherit; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
+::selection { background: var(--blue-surface); color: var(--blue-navy); }
+.skip-link { position: fixed; top: 8px; left: 16px; z-index: 100; padding: 12px 20px; background: var(--white); color: var(--blue); transform: translateY(-160%); }
+.skip-link:focus { transform: translateY(0); }
+.card-hover, .link-arrow { transition: border-color .2s, color .2s; }
+.card-hover:hover { border-color: var(--blue) !important; }
+.link-arrow:hover { color: var(--blue) !important; }
+.contact-link { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 44px; padding: 12px 20px; border: 1px solid var(--blue-border); border-radius: 6px; background: var(--white); color: var(--blue-navy); text-decoration: none; font-weight: 600; }
+.contact-link:hover { border-color: var(--blue); color: var(--blue); }
+.nav-toggle { display: flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; border: 1px solid var(--blue-border); border-radius: 6px; color: var(--black); background: var(--white); }
+@media (min-width: 1024px) { .nav-toggle { display: none; } }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
 }
 
-::selection { background: var(--accent); color: var(--bg-0); }
-::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-track { background: var(--bg-0); }
-::-webkit-scrollbar-thumb { background: var(--b-2); }
-
-a:focus-visible, button:focus-visible {
-  outline: 1px solid var(--accent);
-  outline-offset: 3px;
-}
+.certificate-dialog { position: fixed; inset: 0; margin: auto; width: min(960px, calc(100% - 32px)); max-height: calc(100dvh - 32px); padding: 0; overflow-y: auto; border: 1px solid var(--blue-border); border-radius: 12px; background: var(--white); color: var(--blue-slate); }
+.certificate-dialog::backdrop { background: var(--blue-navy); }
