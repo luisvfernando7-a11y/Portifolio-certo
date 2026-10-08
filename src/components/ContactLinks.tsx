@@ -1,7 +1,7 @@
-import { Linkedin, Mail, Triangle } from 'lucide-react'
+import { Linkedin, Mail, Github } from 'lucide-react'
 import { CONTACTS } from '@/data/contact'
 
-const ICONS = [Linkedin, Triangle, Mail]
+const ICONS = [Linkedin, Github, Mail]
 
 export default function ContactLinks({ compact = false }: { compact?: boolean }) {
   return (

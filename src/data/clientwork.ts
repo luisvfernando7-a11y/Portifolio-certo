@@ -26,7 +26,7 @@ export const CLIENT_WORK: ClientWork[] = [
     tag: 'Projeto pessoal',
     title: 'Galvani Studio — Site Próprio',
     client: 'Projeto autoral',
-    desc: 'Site do Galvani Studio, onde atuo como Founder, Desenvolvedor Full Stack e Arquiteto desde julho de 2026.',
+    desc: 'Site do Galvani Studio, onde atuo como Founder desde julho de 2026.',
     highlights: [
       'Design minimalista e consistente',
       'Micro-interações com Framer Motion',

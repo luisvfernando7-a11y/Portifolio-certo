@@ -39,10 +39,10 @@ arquivos originais foram preservados. Fontes locais do sistema eliminam download
 ## Conteúdo atualizado
 
 - Lider Computadores: Técnico de Suporte de TI (Estágio), Out/2026 – Momento.
-- Galvani Studio: Founder / Desenvolvedor Full Stack & Arquiteto, Jul/2026 – Momento.
+- Galvani Studio: Founder, Jul/2026 – Momento.
 - Cinco certificados AWS de 18 de Setembro, 2026, com imagens originais em `public/certificates`.
 - Certificados abrem em modal nativo: foco contido, Escape, fechamento por botão e retorno ao card.
-- Contatos oficiais em `src/data/contact.ts`: LinkedIn corrigido para `/in/luis-galvani`, Vercel e E-mail.
+- Contatos oficiais em `src/data/contact.ts`: LinkedIn corrigido para `/in/luis-galvani`, GitHub e E-mail.
 - Header em `src/components/Header.tsx`; `Nav.tsx` mantém compatibilidade com imports antigos.
 - A pasta `teste1/` é uma cópia arquivada preservada e excluída do ESLint/TypeScript do aplicativo.
 

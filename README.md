@@ -48,7 +48,7 @@ src/
     clientwork.ts
     experience.ts       # cargos atuais e trajetória acadêmica
     certificates.ts     # certificados
-    contact.ts          # LinkedIn, Vercel e E-mail
+    contact.ts          # LinkedIn, GitHub e E-mail
   lib/
     SmoothScroll.tsx     # provider do Framer Motion, respeita prefers-reduced-motion
 public/

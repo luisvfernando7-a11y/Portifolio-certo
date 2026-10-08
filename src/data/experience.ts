@@ -14,7 +14,7 @@ export const PROFESSIONAL_EXPERIENCE: ExperienceItem[] = [
   },
   {
     period: 'Jul/2026 – Momento', badge: 'Atuação atual',
-    title: 'Founder / Desenvolvedor Full Stack & Arquiteto', place: 'Galvani Studio',
+    title: 'Founder', place: 'Galvani Studio',
     desc: 'Arquitetura de microsserviços, desenvolvimento de APIs REST com Python/Java, modelagem SQL e interfaces com Next.js/Tailwind.',
   },
 ]
