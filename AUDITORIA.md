@@ -56,3 +56,8 @@ ou ausência de quebras em todos os dispositivos sem essa verificação.
 ESLint completo (`npm run lint`), TypeScript (`tsc --noEmit`) e build final aprovados.
 As imagens Redshift (160 × 124 px) e Serverless (160 × 125 px) são pequenas;
 a ampliação preserva o conteúdo original e não recupera detalhes ausentes.
+
+Correção de nitidez: imagens importadas estaticamente com dimensões originais;
+previews usam object-scale-down e o modal respeita a largura nativa do documento.
+Imagens são servidas sem recompressão (unoptimized). Para leitura ampliada,
+os arquivos pequenos precisam ser substituídos pelo PDF ou imagem original em alta resolução.
