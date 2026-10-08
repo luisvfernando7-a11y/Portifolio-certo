@@ -103,3 +103,10 @@ estrutura — pediria apenas que não copiasse o conteúdo textual/pessoal diret
 Veja [AUDITORIA.md](./AUDITORIA.md) para decisões, paleta e dados pendentes.
 Requer Node.js 20.9 ou superior. Os tokens e a configuração do Tailwind 4 estão em
 `src/app/globals.css`; `src/data/theme.ts` fornece aliases para os componentes existentes.
+
+## Apresentação e faixa de tecnologias
+
+Visual branco, preto e cinza. A apresentação separa o título profissional das tecnologias.
+`StackCarousel.tsx` exibe SVGs locais em loop para a direita, com pausa e movimento reduzido.
+As stacks nas outras seções permanecem textuais; o vídeo mantém as cores originais.
+Logos: [Devicon](https://github.com/devicons/devicon), licença MIT em `public/stack/LICENSE`.

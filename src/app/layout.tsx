@@ -3,8 +3,8 @@ import './globals.css'
 import SmoothScroll from '@/lib/SmoothScroll'
 
 export const metadata: Metadata = {
-  title: 'Luis Galvani | Backend Developer',
-  description: 'Backend developer especializado em Java, Spring Boot, Python e ML.',
+  title: 'Luis Galvani | Suporte de TI, Software e Dados',
+  description: 'Técnico de Suporte de TI com atuação em desenvolvimento de software e dados. Python, SQL, Machine Learning, Java, Docker e AWS Cloud.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -90,7 +90,7 @@ export default function TalksCarousel({ talks }: { talks: Talk[] }) {
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               transition: 'border-color 0.2s, color 0.2s',
             }}
-            className="hover:border-blue hover:text-blue"
+            className="hover:border-black hover:text-black"
           >
             <ChevLeft />
           </button>
@@ -127,7 +127,7 @@ export default function TalksCarousel({ talks }: { talks: Talk[] }) {
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               transition: 'border-color 0.2s, color 0.2s',
             }}
-            className="hover:border-blue hover:text-blue"
+            className="hover:border-black hover:text-black"
           >
             <ChevRight />
           </button>

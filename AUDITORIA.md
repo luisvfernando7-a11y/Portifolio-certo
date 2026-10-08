@@ -20,7 +20,7 @@
   Substituído por scroll nativo e MotionConfig com reducedMotion="user".
 - Experiência continha somente projetos e formação; não há dados do novo emprego.
 
-## Paleta CSS / Tailwind
+## Paleta anterior CSS / Tailwind (substituída pela atualização visual abaixo)
 
 | Variável CSS | Cor | Classe Tailwind |
 | --- | --- | --- |
@@ -61,3 +61,25 @@ Correção de nitidez: imagens importadas estaticamente com dimensões originais
 previews usam object-scale-down e o modal respeita a largura nativa do documento.
 Imagens são servidas sem recompressão (unoptimized). Para leitura ampliada,
 os arquivos pequenos precisam ser substituídos pelo PDF ou imagem original em alta resolução.
+
+## Atualização visual: branco, preto e cinza
+
+A direção visual atual substitui a paleta azul anterior por branco, preto e cinzas neutros.
+O Hero usa título profissional próprio, sem depender do nome do cargo do estágio.
+A faixa de tecnologias exibe logos SVG locais do Devicon em escala de cinza, com
+movimento contínuo para a direita, ciclo de 68 segundos, botão de pausa e pausa por hover.
+A preferência por movimento reduzido exibe uma lista estática sem repetições.
+As stacks nas outras seções continuam textuais. O vídeo mantém as cores originais.
+Fonte dos logos: https://github.com/devicons/devicon (licença MIT em public/stack).
+
+Validação visual da apresentação no Chrome headless em 390 × 1000 e 1440 × 1000.
+ESLint e build de produção aprovados. Os ícones são SVGs locais, sem CDN em runtime.
+
+## Retomada e validação final
+
+As imagens de Redshift e Serverless foram substituídas por versões de
+1170 × 910 px e 1170 × 917 px, respectivamente, superando a limitação
+dos arquivos anteriores. Os demais certificados têm 484 × 374 px.
+
+Na retomada, ESLint completo, TypeScript e build de produção passaram.
+As capturas anteriores de mobile e desktop continuam disponíveis em /tmp.

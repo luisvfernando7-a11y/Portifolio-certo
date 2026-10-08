@@ -1,30 +1,25 @@
 import { C, S } from '@/data/theme'
-import { CURRENT_ROLE } from '@/data/experience'
+import StackCarousel from './StackCarousel'
 
 export default function Hero() {
   return (
-    <section id="inicio" style={{ ...S.section(C.bg0), paddingTop: 'clamp(120px, 18vw, 180px)', borderBottom: `1px solid ${C.b1}` }}>
-      <div style={S.container} className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
-        <div>
-          <p style={S.sectionLabel}>Ourinhos, SP · Backend e dados</p>
-          <h1 style={{ color: C.t100, fontSize: 'var(--fs-display)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-0.025em' }}>Luis Galvani</h1>
-          <p style={{ color: C.accent, fontWeight: 600, fontSize: 'var(--fs-h3)', marginTop: '16px' }}>{CURRENT_ROLE?.title ?? 'Backend Developer'}</p>
-          <p style={{ maxWidth: '540px', margin: '24px 0', fontSize: 'var(--fs-body-lg)' }}>
-            Desenvolvimento de APIs, modelagem de dados e integração de sistemas com Java, Python e SQL.
-            No BrainSoil, aplico telemetria IoT e Machine Learning à predição de umidade do solo.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <a href="#projetos" style={S.btnPrimary}>Ver projetos</a>
-            <a href="#contato" style={S.btnOutline}>Entrar em contato</a>
-          </div>
+    <section id="inicio" style={{ ...S.section(C.bg0), paddingTop: 'clamp(120px, 18vw, 180px)', paddingBottom: '48px' }}>
+      <div style={S.container}>
+        <p style={S.sectionLabel}>Ourinhos, SP · Tecnologia, software e dados</p>
+        <h1 style={{ color: C.t100, fontSize: 'var(--fs-display)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-0.04em' }}>Luis Galvani<span className="text-muted">.</span></h1>
+        <p className="hero-role mt-6">
+          Técnico de Suporte de TI <span className="hero-role-separator" aria-hidden="true">|</span> Data Science &amp; Software Engineering
+        </p>
+        <p className="mt-4 text-sm font-medium leading-7 tracking-wide text-muted sm:text-base">Python • SQL • Machine Learning • Java • Docker • AWS Cloud</p>
+        <p className="my-7 max-w-2xl text-base leading-8 text-muted sm:text-lg">
+          Atuo em suporte de TI e desenvolvo APIs, integrações e soluções orientadas a dados.
+          No BrainSoil, aplico telemetria IoT e Machine Learning à predição de umidade do solo.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <a href="#projetos" style={S.btnPrimary} className="hover:bg-ink">Ver projetos <span aria-hidden="true">↗</span></a>
+          <a href="#contato" style={S.btnOutline} className="hover:border-black">Entrar em contato</a>
         </div>
-        <aside style={S.card} aria-label="Tecnologias principais">
-          <h2 style={{ ...S.h2, fontSize: 'var(--fs-h3)' }}>Stack técnica principal</h2>
-          <div className="flex flex-wrap gap-2">
-            {['Java', 'Spring Boot', 'Python', 'SQL', 'Docker', 'React', 'Next.js'].map(name => <span key={name} style={S.techPill}>{name}</span>)}
-          </div>
-          <p>Projetos pessoais, soluções entregues para terceiros e palestras técnicas sobre Inteligência Artificial.</p>
-        </aside>
+        <StackCarousel />
       </div>
     </section>
   )

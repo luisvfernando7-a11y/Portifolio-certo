@@ -54,7 +54,7 @@ export default function BrainSoil() {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={S.btnPrimary}
-                className="hover:bg-blue-hover"
+                className="hover:bg-ink"
               >
                 Ver Repositório →
               </a>

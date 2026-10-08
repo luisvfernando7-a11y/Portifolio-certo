@@ -2,13 +2,13 @@ import type { CSSProperties } from 'react'
 
 // Aliases mantidos para reutilizar os componentes; a fonte única é globals.css.
 export const C = {
-  bg0: 'var(--white)', bg1: 'var(--blue-surface)', bg2: 'var(--blue-surface)', bg3: 'var(--blue-border)',
-  t100: 'var(--black)', t200: 'var(--blue-navy)', t300: 'var(--blue-slate)',
-  t400: 'var(--blue-slate)', t500: 'var(--blue-slate)', t600: 'var(--blue-slate)',
-  b1: 'var(--blue-border)', b2: 'var(--blue-border)', b3: 'var(--blue-slate)',
-  accent: 'var(--blue)', accentHover: 'var(--blue-hover)', accentLight: 'var(--blue-surface)',
-  accentMid: 'var(--blue)', badgeBg: 'var(--blue-surface)', badgeText: 'var(--blue)',
-  badgeBorder: 'var(--blue-border)',
+  bg0: 'var(--white)', bg1: 'var(--surface)', bg2: 'var(--surface)', bg3: 'var(--line)',
+  t100: 'var(--black)', t200: 'var(--ink)', t300: 'var(--muted)',
+  t400: 'var(--muted)', t500: 'var(--muted)', t600: 'var(--muted)',
+  b1: 'var(--line)', b2: 'var(--line)', b3: 'var(--muted)',
+  accent: 'var(--black)', accentHover: 'var(--ink)', accentLight: 'var(--surface)',
+  accentMid: 'var(--black)', badgeBg: 'var(--surface)', badgeText: 'var(--black)',
+  badgeBorder: 'var(--line)',
 } as const
 
 export const S = {
