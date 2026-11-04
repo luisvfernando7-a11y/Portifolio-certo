@@ -1,0 +1,238 @@
+{
+  "nav": {
+    "about": "Sobre",
+    "experience": "Experiência",
+    "projects": "Projetos",
+    "certificates": "Certificados",
+    "contact": "Contato",
+    "open": "Abrir menu",
+    "close": "Fechar menu",
+    "main": "Menu principal",
+    "skip": "Pular para o conteúdo",
+    "languages": "Selecionar idioma"
+  },
+  "hero": {
+    "location": "Ourinhos, SP · Tecnologia, software e dados",
+    "role": "Técnico de Suporte de TI",
+    "disciplines": "Data Science & Software Engineering",
+    "intro": "Atuo em suporte de TI e desenvolvo APIs, integrações e soluções orientadas a dados. No BrainSoil, aplico telemetria IoT e Machine Learning à predição de umidade do solo.",
+    "projects": "Ver projetos",
+    "contact": "Entrar em contato"
+  },
+  "stack": {
+    "title": "Tecnologias e ferramentas",
+    "play": "Continuar animação das tecnologias",
+    "pause": "Pausar animação das tecnologias"
+  },
+  "brainsoil": {
+    "badge": "★ PROJETO EM DESTAQUE · TCC",
+    "label": "TRABALHO DE CONCLUSÃO DE CURSO",
+    "title": "BrainSoil — Predição Agroclimática com IA",
+    "description": "Sistema de telemetria IoT com Machine Learning (LSTM) para prever a necessidade de irrigação a partir de dados de sensores em campo.",
+    "repository": "Ver Repositório →",
+    "private": "Repositório privado — liberação após defesa do TCC",
+    "active": "● ATIVO",
+    "video": "Demonstração do BrainSoil",
+    "unavailable": "Demonstração indisponível no momento",
+    "soon": "brainsoil v1.2.0 — em breve",
+    "caption": "Inferência LSTM com integração de sensores IoT — BrainSoil v1.2.0",
+    "features": "O QUE O SISTEMA FAZ",
+    "stack": "STACK DO PROJETO",
+    "arch0": "Ingestão de dados em tempo real via ESP32 + Zigbee mesh",
+    "arch1": "Treinamento e inferência de modelos LSTM com PyTorch",
+    "arch2": "Simulação Monte Carlo para análise probabilística de risco",
+    "arch3": "API REST Spring Boot como camada de orquestração",
+    "arch4": "Orquestração de serviços com Docker Compose",
+    "arch5": "Segregação de bancos: ODS + banco de domínio"
+  },
+  "study": {
+    "label": "REPOSITÓRIOS",
+    "title": "Projetos de Estudo",
+    "intro": "Exercícios práticos para consolidar arquitetura de APIs, persistência de dados e boas práticas de código."
+  },
+  "applied": {
+    "label": "FORA DA SALA DE AULA",
+    "title": "Projetos Aplicados",
+    "intro": "Onde levo o que aprendo para fora do ambiente de estudo — incluindo um trabalho entregue para uso real de terceiros."
+  },
+  "common": {
+    "github": "Ver no GitHub",
+    "demo": "Ver Projeto Online",
+    "preview": "Visualizar Projeto Online",
+    "newTab": " (nova aba)"
+  },
+  "projects": {
+    "people": {
+      "tag": "REST API · Java",
+      "desc": "API REST com operações CRUD completas, banco H2 em memória e mapeamento JPA/Hibernate. Arquitetura Controller → Service → Repository."
+    },
+    "mysql": {
+      "tag": "REST API · Docker",
+      "desc": "CRUD com Spring Boot e persistência relacional em MySQL. Containerizado com Docker e arquitetura em camadas bem definidas."
+    },
+    "vieira": {
+      "tag": "P&D · Eng. de Interface",
+      "desc": "Projeto de Pesquisa & Desenvolvimento em Engenharia de Interface. Demonstração de Web Performance Optimization (WPO), arquitetado sob padrões de HTML5 Semântico e conformidade com Acessibilidade Digital (a11y)."
+    },
+    "portfolio": {
+      "desc": "Este portfólio. Desenvolvido com Next.js, Tailwind CSS, Framer Motion e foco em UX para recrutadores técnicos."
+    },
+    "law": {
+      "tag": "Projeto para terceiro · Direito",
+      "client": "Para Thaís Bianca Nogueira — Advocacia",
+      "desc": "Site institucional desenvolvido para uma advogada em Ourinhos/SP, focado em credibilidade e facilidade de contato. Meu primeiro projeto entregue para uso real de terceiros.",
+      "highlight0": "SEO técnico (Metadata API, Open Graph, Sitemap, Robots)",
+      "highlight1": "Integração com WhatsApp Business",
+      "highlight2": "Política de Privacidade e Cookies (LGPD)"
+    },
+    "studio": {
+      "tag": "Projeto pessoal",
+      "client": "Projeto autoral",
+      "desc": "Site do Galvani Studio, onde atuo como Founder desde julho de 2026.",
+      "highlight0": "Design minimalista e consistente",
+      "highlight1": "Micro-interações com Framer Motion"
+    },
+    "helena": {
+      "tag": "Projeto para terceiro · Colaboração gratuita",
+      "client": "Trabalho prático de desenvolvimento web",
+      "desc": "Site desenvolvido gratuitamente para apresentar serviços de cílios e sobrancelhas, catálogo de procedimentos, valores e orientações de contato. Não oferece confirmação automática de agendamento.",
+      "highlight0": "Catálogo de procedimentos e orientações de atendimento",
+      "highlight1": "Formulário para preparar mensagem de contato pelo WhatsApp",
+      "alt": "Catálogo do site Helena Morelin"
+    },
+    "raccolto": {
+      "tag": "Acadêmico · Demonstração",
+      "desc": "Experiência web para restaurante e enoteca fictícios, com apresentação editorial e catálogo ilustrativo, sem vendas reais. Originado em estudos envolvendo WordPress, AWS e desenvolvimento web; a demonstração pública utiliza HTML, CSS e JavaScript.",
+      "alt": "Página inicial da demonstração Raccolto Galvani"
+    }
+  },
+  "about": {
+    "label": "SOBRE MIM",
+    "summary": "17 anos · Ourinhos, SP · Estudante de Informática (ETEC)",
+    "educationStart": "Estou no último ano do Ensino Médio Técnico em Informática para Internet, na ETEC Jacinto Ferreira de Sá, com formatura prevista para 2026. Minha base prática é em",
+    "languages": "Java e Python",
+    "educationEnd": ", com experiência em bancos relacionais e APIs REST construídas em Spring Boot e Flask.",
+    "projectStart": "Meu principal projeto até aqui é o",
+    "projectEnd": ", meu TCC: um sistema de telemetria IoT com Machine Learning (LSTM) para predição de umidade do solo. É onde aplico na prática o que venho estudando — arquitetura de backend, modelagem de dados e integração de sensores.",
+    "talks": "Também comecei a dar palestras técnicas sobre Inteligência Artificial em 2026 — duas até agora, na Unifio e na ETEC — como forma de organizar e comunicar o que estou aprendendo. Meu foco reúne desenvolvimento Backend, Engenharia de Dados e Análise de Dados."
+  },
+  "skills": {
+    "data": "// dados & ia"
+  },
+  "timeline": {
+    "label": "TRAJETÓRIA",
+    "title": "Experiência Profissional",
+    "education": "Formação e projetos acadêmicos"
+  },
+  "experience": {
+    "support": {
+      "period": "Out/2026 – Momento",
+      "badge": "Estágio",
+      "title": "Técnico de Suporte de TI (Estágio)",
+      "desc": "Atendimento N1/N2, manutenção preventiva e corretiva de hardware, diagnóstico de redes e parametrização de sistemas Windows/Linux."
+    },
+    "studio": {
+      "period": "Jul/2026 – Momento",
+      "badge": "Atuação atual",
+      "desc": "Arquitetura de microsserviços, desenvolvimento de APIs REST com Python/Java, modelagem SQL e interfaces com Next.js/Tailwind."
+    },
+    "brainsoil": {
+      "period": "2026 — Presente",
+      "badge": "TCC em andamento",
+      "title": "Desenvolvimento do BrainSoil — Telemetria IoT e Predição",
+      "place": "Trabalho de Conclusão de Curso · ETEC",
+      "desc": "Arquitetura de backend com Java 17 + Spring Boot, modelo preditivo em Python (LSTM) e simulação de sensores ESP32, orquestrados via Docker. Meu primeiro projeto de ponta a ponta."
+    },
+    "talks": {
+      "badge": "Palestrante",
+      "title": "Primeiras palestras técnicas sobre Inteligência Artificial",
+      "desc": "Duas apresentações sobre IA e o impacto de dados e algoritmos na sociedade, para públicos de 40 a 300+ pessoas."
+    },
+    "learning": {
+      "badge": "Aprofundamento",
+      "title": "Estudo de Redes Neurais e Machine Learning",
+      "place": "Estudo Independente & ETEC",
+      "desc": "Aprofundamento em redes neurais (LSTM) e Machine Learning por conta própria, base que depois usei para propor o BrainSoil como tema de TCC."
+    },
+    "school": {
+      "title": "Ensino Médio Técnico em Informática para Internet",
+      "desc": "Entrada na ETEC e início da formação técnica: fundamentos de desenvolvimento web, banco de dados e programação orientada a objetos."
+    }
+  },
+  "talks": {
+    "label": "PALESTRAS",
+    "title": "Divulgação Científica",
+    "intro": "Comecei a apresentar palestras técnicas sobre Inteligência Artificial em 2026, traduzindo conceitos de IA e dados para públicos técnicos e não-técnicos.",
+    "region": "Palestras técnicas",
+    "carousel": "carrossel",
+    "previous": "Palestra anterior",
+    "next": "Próxima palestra",
+    "location": "LOCAL",
+    "date": "DATA",
+    "audience": "PÚBLICO",
+    "duration": "DURAÇÃO",
+    "topics": "TÓPICOS ABORDADOS",
+    "coSpeaker": "Co-apresentação:",
+    "swipe": "← deslize para navegar →",
+    "algorithm": {
+      "theme": "A ilusão da tecnologia neutra e o novo colonialismo invisível",
+      "date": "Maio de 2026",
+      "audience": "300+ estudantes",
+      "duration": "4 horas contínuas",
+      "coSpeaker": "Kauê Brandão (vertente filosófica, Foucault)",
+      "topic0": "Linha do tempo da computação: de Turing (1950) às LLMs (2022)",
+      "topic1": "Arquitetura de redes neurais LSTM — inputs, outputs e fluxo de dados",
+      "topic2": "Infraestrutura física de Data Centers e o paradoxo da exploração de recursos no Brasil",
+      "topic3": "Paralelo entre domínio tecnológico e soberania nacional"
+    },
+    "growth": {
+      "theme": "Uso crítico e estratégico de Inteligência Artificial no dia a dia profissional",
+      "date": "8 de maio de 2026",
+      "audience": "~40 pessoas",
+      "duration": "2 horas",
+      "coSpeaker": "Kauê Brandão (reflexão sobre conformismo)",
+      "topic0": "Evolução histórica da IA e conceitos de Machine Learning / LLMs",
+      "topic1": "Bancos de dados, redes, Big Data e Data Centers explicados de forma acessível",
+      "topic2": "Engenharia de prompt aplicada à rotina profissional",
+      "topic3": "IA como ferramenta de crescimento, não como substituição do pensamento crítico"
+    },
+    "go": "Ir para palestra {number}",
+    "position": "Palestra {number} de {total}: {title}"
+  },
+  "photos": {
+    "previous": "Foto anterior",
+    "next": "Próxima foto",
+    "position": "Foto {number}",
+    "alt": "Palestra: {title}"
+  },
+  "certificates": {
+    "label": "QUALIFICAÇÕES",
+    "intro": "Formação em analytics, dados e serviços AWS. Selecione um certificado para consultar o documento e as competências.",
+    "view": "Ver certificado",
+    "close": "Fechar certificado",
+    "original": "Abrir documento original",
+    "skills": "Competências relacionadas",
+    "viewLabel": "Ver certificado: {title}",
+    "alt": "Certificado {title}"
+  },
+  "contact": {
+    "title": "Vamos conversar?",
+    "intro": "Entre em contato para conversar sobre projetos, desenvolvimento backend e dados.",
+    "quick": "Contatos rápidos",
+    "links": "Links de contato",
+    "linkedin": "Experiência e conexões profissionais",
+    "github": "Código e repositórios dos meus projetos",
+    "email": "Converse comigo sobre seu projeto",
+    "emailLabel": "E-mail"
+  },
+  "discovery": {
+    "label": "Explorar os trabalhos",
+    "featured": "Destaque · 1",
+    "study": "Projetos de estudo · {count}",
+    "applied": "Projetos aplicados · {count}"
+  },
+  "seo": {
+    "title": "Luis Galvani — Desenvolvimento Back-end e Dados",
+    "description": "Portfólio de Luis Galvani, de Ourinhos, SP. Projetos em Java, Python, APIs REST, ciência de dados e engenharia de software, com experiência em suporte de TI."
+  }
+}

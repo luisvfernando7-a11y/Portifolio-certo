@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -8,13 +9,21 @@ import { C } from '@/data/theme'
 type Slide = { src: string; alt: string }
 
 export default function Carousel({ slides }: { slides: Slide[] }) {
+  const t = useTranslations()
   const [idx, setIdx] = useState(0)
   if (slides.length === 0) return null
 
   const go = (dir: 1 | -1) => setIdx(i => (i + dir + slides.length) % slides.length)
 
   return (
-    <div style={{ position: 'relative', width: '100%' }}>
+    <div style={{ position: 'relative', width: '100%' }}
+      onKeyDown={event => {
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+          event.preventDefault()
+          event.stopPropagation()
+          go(event.key === 'ArrowLeft' ? -1 : 1)
+        }
+      }}>
       <div
         style={{
           position: 'relative',
@@ -26,10 +35,10 @@ export default function Carousel({ slides }: { slides: Slide[] }) {
           backgroundColor: C.bg2,
         }}
       >
-        <AnimatePresence mode="wait">
+        <AnimatePresence initial={false} mode="wait">
           <motion.div
             key={slides[idx].src}
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
@@ -47,8 +56,8 @@ export default function Carousel({ slides }: { slides: Slide[] }) {
 
         {slides.length > 1 && (
           <>
-            <button onClick={() => go(-1)} aria-label="Foto anterior" style={navBtn('left')}>‹</button>
-            <button onClick={() => go(1)} aria-label="Próxima foto" style={navBtn('right')}>›</button>
+            <button onClick={() => go(-1)} aria-label={t('photos.previous')} style={navBtn('left')}>‹</button>
+            <button onClick={() => go(1)} aria-label={t('photos.next')} style={navBtn('right')}>›</button>
             <div style={{
               position: 'absolute', bottom: '10px', left: '50%', transform: 'translateX(-50%)',
               display: 'flex', gap: '6px', backgroundColor: C.bg0,
@@ -58,7 +67,7 @@ export default function Carousel({ slides }: { slides: Slide[] }) {
                 <button
                   key={i}
                   onClick={() => setIdx(i)}
-                  aria-label={`Foto ${i + 1}`}
+                  aria-label={t('photos.position', {number: i + 1})}
                   aria-pressed={i === idx}
                   style={{
                     width: '44px',
@@ -79,7 +88,7 @@ export default function Carousel({ slides }: { slides: Slide[] }) {
       </div>
 
       {slides.length > 1 && (
-        <p style={{ textAlign: 'center', marginTop: '8px', fontFamily: 'var(--font-mono)', fontSize: '11px', color: C.t500 }}>
+        <p aria-live="polite" aria-atomic="true" style={{ textAlign: 'center', marginTop: '8px', fontFamily: 'var(--font-mono)', fontSize: '11px', color: C.t500 }}>
           {idx + 1} / {slides.length}
         </p>
       )}

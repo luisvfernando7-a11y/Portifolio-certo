@@ -1,5 +1,8 @@
 'use client'
 
+import { useContent } from '@/i18n/useContent'
+import { useTranslations } from 'next-intl'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { C, S } from '@/data/theme'
 import { PROJECTS } from '@/data/projects'
@@ -11,41 +14,43 @@ const ArrowSvg = () => (
 )
 
 export default function Projects() {
+  const t = useTranslations()
+  const content = useContent()
   return (
     <section id="projetos" style={{ ...S.section(C.bg0), borderBottom: `1px solid ${C.b1}` }}>
       <div style={S.container}>
         <div style={{ marginBottom: '48px' }}>
-          <p style={S.sectionLabel}>REPOSITÓRIOS</p>
-          <h2 style={S.h2}>Projetos de Estudo</h2>
-          <p style={{ fontSize: 'var(--fs-body)', color: C.t400, marginTop: '10px', maxWidth: '560px', lineHeight: 1.65 }}>
-            Exercícios práticos para consolidar arquitetura de APIs, persistência de dados e boas
-            práticas de código.
-          </p>
+          <p style={S.sectionLabel}>{t('study.label')}</p>
+          <h2 style={S.h2}>{t('study.title')}</h2>
+          <p style={{ fontSize: 'var(--fs-body)', color: C.t400, marginTop: '10px', maxWidth: '560px', lineHeight: 1.65 }}>{t('study.intro')}</p>
           <div style={S.divider} />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {PROJECTS.map((p, i) => (
             <motion.div
-              key={p.title}
+              key={p.id}
               style={{
                 ...S.card,
                 justifyContent: 'space-between',
                 borderRadius: '8px',
               }}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.4, delay: i * 0.07 }}
               className="card-hover"
             >
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                <span style={S.badge}>{p.tag}</span>
+                {p.image && <div className="relative aspect-video overflow-hidden rounded border border-line">
+                  <Image src={p.image.src} alt={t(p.image.altKey)} fill sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 380px" className="object-cover object-top" />
+                </div>}
+                <span style={S.badge}>{content(p.tag)}</span>
                 <h3 style={{ fontFamily: 'var(--font-sans)', fontSize: '1.15rem', fontWeight: 700, color: C.t100, lineHeight: 1.3 }}>
                   {p.title}
                 </h3>
                 <p style={{ fontSize: 'var(--fs-small)', color: C.t400, lineHeight: 1.7 }}>
-                  {p.desc}
+                  {content(p.desc)}
                 </p>
               </div>
 
@@ -66,7 +71,7 @@ export default function Projects() {
                   }}
                   className="link-arrow"
                 >
-                  {p.linkText || 'Ver no GitHub'} <ArrowSvg />
+                  {p.linkText ? content(p.linkText) : t('common.github')} <ArrowSvg />
                 </a>
               </div>
             </motion.div>

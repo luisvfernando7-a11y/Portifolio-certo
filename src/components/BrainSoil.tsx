@@ -1,5 +1,7 @@
 'use client'
 
+import { useContent } from '@/i18n/useContent'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { C, S } from '@/data/theme'
 import { ARCH, STACK_AGRO, BRAINSOIL_REPO_URL } from '@/data/projects'
@@ -12,6 +14,8 @@ const LockSvg = () => (
 )
 
 export default function BrainSoil() {
+  const t = useTranslations()
+  const content = useContent()
   const [videoErr, setVideoErr] = useState(false)
 
   return (
@@ -34,18 +38,11 @@ export default function BrainSoil() {
             fontWeight: 700,
             color: C.accent,
             letterSpacing: '0.1em',
-          }}>
-            ★ PROJETO EM DESTAQUE · TCC
-          </div>
+          }}>{t('brainsoil.badge')}</div>
 
-          <p style={{ ...S.sectionLabel, display: 'block', marginBottom: '10px' }}>TRABALHO DE CONCLUSÃO DE CURSO</p>
-          <h2 style={{ ...S.h2, fontSize: 'clamp(1.7rem, 3.8vw, 2.6rem)' }}>
-            BrainSoil — Predição Agroclimática com IA
-          </h2>
-          <p style={{ fontSize: 'var(--fs-body)', color: C.t400, marginTop: '12px', maxWidth: '620px', lineHeight: 1.7 }}>
-            Sistema de telemetria IoT com Machine Learning (LSTM) para prever a necessidade de irrigação
-            a partir de dados de sensores em campo.
-          </p>
+          <p style={{ ...S.sectionLabel, display: 'block', marginBottom: '10px' }}>{t('brainsoil.label')}</p>
+          <h2 style={{ ...S.h2, fontSize: 'clamp(1.7rem, 3.8vw, 2.6rem)' }}>{t('brainsoil.title')}</h2>
+          <p style={{ fontSize: 'var(--fs-body)', color: C.t400, marginTop: '12px', maxWidth: '620px', lineHeight: 1.7 }}>{t('brainsoil.description')}</p>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '18px' }}>
             {BRAINSOIL_REPO_URL ? (
@@ -55,9 +52,7 @@ export default function BrainSoil() {
                 rel="noopener noreferrer"
                 style={S.btnPrimary}
                 className="hover:bg-ink"
-              >
-                Ver Repositório →
-              </a>
+              >{t('brainsoil.repository')}</a>
             ) : (
               <span style={{
                 display: 'inline-flex', alignItems: 'center', gap: '8px',
@@ -67,8 +62,7 @@ export default function BrainSoil() {
                 border: `1px solid ${C.b2}`,
                 borderRadius: '4px', padding: '6px 14px',
               }}>
-                <LockSvg /> Repositório privado — liberação após defesa do TCC
-              </span>
+                <LockSvg />{t('brainsoil.private')}</span>
             )}
           </div>
 
@@ -105,9 +99,7 @@ export default function BrainSoil() {
                 padding: '2px 8px',
                 borderRadius: '3px',
                 border: `1px solid ${C.accent}`,
-              }}>
-                ● ATIVO
-              </span>
+              }}>{t('brainsoil.active')}</span>
             </div>
 
             {/* Vídeo */}
@@ -115,40 +107,38 @@ export default function BrainSoil() {
               {!videoErr ? (
                 <video
                   src="/assets/agroclima-demo.mp4"
-                  controls muted playsInline preload="metadata" aria-label="Demonstração do BrainSoil"
+                  controls muted playsInline preload="metadata" aria-label={t('brainsoil.video')}
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain' }}
                   onError={() => setVideoErr(true)}
                 />
               ) : (
                 <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-                  <p style={{ fontFamily: 'var(--font-mono)', fontSize: '14px', color: C.accentLight }}>Demonstração indisponível no momento</p>
-                  <p style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: C.accentLight }}>brainsoil v1.2.0 — em breve</p>
+                  <p style={{ fontFamily: 'var(--font-mono)', fontSize: '14px', color: C.accentLight }}>{t('brainsoil.unavailable')}</p>
+                  <p style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: C.accentLight }}>{t('brainsoil.soon')}</p>
                 </div>
               )}
             </div>
           </div>
 
-          <p style={{ textAlign: 'center', marginTop: '14px', fontFamily: 'var(--font-mono)', fontSize: '12px', color: C.t500 }}>
-            Inferência LSTM com integração de sensores IoT — BrainSoil v1.2.0
-          </p>
+          <p style={{ textAlign: 'center', marginTop: '14px', fontFamily: 'var(--font-mono)', fontSize: '12px', color: C.t500 }}>{t('brainsoil.caption')}</p>
         </div>
 
         {/* Arquitetura + Stack */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-14">
           <div style={{ border: `1px solid ${C.b1}`, borderRadius: '8px', padding: '26px 30px', backgroundColor: C.bg0 }}>
-            <p style={{ ...S.sectionLabel, marginBottom: '12px' }}>O QUE O SISTEMA FAZ</p>
+            <p style={{ ...S.sectionLabel, marginBottom: '12px' }}>{t('brainsoil.features')}</p>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {ARCH.map(a => (
                 <li key={a} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
                   <span style={{ color: C.accent, fontSize: '14px', marginTop: '1px', flexShrink: 0 }}>·</span>
-                  <span style={{ fontSize: 'var(--fs-small)', color: C.t400, lineHeight: 1.65 }}>{a}</span>
+                  <span style={{ fontSize: 'var(--fs-small)', color: C.t400, lineHeight: 1.65 }}>{content(a)}</span>
                 </li>
               ))}
             </ul>
           </div>
 
           <div style={{ border: `1px solid ${C.b1}`, borderRadius: '8px', padding: '26px 30px', backgroundColor: C.bg0 }}>
-            <p style={{ ...S.sectionLabel, marginBottom: '12px' }}>STACK DO PROJETO</p>
+            <p style={{ ...S.sectionLabel, marginBottom: '12px' }}>{t('brainsoil.stack')}</p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
               {STACK_AGRO.map(t => (
                 <span key={t} style={{ ...S.techPill, fontSize: '12px', color: C.t200 }}>

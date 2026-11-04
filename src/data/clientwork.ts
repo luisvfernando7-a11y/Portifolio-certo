@@ -1,4 +1,5 @@
 export type ClientWork = {
+  id: string
   tag: string
   title: string
   client: string
@@ -6,10 +7,12 @@ export type ClientWork = {
   highlights: string[]
   stack: string[]
   url: string
+  image?: {src: string; altKey: string}
 }
 
 export const CLIENT_WORK: ClientWork[] = [
   {
+    id: 'thais-bianca',
     tag: 'Projeto para terceiro · Direito',
     title: 'Landing Page Institucional',
     client: 'Para Thaís Bianca Nogueira — Advocacia',
@@ -23,6 +26,7 @@ export const CLIENT_WORK: ClientWork[] = [
     url: 'https://thaisbianca.vercel.app',
   },
   {
+    id: 'galvani-studio',
     tag: 'Projeto pessoal',
     title: 'Galvani Studio — Site Próprio',
     client: 'Projeto autoral',
@@ -33,5 +37,16 @@ export const CLIENT_WORK: ClientWork[] = [
     ],
     stack: ['Next.js 14', 'Tailwind CSS', 'Framer Motion'],
     url: 'https://galvanistudio.vercel.app',
+  },
+  {
+    id: 'helena-morelin',
+    tag: 'Projeto para terceiro · Colaboração gratuita',
+    title: 'Helena Morelin',
+    client: 'Trabalho prático de desenvolvimento web',
+    desc: 'Site desenvolvido gratuitamente para apresentar serviços de cílios e sobrancelhas, catálogo de procedimentos, valores e orientações de contato. Não oferece confirmação automática de agendamento.',
+    highlights: ['Catálogo de procedimentos e orientações de atendimento', 'Formulário para preparar mensagem de contato pelo WhatsApp'],
+    stack: ['HTML', 'CSS', 'JavaScript'],
+    url: 'https://helena-morelin.vercel.app/',
+    image: {src: '/projects/helena-morelin.jpg', altKey: 'projects.helena.alt'},
   },
 ]

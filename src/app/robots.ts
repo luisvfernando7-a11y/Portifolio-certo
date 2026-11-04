@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import {ORIGIN} from '@/i18n/routing';
 
 export default function robots(): MetadataRoute.Robots {
     return {
@@ -6,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             userAgent: '*',
             allow: '/',
         },
-        sitemap: 'https://luisgalvani.vercel.app/sitemap.xml',
+        sitemap: `${ORIGIN}/sitemap.xml`,
     }
 }

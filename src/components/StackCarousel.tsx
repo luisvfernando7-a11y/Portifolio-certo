@@ -1,18 +1,20 @@
 "use client"
 
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import Image from 'next/image'
 import { Pause, Play } from 'lucide-react'
 import { STACK_ICONS } from '@/data/stack'
 
 export default function StackCarousel() {
+  const t = useTranslations()
   const [paused, setPaused] = useState(false)
 
   return (
     <section className="stack-carousel" data-paused={paused} aria-labelledby="stack-title">
       <div className="stack-carousel-bar">
-        <h2 id="stack-title" className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">Tecnologias e ferramentas</h2>
-        <button type="button" className="stack-motion-toggle" aria-label={paused ? 'Continuar animação das tecnologias' : 'Pausar animação das tecnologias'} aria-pressed={paused} onClick={() => setPaused(value => !value)}>
+        <h2 id="stack-title" className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">{t('stack.title')}</h2>
+        <button type="button" className="stack-motion-toggle" aria-label={paused ? t('stack.play') : t('stack.pause')} aria-pressed={paused} onClick={() => setPaused(value => !value)}>
           {paused ? <Play size={16} aria-hidden="true" /> : <Pause size={16} aria-hidden="true" />}
         </button>
       </div>

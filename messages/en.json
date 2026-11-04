@@ -1,0 +1,238 @@
+{
+  "nav": {
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "certificates": "Certificates",
+    "contact": "Contact",
+    "open": "Open menu",
+    "close": "Close menu",
+    "main": "Main navigation",
+    "skip": "Skip to content",
+    "languages": "Select language"
+  },
+  "hero": {
+    "location": "Ourinhos, Brazil · Technology, software and data",
+    "role": "IT Support Technician",
+    "disciplines": "Data Science & Software Engineering",
+    "intro": "I work in IT support and develop APIs, integrations and data-driven solutions. In BrainSoil, I apply IoT telemetry and Machine Learning to soil moisture prediction.",
+    "projects": "View projects",
+    "contact": "Get in touch"
+  },
+  "stack": {
+    "title": "Technologies and tools",
+    "play": "Resume technology animation",
+    "pause": "Pause technology animation"
+  },
+  "brainsoil": {
+    "badge": "★ FEATURED PROJECT · FINAL-YEAR PROJECT",
+    "label": "FINAL-YEAR PROJECT",
+    "title": "BrainSoil — AI Agroclimatic Prediction",
+    "description": "IoT telemetry system using Machine Learning (LSTM) to predict irrigation needs from field sensor data.",
+    "repository": "View repository →",
+    "private": "Private repository — release after the final project defense",
+    "active": "● ACTIVE",
+    "video": "BrainSoil demonstration",
+    "unavailable": "Demonstration currently unavailable",
+    "soon": "brainsoil v1.2.0 — coming soon",
+    "caption": "LSTM inference with IoT sensor integration — BrainSoil v1.2.0",
+    "features": "WHAT THE SYSTEM DOES",
+    "stack": "PROJECT STACK",
+    "arch0": "Real-time data ingestion via ESP32 + Zigbee mesh",
+    "arch1": "LSTM model training and inference with PyTorch",
+    "arch2": "Monte Carlo simulation for probabilistic risk analysis",
+    "arch3": "Spring Boot REST API as the orchestration layer",
+    "arch4": "Service orchestration with Docker Compose",
+    "arch5": "Database separation: ODS + domain database"
+  },
+  "study": {
+    "label": "REPOSITORIES",
+    "title": "Study Projects",
+    "intro": "Practical projects to strengthen API architecture, data persistence and good coding practices."
+  },
+  "applied": {
+    "label": "BEYOND THE CLASSROOM",
+    "title": "Applied Projects",
+    "intro": "Where I apply what I learn beyond the classroom — including work delivered for real use by others."
+  },
+  "common": {
+    "github": "View on GitHub",
+    "demo": "View live project",
+    "preview": "View live project",
+    "newTab": " (opens in a new tab)"
+  },
+  "projects": {
+    "people": {
+      "tag": "REST API · Java",
+      "desc": "REST API with full CRUD operations, an in-memory H2 database and JPA/Hibernate mapping. Controller → Service → Repository architecture."
+    },
+    "mysql": {
+      "tag": "REST API · Docker",
+      "desc": "CRUD application with Spring Boot and relational persistence in MySQL. Containerized with Docker and a clearly layered architecture."
+    },
+    "vieira": {
+      "tag": "R&D · Interface Engineering",
+      "desc": "Research and Development project in Interface Engineering. A Web Performance Optimization (WPO) demonstration built around semantic HTML5 standards and digital accessibility (a11y)."
+    },
+    "portfolio": {
+      "desc": "This portfolio. Built with Next.js, Tailwind CSS and Framer Motion, with a focus on the experience of technical recruiters."
+    },
+    "law": {
+      "tag": "Third-party project · Legal services",
+      "client": "For Thaís Bianca Nogueira — Legal services",
+      "desc": "An institutional website developed for a lawyer in Ourinhos, Brazil, focused on credibility and easy contact. My first project delivered for real use by someone else.",
+      "highlight0": "Technical SEO (Metadata API, Open Graph, Sitemap, Robots)",
+      "highlight1": "WhatsApp Business integration",
+      "highlight2": "Privacy and cookie policy (LGPD)"
+    },
+    "studio": {
+      "tag": "Personal project",
+      "client": "Independent project",
+      "desc": "The Galvani Studio website, where I have served as Founder since July 2026.",
+      "highlight0": "Consistent, minimalist design",
+      "highlight1": "Micro-interactions with Framer Motion"
+    },
+    "helena": {
+      "tag": "Third-party project · Unpaid collaboration",
+      "client": "Practical web development work",
+      "desc": "A website developed as an unpaid collaboration to present lash and brow services, a treatment catalogue, prices and contact guidance. It does not provide automatic appointment confirmation.",
+      "highlight0": "Treatment catalogue and appointment guidance",
+      "highlight1": "Form to prepare a WhatsApp contact message",
+      "alt": "Catalogue on the Helena Morelin website"
+    },
+    "raccolto": {
+      "tag": "Academic · Demonstration",
+      "desc": "A demonstration website for a fictional restaurant and wine shop, with editorial content and an illustrative catalogue, without real sales. It originated in studies involving WordPress, AWS and web development; the public demo uses HTML, CSS and JavaScript.",
+      "alt": "Home page of the Raccolto Galvani demonstration"
+    }
+  },
+  "about": {
+    "label": "ABOUT ME",
+    "summary": "17 years old · Ourinhos, Brazil · IT student (ETEC)",
+    "educationStart": "I am in the final year of the technical secondary programme in Internet Computing at ETEC Jacinto Ferreira de Sá, with graduation expected in 2026. My practical foundation is in",
+    "languages": "Java and Python",
+    "educationEnd": ", with experience in relational databases and REST APIs built with Spring Boot and Flask.",
+    "projectStart": "My main project so far is",
+    "projectEnd": ", my final-year project: an IoT telemetry system using Machine Learning (LSTM) for soil moisture prediction. It is where I put my studies into practice — backend architecture, data modelling and sensor integration.",
+    "talks": "I also started giving technical talks on Artificial Intelligence in 2026 — two so far, at Unifio and ETEC — as a way to organise and communicate what I am learning. My focus combines backend development, data engineering and data analysis."
+  },
+  "skills": {
+    "data": "// data & ai"
+  },
+  "timeline": {
+    "label": "BACKGROUND",
+    "title": "Professional Experience",
+    "education": "Education and academic projects"
+  },
+  "experience": {
+    "support": {
+      "period": "Oct 2026 – Present",
+      "badge": "Internship",
+      "title": "IT Support Technician (Internship)",
+      "desc": "L1/L2 support, preventive and corrective hardware maintenance, network diagnostics and Windows/Linux system configuration."
+    },
+    "studio": {
+      "period": "Jul 2026 – Present",
+      "badge": "Current role",
+      "desc": "Microservice architecture, REST API development with Python/Java, SQL modelling and interfaces with Next.js/Tailwind."
+    },
+    "brainsoil": {
+      "period": "2026 — Present",
+      "badge": "Final-year project in progress",
+      "title": "Developing BrainSoil — IoT Telemetry and Prediction",
+      "place": "Final-year project · ETEC",
+      "desc": "Backend architecture with Java 17 + Spring Boot, a predictive model in Python (LSTM) and ESP32 sensor simulation, orchestrated with Docker. My first end-to-end project."
+    },
+    "talks": {
+      "badge": "Speaker",
+      "title": "First technical talks on Artificial Intelligence",
+      "desc": "Two presentations on AI and the impact of data and algorithms on society, for audiences ranging from 40 to over 300 people."
+    },
+    "learning": {
+      "badge": "Further study",
+      "title": "Studying Neural Networks and Machine Learning",
+      "place": "Independent study & ETEC",
+      "desc": "Independent study of neural networks (LSTM) and Machine Learning, which later provided the foundation for proposing BrainSoil as my final-year project."
+    },
+    "school": {
+      "title": "Technical Secondary Education in Internet Computing",
+      "desc": "Starting at ETEC and beginning technical education: fundamentals of web development, databases and object-oriented programming."
+    }
+  },
+  "talks": {
+    "label": "TALKS",
+    "title": "Science Communication",
+    "intro": "I started giving technical talks on Artificial Intelligence in 2026, making AI and data concepts accessible to technical and non-technical audiences.",
+    "region": "Technical talks",
+    "carousel": "carousel",
+    "previous": "Previous talk",
+    "next": "Next talk",
+    "location": "VENUE",
+    "date": "DATE",
+    "audience": "AUDIENCE",
+    "duration": "DURATION",
+    "topics": "TOPICS COVERED",
+    "coSpeaker": "Co-presented with:",
+    "swipe": "← swipe to navigate →",
+    "algorithm": {
+      "theme": "The illusion of neutral technology and the new invisible colonialism",
+      "date": "May 2026",
+      "audience": "300+ students",
+      "duration": "4 continuous hours",
+      "coSpeaker": "Kauê Brandão (philosophical perspective, Foucault)",
+      "topic0": "Computing timeline: from Turing (1950) to LLMs (2022)",
+      "topic1": "LSTM neural network architecture — inputs, outputs and data flow",
+      "topic2": "Physical data centre infrastructure and the paradox of resource exploitation in Brazil",
+      "topic3": "The relationship between technological control and national sovereignty"
+    },
+    "growth": {
+      "theme": "Critical and strategic use of Artificial Intelligence in everyday professional life",
+      "date": "May 8, 2026",
+      "audience": "~40 people",
+      "duration": "2 hours",
+      "coSpeaker": "Kauê Brandão (reflection on conformity)",
+      "topic0": "Historical development of AI and Machine Learning / LLM concepts",
+      "topic1": "Databases, networks, Big Data and data centres explained accessibly",
+      "topic2": "Prompt engineering applied to everyday work",
+      "topic3": "AI as a tool for growth, not a replacement for critical thinking"
+    },
+    "go": "Go to talk {number}",
+    "position": "Talk {number} of {total}: {title}"
+  },
+  "photos": {
+    "previous": "Previous photo",
+    "next": "Next photo",
+    "position": "Photo {number}",
+    "alt": "Talk: {title}"
+  },
+  "certificates": {
+    "label": "QUALIFICATIONS",
+    "intro": "Training in analytics, data and AWS services. Select a certificate to view the document and related skills.",
+    "view": "View certificate",
+    "close": "Close certificate",
+    "original": "Open original document",
+    "skills": "Related skills",
+    "viewLabel": "View certificate: {title}",
+    "alt": "Certificate {title}"
+  },
+  "contact": {
+    "title": "Let’s talk",
+    "intro": "Get in touch to discuss projects, backend development and data.",
+    "quick": "Quick contact links",
+    "links": "Contact links",
+    "linkedin": "Professional experience and connections",
+    "github": "Code and repositories for my projects",
+    "email": "Tell me about your project",
+    "emailLabel": "Email"
+  },
+  "discovery": {
+    "label": "Explore the projects",
+    "featured": "Featured · 1",
+    "study": "Study projects · {count}",
+    "applied": "Applied projects · {count}"
+  },
+  "seo": {
+    "title": "Luis Galvani — Backend Development & Data Projects",
+    "description": "Luis Galvani’s portfolio from Ourinhos, Brazil. Java, Python, REST API, data science and software engineering projects, alongside IT support experience."
+  }
+}

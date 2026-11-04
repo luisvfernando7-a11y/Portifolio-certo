@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#fff"/>
+  <rect x="64" y="64" width="1072" height="502" rx="8" fill="#fafafa" stroke="#d4d4d4"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#000">
+    <text x="112" y="150" font-size="20" letter-spacing="3">SOFTWARE · DATA · OURINHOS, BRASIL</text>
+    <text x="108" y="292" font-size="92" font-weight="700" letter-spacing="-4">Luis Galvani.</text>
+    <rect x="112" y="334" width="64" height="3"/>
+    <text x="112" y="401" font-size="30" fill="#525252">Java · Python · REST APIs · Machine Learning</text>
+    <text x="112" y="501" font-size="23">luisgalvani.vercel.app</text>
+  </g>
+</svg>

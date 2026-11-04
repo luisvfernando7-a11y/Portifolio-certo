@@ -83,7 +83,7 @@ button { font: inherit; }
 
 .hero-intro h1 { animation: quiet-enter .7s ease-out both; }
 .section-enter > div { animation: quiet-enter .65s ease-out both; }
-@keyframes quiet-enter { from { opacity: .3; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes quiet-enter { from { opacity: 1; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 .certificate-document { aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center; }
 .certificate-document img { max-height: 100%; filter: none; }
 .certificate-card img { filter: none; }
@@ -97,4 +97,14 @@ button { font: inherit; }
 }
 @media (prefers-reduced-motion: reduce) {
   .certificate-card:hover, .contact-link:hover { transform: none; }
+}
+
+/* Locale controls wrap as a second compact row only when the existing header is too narrow. */
+@media (max-width: 479px) {
+  .header-actions { display: contents; }
+  .header-actions > nav:first-child { margin-left: auto; }
+  .language-switcher { order: 4; width: 100%; justify-content: flex-end; }
+  #main-navigation { order: 5; }
+  html { scroll-padding-top: 132px; }
+  .hero-intro { padding-top: 156px !important; }
 }

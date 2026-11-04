@@ -5,6 +5,7 @@
 /.next/
 /out/
 /build
+/teste1/
 
 # variáveis de ambiente — NUNCA versionar
 .env

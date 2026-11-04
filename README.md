@@ -110,3 +110,55 @@ Visual branco, preto e cinza. A apresentação separa o título profissional das
 `StackCarousel.tsx` exibe SVGs locais em loop para a direita, com pausa e movimento reduzido.
 As stacks nas outras seções permanecem textuais; o vídeo mantém as cores originais.
 Logos: [Devicon](https://github.com/devicons/devicon), licença MIT em `public/stack/LICENSE`.
+
+## Idiomas e SEO
+
+A homepage usa componentes compartilhados e `next-intl`: português brasileiro em `/`, inglês
+em `/en` e espanhol em `/es`. Não há detecção obrigatória do idioma do navegador nem cookie
+para seleção de idioma. As âncoras existentes permanecem iguais nas três versões.
+
+- `messages/{pt-BR,en,es}.json`: interface, metadados e traduções do conteúdo.
+- `src/i18n/routing.ts`: idiomas, caminhos e origem pública canônica.
+- `src/i18n/content-keys.ts`: associação explícita dos textos originais dos dados às mensagens.
+  Ao editar uma descrição ou adicionar conteúdo traduzível, atualizar essa associação e os três
+  dicionários. Nomes próprios, marcas e títulos oficiais de certificados permanecem originais.
+- `src/app/(pt)/` e `src/app/[locale]/`: rotas explícitas, sem rewrite ou proxy.
+  `LocaleDocument` e `Portfolio` compartilham documento, componentes e conteúdo.
+- `src/components/StructuredData.tsx`: Person, WebSite e ProfilePage baseados no conteúdo público.
+- `public/social-card.svg`: fonte editável da imagem social `social-card.png` (1200 × 630).
+
+`/intro.html` redireciona permanentemente para `/`: é uma apresentação antiga, sem referências
+no aplicativo ativo. O arquivo original foi preservado. O sitemap contém somente as três URLs
+canônicas; datas de alteração não são inventadas a cada build.
+
+Os novos projetos Helena Morelin e Raccolto Galvani usam capturas reais dos sites publicados.
+As stacks indicam HTML, CSS e JavaScript. WordPress e AWS são contexto de estudo do Raccolto,
+não infraestrutura comprovada da demonstração pública.
+
+## Verificação da implementação
+
+Use uma versão Node compatível com o projeto (os testes desta implementação usam Node 20.20.2).
+
+```bash
+npm run lint
+npm run typecheck
+npm run test:content
+npm run build
+npm run start -- --port 3100
+# Em outro terminal, com o servidor de produção acima em execução:
+npm run test:browser
+```
+
+Os testes usam Playwright e axe. Por padrão, utilizam `/usr/bin/google-chrome` se disponível;
+caso contrário, requerem o Chromium do Playwright. É possível informar `CHROME_BIN` e
+`TEST_ORIGIN`. `TEST_REPORT=/tmp/portfolio-check.json` grava um relatório opcional e
+`TEST_SCREENSHOTS=/tmp/portfolio-shots` habilita capturas. A fixture pública do BrainSoil
+permite verificar que texto, vídeo e links em português foram preservados.
+
+Em ambientes restritos que bloqueiam a porta interna do Turbopack, valide o build com
+`npm run build -- --webpack`. O servidor local e o Chrome precisam de permissão para abrir
+portas e processos; falhas `EPERM` nessa etapa são restrições do ambiente.
+
+O teste automatizado de acessibilidade não certifica conformidade WCAG integral. Legendas
+ou alternativas do vídeo original ainda dependem de revisão manual do conteúdo audiovisual.
+Nenhum analytics, formulário ou mecanismo de rastreamento foi adicionado.

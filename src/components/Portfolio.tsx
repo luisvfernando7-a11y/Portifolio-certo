@@ -11,8 +11,12 @@ import Contact from '@/components/Contact'
 import Certificates from '@/components/Certificates'
 import Footer from '@/components/Footer'
 import SectionMotion from '@/components/SectionMotion'
+import {getTranslations, setRequestLocale} from 'next-intl/server'
+import StructuredData from '@/components/StructuredData'
 
-export default function Portfolio() {
+export default async function Portfolio({locale}: {locale: string}) {
+  setRequestLocale(locale)
+  const t = await getTranslations()
   return (
     <div
       style={{
@@ -22,7 +26,8 @@ export default function Portfolio() {
         minHeight: '100vh',
       }}
     >
-      <a href="#conteudo" className="skip-link">Pular para o conteúdo</a>
+      <StructuredData locale={locale} title={t('seo.title')} description={t('seo.description')} />
+      <a href="#conteudo" className="skip-link">{t('nav.skip')}</a>
       <Header />
       <main id="conteudo" tabIndex={-1}>
         <SectionMotion />

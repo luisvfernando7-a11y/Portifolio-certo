@@ -1,14 +1,17 @@
 export type Project = {
+  id: string
   tag: string
   title: string
   desc: string
   stack: string[]
   url: string
   linkText?: string
+  image?: {src: string; altKey: string}
 }
 
 export const PROJECTS: Project[] = [
   {
+    id: 'people-crud',
     tag: 'REST API · Java',
     title: 'People CRUD with H2',
     desc: 'API REST com operações CRUD completas, banco H2 em memória e mapeamento JPA/Hibernate. Arquitetura Controller → Service → Repository.',
@@ -16,6 +19,7 @@ export const PROJECTS: Project[] = [
     url: 'https://github.com/luisvfernando7-a11y/People-CRUD-with-H2',
   },
   {
+    id: 'spring-mysql',
     tag: 'REST API · Docker',
     title: 'CRUD Spring Boot + MySQL',
     desc: 'CRUD com Spring Boot e persistência relacional em MySQL. Containerizado com Docker e arquitetura em camadas bem definidas.',
@@ -23,6 +27,7 @@ export const PROJECTS: Project[] = [
     url: 'https://github.com/luisvfernando7-a11y/crud1-spring-boote',
   },
   {
+    id: 'solucoes-vieira',
     tag: 'P&D · Eng. de Interface',
     title: 'Soluções Vieira',
     desc: 'Projeto de Pesquisa & Desenvolvimento em Engenharia de Interface. Demonstração de Web Performance Optimization (WPO), arquitetado sob padrões de HTML5 Semântico e conformidade com Acessibilidade Digital (a11y).',
@@ -31,11 +36,22 @@ export const PROJECTS: Project[] = [
     linkText: 'Visualizar Projeto Online',
   },
   {
+    id: 'portfolio',
     tag: 'Frontend',
     title: 'Portfolio App',
     desc: 'Este portfólio. Desenvolvido com Next.js, Tailwind CSS, Framer Motion e foco em UX para recrutadores técnicos.',
     stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
     url: 'https://github.com/luisvfernando7-a11y/portfolio-app',
+  },
+  {
+    id: 'raccolto-galvani',
+    tag: 'Acadêmico · Demonstração',
+    title: 'Raccolto Galvani',
+    desc: 'Experiência web para restaurante e enoteca fictícios, com apresentação editorial e catálogo ilustrativo, sem vendas reais. Originado em estudos envolvendo WordPress, AWS e desenvolvimento web; a demonstração pública utiliza HTML, CSS e JavaScript.',
+    stack: ['HTML', 'CSS', 'JavaScript'],
+    url: 'https://raccoltogalvani.vercel.app/',
+    linkText: 'Ver Projeto Online',
+    image: {src: '/projects/raccolto-galvani.jpg', altKey: 'projects.raccolto.alt'},
   },
 ]
 

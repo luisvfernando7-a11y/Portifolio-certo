@@ -1,6 +1,8 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useContent } from '@/i18n/useContent'
+import { useTranslations } from 'next-intl'
+import { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { C, S } from '@/data/theme'
 import { Talk } from '@/data/talks'
@@ -26,6 +28,8 @@ const ChevRight = () => (
 )
 
 export default function TalksCarousel({ talks }: { talks: Talk[] }) {
+  const t = useTranslations()
+  const content = useContent()
   const [idx, setIdx] = useState(0)
   const [dir, setDir] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
@@ -40,17 +44,6 @@ export default function TalksCarousel({ talks }: { talks: Talk[] }) {
     })
   }
 
-  useEffect(() => {
-    const el = containerRef.current
-    if (!el) return
-    const handle = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') paginate(-1)
-      if (e.key === 'ArrowRight') paginate(1)
-    }
-    el.addEventListener('keydown', handle)
-    return () => el.removeEventListener('keydown', handle)
-  })
-
   if (!talks.length) return null
 
   const talk = talks[idx]
@@ -62,7 +55,15 @@ export default function TalksCarousel({ talks }: { talks: Talk[] }) {
   }
 
   return (
-    <div ref={containerRef} tabIndex={0} role="region" aria-roledescription="carrossel" aria-label="Palestras técnicas">
+    <div ref={containerRef} tabIndex={0} role="region" aria-roledescription={t('talks.carousel')} aria-label={t('talks.region')}
+      onKeyDown={event => {
+        // Inner galleries and buttons own their keyboard events.
+        if (event.target !== event.currentTarget) return
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+          event.preventDefault()
+          paginate(event.key === 'ArrowLeft' ? -1 : 1)
+        }
+      }}>
 
       {/* Controles superiores */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px', flexWrap: 'wrap', gap: '10px' }}>
@@ -82,7 +83,7 @@ export default function TalksCarousel({ talks }: { talks: Talk[] }) {
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <button
             onClick={() => paginate(-1)}
-            aria-label="Palestra anterior"
+            aria-label={t('talks.previous')}
             style={{
               width: '44px', height: '44px', borderRadius: '6px',
               backgroundColor: C.bg0, border: `1px solid ${C.b2}`,
@@ -100,7 +101,7 @@ export default function TalksCarousel({ talks }: { talks: Talk[] }) {
               <button
                 key={i}
                 onClick={() => { setDir(i > idx ? 1 : -1); setIdx(i) }}
-                aria-label={`Ir para palestra ${i + 1}`}
+                aria-label={t('talks.go', {number: i + 1})}
                 aria-pressed={i === idx}
                 style={{
                   width: '44px',
@@ -119,7 +120,7 @@ export default function TalksCarousel({ talks }: { talks: Talk[] }) {
 
           <button
             onClick={() => paginate(1)}
-            aria-label="Próxima palestra"
+            aria-label={t('talks.next')}
             style={{
               width: '44px', height: '44px', borderRadius: '6px',
               backgroundColor: C.bg0, border: `1px solid ${C.b2}`,
@@ -134,6 +135,7 @@ export default function TalksCarousel({ talks }: { talks: Talk[] }) {
         </div>
       </div>
 
+      <p className="sr-only" aria-live="polite" aria-atomic="true">{t('talks.position', {number: idx + 1, total: talks.length, title: talk.title})}</p>
       {/* Card da palestra */}
       <div style={{ position: 'relative', overflow: 'hidden' }}>
         <AnimatePresence initial={false} custom={dir} mode="wait">
@@ -167,7 +169,7 @@ export default function TalksCarousel({ talks }: { talks: Talk[] }) {
               {/* Galeria */}
               <div>
                 <Carousel
-                  slides={[talk.mainPhoto, ...talk.galleryPhotos].map(src => ({ src, alt: `Palestra: ${talk.title}` }))}
+                  slides={[talk.mainPhoto, ...talk.galleryPhotos].map(src => ({ src, alt: t('photos.alt', {title: talk.title}) }))}
                 />
               </div>
 
@@ -187,16 +189,16 @@ export default function TalksCarousel({ talks }: { talks: Talk[] }) {
                 </h3>
 
                 <p style={{ fontSize: 'var(--fs-body)', color: C.t400, fontStyle: 'italic', lineHeight: 1.55 }}>
-                  &ldquo;{talk.theme}&rdquo;
+                  &ldquo;{content(talk.theme)}&rdquo;
                 </p>
 
                 {/* Grid de metadados */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3" style={{ paddingBottom: '14px', borderBottom: `1px solid ${C.b1}` }}>
                   {[
-                    ['LOCAL', talk.place],
-                    ['DATA', talk.date],
-                    ['PÚBLICO', talk.audience],
-                    ['DURAÇÃO', talk.duration],
+                    [t('talks.location'), talk.place],
+                    [t('talks.date'), content(talk.date)],
+                    [t('talks.audience'), content(talk.audience)],
+                    [t('talks.duration'), content(talk.duration)],
                   ].map(([label, value]) => (
                     <div key={label} style={{
                       backgroundColor: C.bg1,
@@ -212,12 +214,12 @@ export default function TalksCarousel({ talks }: { talks: Talk[] }) {
 
                 {/* Tópicos */}
                 <div>
-                  <p style={{ ...S.sectionLabel, fontSize: '10px', marginBottom: '8px' }}>TÓPICOS ABORDADOS</p>
+                  <p style={{ ...S.sectionLabel, fontSize: '10px', marginBottom: '8px' }}>{t('talks.topics')}</p>
                   <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                     {talk.topics.map(topic => (
                       <li key={topic} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
                         <span style={{ color: C.accent, fontSize: '14px', marginTop: '1px', flexShrink: 0 }}>·</span>
-                        <span style={{ fontSize: 'var(--fs-small)', color: C.t400, lineHeight: 1.6 }}>{topic}</span>
+                        <span style={{ fontSize: 'var(--fs-small)', color: C.t400, lineHeight: 1.6 }}>{content(topic)}</span>
                       </li>
                     ))}
                   </ul>
@@ -235,7 +237,7 @@ export default function TalksCarousel({ talks }: { talks: Talk[] }) {
                     padding: '7px 12px',
                     display: 'inline-block',
                   }}>
-                    Co-apresentação: {talk.coSpeaker}
+                    {t('talks.coSpeaker')} {content(talk.coSpeaker)}
                   </p>
                 )}
               </div>
@@ -249,9 +251,7 @@ export default function TalksCarousel({ talks }: { talks: Talk[] }) {
         textAlign: 'center', marginTop: '10px',
         fontFamily: 'var(--font-mono)',
         fontSize: '11px', color: C.t500,
-      }}>
-        ← deslize para navegar →
-      </p>
+      }}>{t('talks.swipe')}</p>
 
     </div>
   )
